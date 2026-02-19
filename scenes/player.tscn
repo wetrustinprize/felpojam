@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://och1pbu6jcyo"]
+
+[ext_resource type="Texture2D" uid="uid://ckwuqphf2cc54" path="res://sprites/placeholders/coisiho.png" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://gtkfd4p1pblk" path="res://sprites/controls/keyboard_e.svg" id="2_g2els"]
+[ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="3_qhqgy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(42, 44)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 22)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Coisinho" type="Sprite2D" parent="."]
+texture = ExtResource("1_3vyb7")
+flip_h = true
+
+[node name="InteractInfo" type="Node2D" parent="."]
+
+[node name="Tecla" type="Sprite2D" parent="InteractInfo"]
+position = Vector2(0, -91.99999)
+scale = Vector2(0.5536802, 0.5536802)
+texture = ExtResource("2_g2els")
+
+[node name="Label" type="Label" parent="InteractInfo"]
+offset_left = -55.0
+offset_top = -74.0
+offset_right = 56.0
+offset_bottom = -51.0
+theme_override_fonts/font = ExtResource("3_qhqgy")
+text = "Para interagir!"
+horizontal_alignment = 1
+vertical_alignment = 1

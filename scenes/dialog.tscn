@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://circvwyjvx74s"]
+
+[ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="1_pkx4w"]
+[ext_resource type="Script" uid="uid://dtuvcbw281pov" path="res://scripts/dialog.gd" id="1_tmfn4"]
+[ext_resource type="Script" uid="uid://dmib23vt665a4" path="res://addons/dialogue_label/src/DialogueLabel.gd" id="2_36pgd"]
+
+[sub_resource type="Gradient" id="Gradient_36pgd"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tmfn4"]
+gradient = SubResource("Gradient_36pgd")
+
+[node name="Dialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tmfn4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 280.0
+offset_right = 626.0
+offset_bottom = 405.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_tmfn4")
+stretch_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/normal_font = ExtResource("1_pkx4w")
+bbcode_enabled = true
+text = "ola mundo!"
+script = ExtResource("2_36pgd")
+metadata/_custom_type_script = "uid://dmib23vt665a4"
