@@ -2,7 +2,7 @@ name: "Felpojam Export Script"
 on:
   push:
     branches:
-      - main
+      - master
 
 env:
   GODOT_VERSION: 4.5.1
