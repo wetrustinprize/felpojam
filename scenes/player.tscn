@@ -1,23 +1,38 @@
-[gd_scene load_steps=5 format=3 uid="uid://och1pbu6jcyo"]
+[gd_scene load_steps=9 format=3 uid="uid://och1pbu6jcyo"]
 
 [ext_resource type="Texture2D" uid="uid://ckwuqphf2cc54" path="res://sprites/placeholders/coisiho.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dvildwb8y06ut" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://gtkfd4p1pblk" path="res://sprites/controls/keyboard_e.svg" id="2_g2els"]
 [ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="3_qhqgy"]
+[ext_resource type="Script" uid="uid://bwoubsqhbid6r" path="res://scripts/interact_info.gd" id="3_tuyoq"]
+[ext_resource type="Script" uid="uid://ckbjc4a1wnxkk" path="res://scripts/interactor.gd" id="4_dqkch"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
-size = Vector2(42, 44)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
+radius = 8.0
+height = 38.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(152, 136)
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_qlg0r")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 22)
-shape = SubResource("RectangleShape2D_g2els")
+position = Vector2(0, 37)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_tuyoq")
 
 [node name="Coisinho" type="Sprite2D" parent="."]
 texture = ExtResource("1_3vyb7")
 flip_h = true
 
 [node name="InteractInfo" type="Node2D" parent="."]
+z_index = 50
+z_as_relative = false
+script = ExtResource("3_tuyoq")
 
 [node name="Tecla" type="Sprite2D" parent="InteractInfo"]
 position = Vector2(0, -91.99999)
@@ -33,3 +48,16 @@ theme_override_fonts/font = ExtResource("3_qhqgy")
 text = "Para interagir!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Interactor" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("4_dqkch")
+metadata/_custom_type_script = "uid://ckbjc4a1wnxkk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
+position = Vector2(66, 0)
+shape = SubResource("RectangleShape2D_qhqgy")
+
+[connection signal="can_interact_with" from="Interactor" to="InteractInfo" method="_on_interactor_can_interact_with"]
+[connection signal="cannot_interact_anymore" from="Interactor" to="InteractInfo" method="_on_interactor_cannot_interact_anymore"]

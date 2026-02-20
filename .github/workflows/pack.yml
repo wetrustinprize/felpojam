@@ -1,0 +1,43 @@
+name: "Felpojam Export Script"
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GODOT_VERSION: 4.5.1
+  GAME_NAME: "Felpojam"
+
+jobs:
+  build-desktop-clients:
+    name: Export Game Binaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        name: Checkout
+
+      - uses: chickensoft-games/setup-godot@v2
+        name: Setup Godot
+        with:
+          version: ${{ env.GODOT_VERSION }}
+          use-dotnet: false
+          include-templates: true
+
+      - name: Prepare directories
+        run: mkdir -p compiled/windows compiled/linux
+
+      - name: Export Linux release
+        run: godot --headless --path ./source/ --export-release linux ../compiled/linux/${{ env.GAME_NAME }}.x86_64
+
+      - name: Export Windows release
+        run: godot --headless --path ./source/ --export-release windows ../compiled/windows/${{ env.GAME_NAME }}.exe
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.GAME_NAME }}
+          path: |
+            source/
+            compiled/
+            disclaimer/
+            README.md
+            !source/.godot
