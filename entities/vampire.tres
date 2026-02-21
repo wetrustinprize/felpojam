@@ -8,4 +8,5 @@
 script = ExtResource("1_v7jrp")
 portrait = ExtResource("1_4ukw2")
 sounds = Array[AudioStream]([ExtResource("2_hrulb")])
+name = "Vampero"
 metadata/_custom_type_script = "uid://bw53n2gpy15rr"

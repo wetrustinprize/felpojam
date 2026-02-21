@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://och1pbu6jcyo"]
+[gd_scene load_steps=23 format=3 uid="uid://och1pbu6jcyo"]
 
 [ext_resource type="Texture2D" uid="uid://ckwuqphf2cc54" path="res://sprites/placeholders/coisiho.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dvildwb8y06ut" path="res://scripts/player.gd" id="1_qlg0r"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://bwoubsqhbid6r" path="res://scripts/interact_info.gd" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://ckbjc4a1wnxkk" path="res://scripts/interactor.gd" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bdkqjbeekfe4n" path="res://sprites/placeholders/walk_cycle.png" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tuyoq"]
 radius = 8.0
@@ -13,6 +14,98 @@ height = 38.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(152, 136)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(1000, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(1500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(500, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(1000, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(1500, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(0, 1000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(500, 1000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(1000, 1000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(1500, 1000, 500, 500)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60mlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur7pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -59,6 +152,15 @@ metadata/_custom_type_script = "uid://ckbjc4a1wnxkk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactor"]
 position = Vector2(66, 0)
 shape = SubResource("RectangleShape2D_qhqgy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.6, 0.6)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_60mlk")
+autoplay = "default"
 
 [connection signal="can_interact_with" from="Interactor" to="InteractInfo" method="_on_interactor_can_interact_with"]
 [connection signal="cannot_interact_anymore" from="Interactor" to="InteractInfo" method="_on_interactor_cannot_interact_anymore"]

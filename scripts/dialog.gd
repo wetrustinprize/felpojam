@@ -1,12 +1,13 @@
 extends CanvasLayer
 
 @export var portrait: TextureRect
+@export var entity_name: Label
 @export var dialogue: DialogueLabel
+@export var animation_tree: AnimationNodeStateMachine
+
+var showing_dialog := false
 
 signal message_finished
-
-func _ready() -> void:
-	visible = false
 
 func _input(event: InputEvent) -> void:
 	if not visible:
@@ -20,7 +21,7 @@ func _input(event: InputEvent) -> void:
 
 func skip_dialog() -> void:
 	if dialogue.finished_showing():
-		visible = false
+		showing_dialog = false
 		message_finished.emit()
 	else:
 		print("message has not finished showing yet!")
@@ -31,10 +32,12 @@ func fast_forward_dialog() -> void:
 func show_dialog(who: DialogEntity, text: String) -> void:
 	portrait.texture = who.portrait
 
+	entity_name.text = who.name
+
 	dialogue.sound_files = who.sounds
 	dialogue.messages = [text]
 
-	visible = true
+	showing_dialog = true
 
 	dialogue.start_dialogue()
 	await message_finished

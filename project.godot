@@ -13,11 +13,12 @@ config_version=5
 config/name="Felpojam"
 run/main_scene="uid://c5ilpc1ft0pjw"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://ckpyf6fq12b6l"
 
 [autoload]
 
 Dialog="*res://scenes/dialog.tscn"
+Transition="*res://scenes/transition.tscn"
 
 [display]
 
@@ -66,7 +67,7 @@ toggle_quest={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="NPCs"
+2d_physics/layer_3="Interactables"
 
 [physics]
 

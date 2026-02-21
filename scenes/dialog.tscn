@@ -1,59 +1,254 @@
-[gd_scene load_steps=6 format=3 uid="uid://circvwyjvx74s"]
+[gd_scene load_steps=20 format=3 uid="uid://circvwyjvx74s"]
 
 [ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="1_pkx4w"]
 [ext_resource type="Script" uid="uid://dtuvcbw281pov" path="res://scripts/dialog.gd" id="1_tmfn4"]
+[ext_resource type="Texture2D" uid="uid://caw0v65a8lxiy" path="res://sprites/ui/dialog/Pasta.png" id="2_4wims"]
 [ext_resource type="Script" uid="uid://dmib23vt665a4" path="res://addons/dialogue_label/src/DialogueLabel.gd" id="2_36pgd"]
+[ext_resource type="Texture2D" uid="uid://cjtctskipit88" path="res://sprites/ui/dialog/Foto.png" id="3_b1kyf"]
+[ext_resource type="Texture2D" uid="uid://ckpyf6fq12b6l" path="res://icon.png" id="4_lar43"]
+[ext_resource type="FontFile" uid="uid://cifqf2sdkngnj" path="res://fonts/PermanentMarker-Regular.ttf" id="5_lar43"]
+[ext_resource type="Texture2D" uid="uid://bgqrfjoc2aapf" path="res://sprites/ui/dialog/Clip.png" id="5_ygo2i"]
+[ext_resource type="Texture2D" uid="uid://cmv4x2o364mg4" path="res://sprites/ui/dialog/Papel.png" id="6_ygo2i"]
 
-[sub_resource type="Gradient" id="Gradient_36pgd"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0535s"]
+animation = &"hide"
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tmfn4"]
-gradient = SubResource("Gradient_36pgd")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lar43"]
+animation = &"show"
 
-[node name="Dialog" type="CanvasLayer" node_paths=PackedStringArray("portrait", "dialogue")]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m1v1u"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bhrxe"]
+advance_mode = 2
+advance_expression = "showing_dialog"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_68nbl"]
+advance_mode = 2
+advance_expression = "!showing_dialog"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lar43"]
+states/Start/position = Vector2(298, 127)
+states/hide/node = SubResource("AnimationNodeAnimation_0535s")
+states/hide/position = Vector2(509, 127)
+states/show/node = SubResource("AnimationNodeAnimation_lar43")
+states/show/position = Vector2(509, 10)
+transitions = ["Start", "hide", SubResource("AnimationNodeStateMachineTransition_m1v1u"), "hide", "show", SubResource("AnimationNodeStateMachineTransition_bhrxe"), "show", "hide", SubResource("AnimationNodeStateMachineTransition_68nbl")]
+graph_offset = Vector2(11, -22)
+
+[sub_resource type="Animation" id="Animation_0535s"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pasta:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(298, 729), Vector2(298, 479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pasta/Foto:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333, 0.33333334),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [0.19896753, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Papel:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(407.335, 715), Vector2(460, 507)]
+}
+
+[sub_resource type="Animation" id="Animation_m1v1u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pasta:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(298, 479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pasta/Foto:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Papel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(460, 507)]
+}
+
+[sub_resource type="Animation" id="Animation_bhrxe"]
+resource_name = "hide"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pasta:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.4),
+"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(298, 479), Vector2(298, 449.995), Vector2(298, 725)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Papel:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667, 0.46666667),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(460, 507), Vector2(460, 708)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bhrxe"]
+_data = {
+&"RESET": SubResource("Animation_m1v1u"),
+&"hide": SubResource("Animation_bhrxe"),
+&"show": SubResource("Animation_0535s")
+}
+
+[node name="Dialog" type="CanvasLayer" node_paths=PackedStringArray("portrait", "entity_name", "dialogue")]
 script = ExtResource("1_tmfn4")
-portrait = NodePath("Panel/MarginContainer/HBoxContainer/Portrait")
-dialogue = NodePath("Panel/MarginContainer/HBoxContainer/RichTextLabel")
+portrait = NodePath("Pasta/Foto/Portrait")
+entity_name = NodePath("Pasta/Foto/Portrait/Entity Name")
+dialogue = NodePath("Papel/Dialogo")
+animation_tree = SubResource("AnimationNodeStateMachine_lar43")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Pasta" type="TextureRect" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -466.0
-offset_top = -207.0
-offset_right = 467.0
-offset_bottom = -43.0
+offset_left = -342.0
+offset_top = -241.0
+offset_right = 342.0
+offset_bottom = 0.009765625
 grow_horizontal = 2
 grow_vertical = 0
+texture = ExtResource("2_4wims")
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="Foto" type="TextureRect" parent="Pasta"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 48.0
+offset_right = 187.0
+offset_bottom = 241.0
+pivot_offset = Vector2(101.51, 14.52)
+texture = ExtResource("3_b1kyf")
+
+[node name="Portrait" type="TextureRect" parent="Pasta/Foto"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -67.0
+offset_top = -71.5
+offset_right = 46.0
+offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
+rotation = -0.13962634
+texture = ExtResource("4_lar43")
+expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
-layout_mode = 2
+[node name="Entity Name" type="Label" parent="Pasta/Foto/Portrait"]
+layout_mode = 0
+offset_left = 14.987806
+offset_top = 123.28572
+offset_right = 96.98781
+offset_bottom = 153.28572
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_lar43")
+theme_override_font_sizes/font_size = 20
+text = "vampero"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Portrait" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = SubResource("GradientTexture2D_tmfn4")
-stretch_mode = 5
+[node name="Clip" type="TextureRect" parent="Pasta"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 39.0
+offset_right = 139.0
+offset_bottom = 86.0
+texture = ExtResource("5_ygo2i")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="Papel" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -213.0
+offset_right = 379.0
+offset_bottom = 0.0008544922
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_ygo2i")
+
+[node name="Dialogo" type="RichTextLabel" parent="Papel"]
+layout_mode = 0
+offset_left = 93.0
+offset_top = 76.0
+offset_right = 504.0
+offset_bottom = 198.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_pkx4w")
-theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
-text = "ola mundo!"
+theme_override_font_sizes/normal_font_size = 24
+text = "abababababa"
 script = ExtResource("2_36pgd")
 metadata/_custom_type_script = "uid://dmib23vt665a4"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_lar43")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bhrxe")
+}

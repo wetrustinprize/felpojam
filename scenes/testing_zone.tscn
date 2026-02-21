@@ -2,37 +2,34 @@
 
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="1_rgar6"]
 [ext_resource type="Texture2D" uid="uid://chkvbgiypchrs" path="res://sprites/placeholders/vampero.png" id="2_pwbe8"]
-[ext_resource type="PackedScene" uid="uid://bkryl68nk5o3v" path="res://scenes/player_camera.tscn" id="2_rv2gn"]
 [ext_resource type="Script" uid="uid://gnjlkltdkjbx" path="res://scripts/behaviours/test_vampire.gd" id="3_hablk"]
 [ext_resource type="Texture2D" uid="uid://dn0uxpdq6eq8n" path="res://sprites/placeholders/test.png" id="4_3cmgi"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="6_fhqcd"]
+[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="6_hablk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lecjj"]
 size = Vector2(46, 68)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3cmgi"]
-size = Vector2(1424, 22)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fhqcd"]
+size = Vector2(1418.93, 452.365)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hablk"]
-size = Vector2(27.38, 20)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kj1u2"]
+size = Vector2(121, 187)
 
 [node name="Testing Zone" type="Node2D"]
 y_sort_enabled = true
+metadata/interaction = Object(StaticBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-88, -56),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":5,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"physics_material_override":null,"constant_linear_velocity":Vector2(0, 0),"constant_angular_velocity":0.0,"script":null,"metadata/interaction":Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_hablk"),"vampire_entity":Resource("res://entities/vampire.tres"),"metadata/_custom_type_script":"uid://dibj05bfdjg7b")
+)
+
 
 [node name="Player" parent="." instance=ExtResource("1_rgar6")]
 position = Vector2(-558, -5)
 
-[node name="Player Camera" parent="Player" instance=ExtResource("2_rv2gn")]
-limit_left = -655
-limit_top = -375
-limit_right = 760
-limit_bottom = 90
-
 [node name="TestVampire" type="StaticBody2D" parent="."]
 position = Vector2(-88, -56)
+scale = Vector2(2, 2)
 collision_layer = 5
-script = ExtResource("3_hablk")
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_hablk"),"vampire_entity":null,"metadata/_custom_type_script":"uid://dibj05bfdjg7b")
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_hablk"),"vampire_entity":Resource("res://entities/vampire.tres"),"metadata/_custom_type_script":"uid://dibj05bfdjg7b")
 
 
 [node name="Sprite2D" type="Sprite2D" parent="TestVampire"]
@@ -50,19 +47,25 @@ shape = SubResource("RectangleShape2D_lecjj")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(49.000004, -145)
-scale = Vector2(1.1755084, 1.1755084)
+scale = Vector2(2, 2)
 texture = ExtResource("4_3cmgi")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(48, 72)
-shape = SubResource("RectangleShape2D_3cmgi")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-625, 15, -392, 14, -336, -18, -300, -18, -323, 4, -314, 13, -197, 13, -180, -7, -113, -7, -98, -26, -80, -25, -75, -13, -46, -13, -41, -26, 71, -26, 86, 11, 327, 12, 329, -25, 576, -25, 700, 34, 744, 63, 674, -249, 177, -273, -302, -271, -577, -238, -644, -235)
-
 [node name="LevelInfo" type="Node2D" parent="."]
+position = Vector2(48, -145)
 script = ExtResource("6_fhqcd")
-camera_shape = SubResource("RectangleShape2D_hablk")
+camera_shape = SubResource("RectangleShape2D_fhqcd")
 metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="Porta" type="StaticBody2D" parent="."]
+position = Vector2(463, -102)
+collision_layer = 5
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("6_hablk"),"new_scene":null,"spawpoint_name":"","metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorInteractable" type="Node" parent="Porta"]
+script = ExtResource("6_hablk")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Porta"]
+position = Vector2(7.5, -17.5)
+shape = SubResource("RectangleShape2D_kj1u2")
