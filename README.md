@@ -19,4 +19,6 @@ Softwares, assets e bibliotecas usadas:
 Agradecimentos especiais:
 
 - Gumema
+- LagatoJr
 - Mãe de Vrituu
+- Irmão de Vrituu
