@@ -1,13 +1,11 @@
 @tool
 @icon("res://addons/plenticons/icons/16x/symbols/exclamation-mark-white.png")
+@abstract
 
 extends Node
 class_name Interactable
 
-signal on_interact(who: Interactor)
-
-func interact(who: Interactor) -> void:
-	on_interact.emit(who)
+@abstract func interact(who: Interactor) -> void
 
 func _ready() -> void:
 	var parent = get_parent()

@@ -1,0 +1,10 @@
+@tool
+@icon("res://addons/plenticons/icons/16x/symbols/exclamation-mark-white.png")
+
+extends Interactable
+
+@onready var vampire_entity = preload("res://entities/vampire.tres")
+
+func interact(_who: Interactor) -> void:
+	await Dialog.show_dialog(vampire_entity, "[snd 0]oi vritu vc é louquinho")
+	await Dialog.show_dialog(vampire_entity, "[snd 0]o que voce quer do mcdonalds")

@@ -9,21 +9,23 @@
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tmfn4"]
 gradient = SubResource("Gradient_36pgd")
 
-[node name="Dialog" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Dialog" type="CanvasLayer" node_paths=PackedStringArray("portrait", "dialogue")]
 script = ExtResource("1_tmfn4")
+portrait = NodePath("Panel/MarginContainer/HBoxContainer/Portrait")
+dialogue = NodePath("Panel/MarginContainer/HBoxContainer/RichTextLabel")
 
 [node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 280.0
-offset_right = 626.0
-offset_bottom = 405.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -466.0
+offset_top = -207.0
+offset_right = 467.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -41,15 +43,16 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 
 [node name="Portrait" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = SubResource("GradientTexture2D_tmfn4")
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/normal_font = ExtResource("1_pkx4w")
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "ola mundo!"
 script = ExtResource("2_36pgd")

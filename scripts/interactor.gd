@@ -15,7 +15,7 @@ func interact() -> void:
 		return
 
 	print("interacting with %s" % current_selected.name)
-	current_selected.interact(self)
+	await current_selected.interact(self)
 
 func _ready() -> void:
 	self.body_entered.connect(_entered)
