@@ -11,14 +11,21 @@ config_version=5
 [application]
 
 config/name="Felpojam"
-run/main_scene="uid://c5ilpc1ft0pjw"
+run/main_scene="uid://d184pyvr6ajuj"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://ckpyf6fq12b6l"
+
+[audio]
+
+buses/default_bus_layout="uid://b8u75px0f4lm0"
 
 [autoload]
 
 Dialog="*res://scenes/dialog.tscn"
 Transition="*res://scenes/transition.tscn"
+Missions="*res://scenes/missions.tscn"
+Shaker="*res://addons/shaker/src/Shaker.gd"
+Game="*res://scenes/game.tscn"
 
 [display]
 
@@ -28,7 +35,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_label/plugin.cfg", "res://addons/plenticons/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_label/plugin.cfg", "res://addons/plenticons/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [input]
 

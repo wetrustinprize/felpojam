@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ShakerPreset2D" load_steps=6 format=3 uid="uid://4nw3h1mhfwd2"]
+
+[ext_resource type="Script" uid="uid://doe5kwi1x7p4u" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="1_a8r8w"]
+[ext_resource type="Script" uid="uid://dxhq6fyxeogwh" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="2_0l2h2"]
+[ext_resource type="Script" uid="uid://ghv3t0lhmhp7" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="2_q81oa"]
+[ext_resource type="Script" uid="uid://d0djau05w6nhf" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="3_q81oa"]
+
+[sub_resource type="Resource" id="Resource_n7v6c"]
+script = ExtResource("2_q81oa")
+amplitude = Vector2(640, 360)
+metadata/_custom_type_script = "uid://ghv3t0lhmhp7"
+
+[resource]
+script = ExtResource("3_q81oa")
+PositionShake = Array[ExtResource("1_a8r8w")]([SubResource("Resource_n7v6c")])
+metadata/_custom_type_script = "uid://d0djau05w6nhf"

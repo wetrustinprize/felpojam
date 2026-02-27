@@ -36,45 +36,6 @@ states/show/position = Vector2(509, 10)
 transitions = ["Start", "hide", SubResource("AnimationNodeStateMachineTransition_m1v1u"), "hide", "show", SubResource("AnimationNodeStateMachineTransition_bhrxe"), "show", "hide", SubResource("AnimationNodeStateMachineTransition_68nbl")]
 graph_offset = Vector2(11, -22)
 
-[sub_resource type="Animation" id="Animation_0535s"]
-resource_name = "show"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pasta:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.43333334),
-"transitions": PackedFloat32Array(1, 0.5),
-"update": 0,
-"values": [Vector2(298, 729), Vector2(298, 479)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Pasta/Foto:rotation")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.03333333, 0.33333334),
-"transitions": PackedFloat32Array(1, 0.5),
-"update": 0,
-"values": [0.19896753, 0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Papel:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 0.5),
-"update": 0,
-"values": [Vector2(407.335, 715), Vector2(460, 507)]
-}
-
 [sub_resource type="Animation" id="Animation_m1v1u"]
 length = 0.001
 tracks/0/type = "value"
@@ -123,8 +84,8 @@ tracks/0/path = NodePath("Pasta:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.4),
-"transitions": PackedFloat32Array(1, 0.5, 0.5),
+"times": PackedFloat32Array(0, 0.13333334, 0.4),
+"transitions": PackedFloat32Array(0.5, 1, 1),
 "update": 0,
 "values": [Vector2(298, 479), Vector2(298, 449.995), Vector2(298, 725)]
 }
@@ -135,10 +96,49 @@ tracks/1/path = NodePath("Papel:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.16666667, 0.46666667),
-"transitions": PackedFloat32Array(1, 0.5),
+"times": PackedFloat32Array(0.23333333, 0.46666667),
+"transitions": PackedFloat32Array(2, 1),
 "update": 0,
 "values": [Vector2(460, 507), Vector2(460, 708)]
+}
+
+[sub_resource type="Animation" id="Animation_0535s"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pasta:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(298, 729), Vector2(298, 479)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pasta/Foto:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.19896753, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Papel:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(407.335, 715), Vector2(460, 507)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bhrxe"]
@@ -164,7 +164,7 @@ anchor_bottom = 1.0
 offset_left = -342.0
 offset_top = -241.0
 offset_right = 342.0
-offset_bottom = 0.009765625
+offset_bottom = 0.0087890625
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_4wims")
@@ -197,13 +197,13 @@ expand_mode = 1
 
 [node name="Entity Name" type="Label" parent="Pasta/Foto/Portrait"]
 layout_mode = 0
-offset_left = 14.987806
+offset_left = -1.249651
 offset_top = 123.28572
-offset_right = 96.98781
+offset_right = 113.023026
 offset_bottom = 153.28572
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_lar43")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "vampero"
 horizontal_alignment = 1
 vertical_alignment = 1

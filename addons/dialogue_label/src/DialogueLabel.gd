@@ -24,6 +24,7 @@ func _init():
 
 func _ready():
 	text = ''
+	audio_player.bus = "Voice"
 	add_child(audio_player)
 
 	if messages.is_empty():

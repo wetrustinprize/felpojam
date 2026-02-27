@@ -1,0 +1,233 @@
+[gd_scene load_steps=23 format=3 uid="uid://d184pyvr6ajuj"]
+
+[ext_resource type="Texture2D" uid="uid://dua6lg2qeiufi" path="res://sprites/lugares/recepcao/recepcão.png" id="1_bmsso"]
+[ext_resource type="Script" uid="uid://b4tl836b4ior7" path="res://scripts/salas/recepção.gd" id="1_hkcdl"]
+[ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_8bxb3"]
+[ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="3_8bxb3"]
+[ext_resource type="Texture2D" uid="uid://dkske6n3u3gk5" path="res://sprites/entities/recepcionista/recepcionista0000.png" id="4_nf214"]
+[ext_resource type="Texture2D" uid="uid://igmig3hlqt0a" path="res://sprites/particles/z.png" id="5_6mc0g"]
+[ext_resource type="Texture2D" uid="uid://dcxyxl1iihuys" path="res://sprites/entities/recepcionista/recepcionista0001.png" id="5_g71ce"]
+[ext_resource type="Texture2D" uid="uid://bb58juf4fgf8c" path="res://sprites/entities/recepcionista/recepcionista0002.png" id="8_rtq7k"]
+[ext_resource type="Texture2D" uid="uid://d4bngysddpu34" path="res://sprites/entities/recepcionista/recepcionista0003.png" id="9_3bc2t"]
+[ext_resource type="Texture2D" uid="uid://diuuxerp5r3sg" path="res://sprites/entities/recepcionista/recepcionista0004.png" id="10_u1q44"]
+[ext_resource type="Texture2D" uid="uid://rosn8vh8tqul" path="res://sprites/entities/recepcionista/recepcionista0005.png" id="11_gwnrw"]
+[ext_resource type="AudioStream" uid="uid://d1sock8lxaygq" path="res://sounds/591380__lind_elvis__metal-slam.mp3" id="12_3bc2t"]
+[ext_resource type="AudioStream" uid="uid://drlirnb6afuq8" path="res://sounds/693432__dangerlaef__woman_snoring.wav" id="13_u1q44"]
+[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="14_gwnrw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf214"]
+size = Vector2(1920, 1080)
+
+[sub_resource type="Curve" id="Curve_lti87"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.48837215, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_6ht3w"]
+offsets = PackedFloat32Array(0, 0.25342464, 0.760274, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_hkcdl"]
+resource_name = "talking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_nf214"), ExtResource("5_g71ce")]
+}
+
+[sub_resource type="Animation" id="Animation_6mc0g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_nf214")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Zzz Particles:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SnoreSFX:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-16.0]
+}
+
+[sub_resource type="Animation" id="Animation_oa44q"]
+resource_name = "sleep"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6.9666667, 13.366667, 19.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_rtq7k"), ExtResource("9_3bc2t"), ExtResource("10_u1q44"), ExtResource("11_gwnrw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Zzz Particles:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.8666667, 10.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SnoreSFX")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.9333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SnoreSFX:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.9333334, 5.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, -16.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lti87"]
+_data = {
+&"RESET": SubResource("Animation_6mc0g"),
+&"sleep": SubResource("Animation_oa44q"),
+&"talking": SubResource("Animation_hkcdl")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hkcdl"]
+
+[node name="Recepção" type="Node2D" node_paths=PackedStringArray("recepcionista_animation_player", "slam_sfx")]
+script = ExtResource("1_hkcdl")
+recepcionista_animation_player = NodePath("Recepcionista/AnimationPlayer")
+slam_sfx = NodePath("SlamSFX")
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("14_gwnrw"),"new_scene":null,"spawpoint_name":"","metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_bmsso")
+
+[node name="Player" parent="." instance=ExtResource("2_8bxb3")]
+z_index = 1
+position = Vector2(-52, 232)
+
+[node name="LevelInfo" type="Node2D" parent="."]
+script = ExtResource("3_8bxb3")
+camera_shape = SubResource("RectangleShape2D_nf214")
+metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="Zzz Particles" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(205, -53)
+amount = 3
+texture = ExtResource("5_6mc0g")
+lifetime = 1.5
+randomness = 0.12
+emission_shape = 3
+emission_rect_extents = Vector2(20, 1)
+gravity = Vector2(0, -122.5)
+angular_velocity_min = -16.0
+angular_velocity_max = 16.0
+damping_max = 57.732
+scale_amount_min = 0.25
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_lti87")
+color_ramp = SubResource("Gradient_6ht3w")
+
+[node name="Recepcionista" type="Sprite2D" parent="."]
+position = Vector2(272, 120)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_nf214")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Recepcionista"]
+libraries = {
+&"": SubResource("AnimationLibrary_lti87")
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-966, 359, -723, 253, -664, 248, -628, 284, -505, 290, -464, 253, -372, 255, -343, 302, -301, 248, -247, 248, -215, 294, -119, 292, -91.95532, 224.50192, 14, 242, 59, 318, 181, 358, 540, 352, 537, 250, 652, 249, 959, 398, 1041, -584, -518, -636, -1114, -578, -1073, 181, -1073, 181)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 539)
+shape = SubResource("WorldBoundaryShape2D_hkcdl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-959, 436)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_hkcdl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(958, 406)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_hkcdl")
+
+[node name="SlamSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_3bc2t")
+bus = &"SFX"
+
+[node name="SnoreSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_u1q44")
+volume_db = -16.0
+bus = &"SFX"
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="DoorInteractable" type="Node" parent="StaticBody2D2"]
+script = ExtResource("14_gwnrw")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(712, -196, 892, -241, 897, 367, 709, 280)

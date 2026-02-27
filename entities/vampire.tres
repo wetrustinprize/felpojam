@@ -1,12 +1,17 @@
-[gd_resource type="Resource" script_class="DialogEntity" load_steps=4 format=3 uid="uid://drgd17ut4wowh"]
+[gd_resource type="Resource" script_class="DialogEntity" load_steps=5 format=3 uid="uid://drgd17ut4wowh"]
 
 [ext_resource type="Texture2D" uid="uid://cgyyfoes6gi8t" path="res://sprites/placeholders/vampero_close.png" id="1_4ukw2"]
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_v7jrp"]
-[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="2_hrulb"]
+[ext_resource type="AudioStream" uid="uid://ba2pm7chrknlf" path="res://sounds/voices/vampero/vampero_voice1.wav" id="3_4ukw2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gwb8s"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("3_4ukw2")
 
 [resource]
 script = ExtResource("1_v7jrp")
 portrait = ExtResource("1_4ukw2")
-sounds = Array[AudioStream]([ExtResource("2_hrulb")])
+sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_gwb8s")])
 name = "Vampero"
 metadata/_custom_type_script = "uid://bw53n2gpy15rr"

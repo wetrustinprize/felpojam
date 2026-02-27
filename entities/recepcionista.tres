@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogEntity" load_steps=5 format=3 uid="uid://dn2jk3dcumgak"]
+
+[ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_lbppd"]
+[ext_resource type="Texture2D" uid="uid://283qq4wcomdh" path="res://sprites/entities/recepcionista/recepcionista_portrait.png" id="1_xfoi8"]
+[ext_resource type="AudioStream" uid="uid://bvj438mjytktg" path="res://sounds/voices/recepcionista/recepcionista_talk1.wav" id="3_v27ie"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_v27ie"]
+random_pitch = 1.25
+streams_count = 1
+stream_0/stream = ExtResource("3_v27ie")
+
+[resource]
+script = ExtResource("1_lbppd")
+portrait = ExtResource("1_xfoi8")
+sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_v27ie")])
+name = "Recepcionista"
+metadata/_custom_type_script = "uid://bw53n2gpy15rr"
