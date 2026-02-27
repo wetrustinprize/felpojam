@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://och1pbu6jcyo"]
+[gd_scene load_steps=33 format=3 uid="uid://och1pbu6jcyo"]
 
 [ext_resource type="Script" uid="uid://dvildwb8y06ut" path="res://scripts/player.gd" id="1_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://gtkfd4p1pblk" path="res://sprites/controls/keyboard_e.svg" id="2_g2els"]
 [ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://bwoubsqhbid6r" path="res://scripts/interact_info.gd" id="3_tuyoq"]
 [ext_resource type="Script" uid="uid://ckbjc4a1wnxkk" path="res://scripts/interactor.gd" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://dmyqwc0pwhw8p" path="res://sprites/entities/bapo/idle.png" id="6_smehm"]
 [ext_resource type="Texture2D" uid="uid://cve1w4eim2wq0" path="res://sprites/entities/bapo/walk_cycle.png" id="7_fjrip"]
 [ext_resource type="AudioStream" uid="uid://tdkbisy8uldj" path="res://sounds/651463__darcyadam__dca-cartoon-footsteps.mp3" id="7_smehm"]
 
@@ -15,9 +16,37 @@ height = 102.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(152, 136)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
-atlas = ExtResource("7_fjrip")
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("6_smehm")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
+atlas = ExtResource("6_smehm")
+region = Rect2(500, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("6_smehm")
+region = Rect2(0, 1000, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("6_smehm")
+region = Rect2(500, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("6_smehm")
+region = Rect2(0, 500, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("6_smehm")
+region = Rect2(500, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("6_smehm")
 region = Rect2(0, 0, 500, 500)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("6_smehm")
+region = Rect2(500, 0, 500, 500)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("7_fjrip")
@@ -70,12 +99,33 @@ region = Rect2(1500, 1000, 500, 500)
 [sub_resource type="SpriteFrames" id="SpriteFrames_60mlk"]
 animations = [{
 "frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuyoq")
+"texture": SubResource("AtlasTexture_i4ail")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_ujl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
 }],
 "loop": true,
 "name": &"idle",
-"speed": 16.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -176,10 +226,9 @@ position_smoothing_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_60mlk")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame = 4
-frame_progress = 0.04158417
+frame_progress = 0.58801997
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_ur7pv")

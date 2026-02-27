@@ -4,19 +4,21 @@
 extends Interactable
 class_name DoorInteractable
 
-@export var new_scene: PackedScene
+@export var room_scene: String
 @export var current_scene: Node2D
 @export var spawnpoint_name: String
 @export var audio: AudioStreamPlayer = null
+
+@onready var packed_scene: PackedScene = load("res://scenes/salas/" + room_scene + ".tscn")
 
 func interact(who: Interactor) -> void:
 	if audio != null:
 		audio.play()
 	await Transition.transition_out(who.get_parent())
 
-	var player = current_scene.get_node("Player")
+	var player = get_tree().get_nodes_in_group("Player")[0]
 
-	var created_scene = new_scene.instantiate()
+	var created_scene = packed_scene.instantiate()
 	get_tree().root.add_child(created_scene)
 	player.reparent(created_scene)
 
@@ -44,6 +46,6 @@ func interact(who: Interactor) -> void:
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = super._get_configuration_warnings()
 
-	if new_scene == null:
+	if room_scene == null:
 		warnings.append("There is no scene to load when entering this door")
 	return warnings

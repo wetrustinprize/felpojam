@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://brg4lw08urt4s"]
+[gd_scene load_steps=7 format=3 uid="uid://brg4lw08urt4s"]
 
 [ext_resource type="Texture2D" uid="uid://b5ghkbyrbsset" path="res://sprites/placeholders/mapa_placeholder.png" id="1_ow41y"]
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_pr3s7"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="3_o111h"]
+[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="5_hrh1n"]
 [ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="6_juh7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2slm"]
@@ -36,8 +37,9 @@ polygon = PackedVector2Array(-3480, 936, -1999, 934, -541, 89, 311, 89, 1615, 84
 [node name="Porta para Recepção" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":Resource("res://scripts/door_interactable.gd"),"new_scene":Resource("res://scenes/salas/recepção.tscn"),"current_scene":null,"spawnpoint_name":"","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
-,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"recepção","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"CorredorSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"packed_scene":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
 
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Recepção"]
@@ -45,3 +47,11 @@ stream = ExtResource("6_juh7i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Recepção"]
 polygon = PackedVector2Array(-3001, 670, -3003, 227, -2760, 229, -2759, 672)
+
+[node name="DoorInteractable" type="Node" parent="Porta para Recepção" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("5_hrh1n")
+room_scene = "recepção"
+current_scene = NodePath("../..")
+spawnpoint_name = "CorredorSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
