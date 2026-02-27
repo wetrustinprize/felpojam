@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var animation_player: AnimatedSprite2D
 @export var walk_sfx: AudioStreamPlayer
 
+@onready var camera: Camera2D = $Camera2D
+
 const MAX_SPEED: float = 500.0
 const ACCEL: float = MAX_SPEED * 4
 const DECEL: float = MAX_SPEED * 6
@@ -11,6 +13,15 @@ const DECEL: float = MAX_SPEED * 6
 var current_speed: float = 0.0
 
 @onready var interactor: Interactor = $Interactor
+
+func _ready() -> void:
+	var other_players = get_tree().get_nodes_in_group("Player")
+
+	if len(other_players) > 1:
+		queue_free()
+		return
+
+	camera.make_current()
 
 func _input(event: InputEvent) -> void:
 	if not Game.player_can_control:

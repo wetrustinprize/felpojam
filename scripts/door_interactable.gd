@@ -5,15 +5,41 @@ extends Interactable
 class_name DoorInteractable
 
 @export var new_scene: PackedScene
-@export var spawpoint_name: String
+@export var current_scene: Node2D
+@export var spawnpoint_name: String
+@export var audio: AudioStreamPlayer = null
 
 func interact(who: Interactor) -> void:
+	if audio != null:
+		audio.play()
 	await Transition.transition_out(who.get_parent())
 
-	var scene = new_scene.instantiate()
-	get_tree().root.add_child(scene)
+	var player = current_scene.get_node("Player")
 
-	await Transition.transition_in(who.get_parent())
+	var created_scene = new_scene.instantiate()
+	get_tree().root.add_child(created_scene)
+	player.reparent(created_scene)
+
+	await get_tree().process_frame
+	var spawnpoint: Node2D = created_scene.get_node(spawnpoint_name)
+
+	var level_info: LevelInfo = created_scene.get_node_or_null("LevelInfo")
+	if level_info != null:
+		level_info.apply_rules()
+
+	var camera: Camera2D = player.get_node("Camera2D")
+	camera.enabled = false
+
+	await get_tree().create_timer(0.5).timeout
+
+	player.velocity = Vector2.ZERO
+	player.call_deferred("set_global_position", spawnpoint.global_position)
+
+	camera.enabled = true
+
+	current_scene.queue_free()
+
+	await Transition.transition_in(player)
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = super._get_configuration_warnings()

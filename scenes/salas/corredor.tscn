@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://brg4lw08urt4s"]
+
+[ext_resource type="Texture2D" uid="uid://b5ghkbyrbsset" path="res://sprites/placeholders/mapa_placeholder.png" id="1_ow41y"]
+[ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_pr3s7"]
+[ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="3_o111h"]
+[ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="6_juh7i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2slm"]
+size = Vector2(7560, 1920)
+
+[node name="Corredor" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_ow41y")
+
+[node name="Player" parent="." instance=ExtResource("2_pr3s7")]
+position = Vector2(-2909, 692)
+
+[node name="LevelInfo" type="Node2D" parent="."]
+script = ExtResource("3_o111h")
+camera_shape = SubResource("RectangleShape2D_t2slm")
+metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="RecepcaoSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(-2914, 739)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-3479, 927, -3166, 672, -2511, 676, -2262, 535, -2255, 553, -2225, 559, -2120, 489, -2122, 454, -1904, 323, -1885, 340, -1844, 320, -1847, 289, -1510, 97, -1457, 142, -1384, 108, -1399, 29, -1082, -152, -1059, -141, -1056, -127, -1033, -134, -1027, -164, -1029, -185, -884, -266, -174, -262, -164, -226, -106, -214, -58, -227, -49, -264, -22, -264, -19, -244, -2, -238, 10, -246, 12, -264, 493, -262, 510, -238, 548, -232, 587, -237, 604, -262, 1078, 15, 1082, 81, 1132, 111, 1195, 80, 2063, 583, 2231, 583, 2303, 646, 2362, 662, 2438, 662, 2492, 646, 2557, 644, 2558, 582, 3329, 583, 3768, 837, 3777, 92, 2921, -171, 1618, -463, 916, -956, 323, -1056, -1223, -994, -2225, -534, -3119, -83, -3825, 184, -3804, 932)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-3480, 936, -1999, 934, -541, 89, 311, 89, 1615, 844, 3772, 844, 3585, 988, 501, 1126, -1883, 1128, -3626, 1095)
+
+[node name="Porta para Recepção" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":Resource("res://scripts/door_interactable.gd"),"new_scene":Resource("res://scenes/salas/recepção.tscn"),"current_scene":null,"spawnpoint_name":"","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Recepção"]
+stream = ExtResource("6_juh7i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Recepção"]
+polygon = PackedVector2Array(-3001, 670, -3003, 227, -2760, 229, -2759, 672)

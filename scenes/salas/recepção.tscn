@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rosn8vh8tqul" path="res://sprites/entities/recepcionista/recepcionista0005.png" id="11_gwnrw"]
 [ext_resource type="AudioStream" uid="uid://d1sock8lxaygq" path="res://sounds/591380__lind_elvis__metal-slam.mp3" id="12_3bc2t"]
 [ext_resource type="AudioStream" uid="uid://drlirnb6afuq8" path="res://sounds/693432__dangerlaef__woman_snoring.wav" id="13_u1q44"]
-[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="14_gwnrw"]
+[ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="15_oa44q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf214"]
 size = Vector2(1920, 1080)
@@ -25,23 +25,6 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_6ht3w"]
 offsets = PackedFloat32Array(0, 0.25342464, 0.760274, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="Animation" id="Animation_hkcdl"]
-resource_name = "talking"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("4_nf214"), ExtResource("5_g71ce")]
-}
 
 [sub_resource type="Animation" id="Animation_6mc0g"]
 length = 0.001
@@ -136,6 +119,23 @@ tracks/3/keys = {
 "values": [-80.0, -16.0]
 }
 
+[sub_resource type="Animation" id="Animation_hkcdl"]
+resource_name = "talking"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_nf214"), ExtResource("5_g71ce")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lti87"]
 _data = {
 &"RESET": SubResource("Animation_6mc0g"),
@@ -149,7 +149,7 @@ _data = {
 script = ExtResource("1_hkcdl")
 recepcionista_animation_player = NodePath("Recepcionista/AnimationPlayer")
 slam_sfx = NodePath("SlamSFX")
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("14_gwnrw"),"new_scene":null,"spawpoint_name":"","metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":Resource("res://scripts/door_interactable.gd"),"new_scene":null,"current_scene":null,"spawnpoint_name":"","audio":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
 
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -221,13 +221,16 @@ stream = ExtResource("13_u1q44")
 volume_db = -16.0
 bus = &"SFX"
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+[node name="Porta pro Corredor" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
-
-[node name="DoorInteractable" type="Node" parent="StaticBody2D2"]
-script = ExtResource("14_gwnrw")
 metadata/_custom_type_script = "uid://cekyvphlwl7ci"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta pro Corredor"]
 polygon = PackedVector2Array(712, -196, 892, -241, 897, 367, 709, 280)
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta pro Corredor"]
+stream = ExtResource("15_oa44q")
+
+[node name="CorredorSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(716, 349)

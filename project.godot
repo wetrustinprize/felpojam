@@ -37,6 +37,10 @@ window/stretch/mode="viewport"
 
 enabled=PackedStringArray("res://addons/dialogue_label/plugin.cfg", "res://addons/plenticons/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
+[global_group]
+
+Player=""
+
 [input]
 
 move_left={
