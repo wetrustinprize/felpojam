@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://brg4lw08urt4s"]
+[gd_scene load_steps=44 format=3 uid="uid://brg4lw08urt4s"]
 
 [ext_resource type="Texture2D" uid="uid://bfpsskejktius" path="res://sprites/lugares/corredor.png" id="1_x1ug2"]
 [ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="2_0ejk3"]
@@ -25,6 +25,7 @@
 [ext_resource type="AudioStream" uid="uid://j6t57gvoa58p" path="res://sounds/502507__rudmer_rotteveel__creaking-wood-4-steps-2.mp3" id="18_v75y0"]
 [ext_resource type="AudioStream" uid="uid://dnignihl62r1w" path="res://sounds/502507__rudmer_rotteveel__creaking-wood-4-steps-3.mp3" id="19_5c3vo"]
 [ext_resource type="AudioStream" uid="uid://b3hvjn2n527jb" path="res://sounds/553471__itinerantmonk108__water-dispenser-bubbles.mp3" id="21_v75y0"]
+[ext_resource type="Texture2D" uid="uid://dprr61rtvhbsm" path="res://sprites/particles/bolha.png" id="23_g23kx"]
 [ext_resource type="Texture2D" uid="uid://1u0c3uxlagon" path="res://sprites/placeholders/chave.png" id="24_2ankq"]
 [ext_resource type="Script" uid="uid://dccgdsq5lbq35" path="res://scripts/item_interactable.gd" id="25_fckh0"]
 [ext_resource type="Resource" uid="uid://d0l4labqtgm8j" path="res://items/chave_do_vampiro.tres" id="26_fckh0"]
@@ -210,6 +211,21 @@ stream_3/stream = ExtResource("19_5c3vo")
 random_pitch = 1.05
 streams_count = 1
 stream_0/stream = ExtResource("21_v75y0")
+
+[sub_resource type="Gradient" id="Gradient_bpvbk"]
+offsets = PackedFloat32Array(0, 0.14383562, 0.69863015, 1)
+colors = PackedColorArray(0.99215686, 0.99215686, 0.99215686, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GDScript" id="GDScript_g23kx"]
+resource_name = "BubblesParticles"
+script/source = "extends CPUParticles2D
+
+func _on_bubbles_sound_trigger_started() -> void:
+	emitting = true
+
+func _on_bubbles_sound_trigger_ended() -> void:
+	pass # Replace with function body.
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2slm"]
 size = Vector2(7000, 1920)
@@ -1143,6 +1159,23 @@ polygon = PackedVector2Array(-108, -40, 17, -63, 118, -36, 103, 60, -4, 87, -86,
 stream = SubResource("AudioStreamRandomizer_5c3vo")
 bus = &"SFX"
 
+[node name="BubbleEmitter" type="CPUParticles2D" parent="BubblesSoundTrigger"]
+position = Vector2(-8, -278)
+emitting = false
+amount = 6
+texture = ExtResource("23_g23kx")
+one_shot = true
+direction = Vector2(0, -1)
+gravity = Vector2(0, -100)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+angular_velocity_min = -100.0
+angular_velocity_max = 100.0
+scale_amount_min = 0.25
+scale_amount_max = 0.4
+color_ramp = SubResource("Gradient_bpvbk")
+script = SubResource("GDScript_g23kx")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-285.19995, -0.39996338)
 
@@ -1317,3 +1350,5 @@ metadata/_custom_type_script = "uid://1pbq2mr642g4"
 
 [connection signal="body_entered" from="CrackSoundTrigger" to="CrackSoundTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="BubblesSoundTrigger" to="BubblesSoundTrigger" method="_on_body_entered"]
+[connection signal="ended" from="BubblesSoundTrigger" to="BubblesSoundTrigger/BubbleEmitter" method="_on_bubbles_sound_trigger_ended"]
+[connection signal="started" from="BubblesSoundTrigger" to="BubblesSoundTrigger/BubbleEmitter" method="_on_bubbles_sound_trigger_started"]

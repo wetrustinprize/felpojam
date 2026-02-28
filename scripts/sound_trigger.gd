@@ -2,6 +2,9 @@ extends Area2D
 
 @export var sfx: AudioStreamPlayer
 
+signal started
+signal ended
+
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("Player"):
 		return
@@ -9,4 +12,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if sfx.playing:
 		return
 
+	started.emit()
+
 	sfx.play()
+	await sfx.finished
+
+	ended.emit()

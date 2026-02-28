@@ -11,7 +11,6 @@ var current_selected: Interactable = null
 
 func interact() -> void:
 	if current_selected == null:
-		print("nothing to interact with!")
 		return
 
 	print("interacting with %s" % current_selected.name)
@@ -34,8 +33,6 @@ func _ready() -> void:
 
 func _entered(body: Node2D) -> void:
 	if body.has_meta("interaction") and not body.is_queued_for_deletion():
-		print("%s has a interaction module!" % body.name)
-
 		var interactor: Interactable = body.get_meta("interaction")
 
 		if not interactor.interactable:
@@ -50,9 +47,6 @@ func _exited(body: Node2D) -> void:
 
 		if interaction == current_selected:
 			_reset_current()
-			print("%s has left the area, and is the select one! resetting..." % body.name)
-		else:
-			print("%s has left the area, but its not the current selected! so ignoring" % body.name)
 
 func _reset_current():
 	current_selected = null
