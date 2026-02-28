@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image: barichello/godot-ci:4.5.1-stable
+      image: barichello/godot-ci:latest
 
     env:
       GAME_NAME: "So falta o Carimbo"
