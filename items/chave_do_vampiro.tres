@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d0l4labqtgm8j"]
+
+[ext_resource type="Script" uid="uid://beqnwjslidij3" path="res://scripts/item.gd" id="1_51y8e"]
+[ext_resource type="Texture2D" uid="uid://1u0c3uxlagon" path="res://sprites/placeholders/chave.png" id="2_64x5w"]
+
+[resource]
+script = ExtResource("1_51y8e")
+texture = ExtResource("2_64x5w")
+name = "Chave Velha"
+metadata/_custom_type_script = "uid://beqnwjslidij3"

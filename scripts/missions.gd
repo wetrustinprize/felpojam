@@ -15,7 +15,12 @@ var first_chefe_talk: bool = true ## Has the player talked once with the Chefe?
 
 # Vampero
 var first_vampero_talk: bool = false ## Has the player talked once with the Vampero?
+var vampero_talked_about_chave: bool = false ## Has the Vampero talked about its lost key?
+var vampero_wants_to_go_escritorio: bool = false ## Has Vampero left the Copa and wants to enter its office?
+var vampero_asks_to_go_escritorio: bool = false ## He asked player to ask him to enter the office lol
+var vampero_at_copa: bool = false ## Is the Vamper at the Copa?
 var vampero_at_escritorio: bool = false ## Is the Vampero at its escritorio?
+var vampero_has_talked_sad_things: bool = false ## Has the Vampero talked about his sad life?
 
 # Veterinario
 var first_veterinario_talk: bool = false ## Has the player talked once with the Veterinario?
