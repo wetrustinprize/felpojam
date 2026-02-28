@@ -14,9 +14,11 @@ var packed_scene: PackedScene
 func _ready() -> void:
 	super._ready()
 
-	if !Engine.is_editor_hint():
-		packed_scene = ResourceLoader.load("res://scenes/salas/" + room_scene + ".tscn", "PackedScene", ResourceLoader.CACHE_MODE_IGNORE)
-		interact_verb = "entrar"
+	if Engine.is_editor_hint():
+		return
+
+	packed_scene = ResourceLoader.load("res://scenes/salas/" + room_scene + ".tscn", "PackedScene")
+	interact_verb = "entrar"
 
 func interact(who: Interactor) -> void:
 	if audio != null:

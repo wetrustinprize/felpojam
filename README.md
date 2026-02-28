@@ -32,6 +32,7 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [crunch 1.wav by theplax](https://freesound.org/s/608638/) - License: Attribution 4.0
 - [Slime attack or movement by wubitog](https://freesound.org/s/188384/) - License: Creative Commons 0
 - [Xylophone for cartoon (3) by sergeeo](https://freesound.org/s/202575/) -- License: Attribution 3.0
+- [Creaking Wood 4 Steps by Rudmer_Rotteveel](https://freesound.org/s/502507/) -- License: Creative Commons 0
 
 ---
 

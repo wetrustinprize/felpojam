@@ -7,6 +7,7 @@ extends CanvasLayer
 
 var current_who: DialogEntity = null
 var showing_dialog := false
+var showing_dialog_process := false
 
 signal message_started
 signal message_finished
@@ -18,15 +19,20 @@ func _ready() -> void:
 	)
 
 func _input(event: InputEvent) -> void:
-	if not visible or not showing_dialog:
+	if not visible or not showing_dialog_process:
 		return
 
 	if event.is_action_pressed("interact"):
 		skip_dialog()
 
+func _process(_delta: float) -> void:
+	if showing_dialog and not showing_dialog_process:
+		showing_dialog_process = true
+
 func skip_dialog() -> void:
 	if dialogue.finished_showing():
 		showing_dialog = false
+		showing_dialog_process = false
 		message_finished.emit()
 	else:
 		dialogue.skip_message()

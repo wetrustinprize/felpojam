@@ -52,7 +52,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -65,76 +65,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-28.75, -48.75)]
-}
-
-[sub_resource type="Animation" id="Animation_tyhxi"]
-resource_name = "idle"
-length = 5.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.13333334, 0.25, 0.39, 0.50666666, 0.63, 0.74666667, 1.2333333, 1.5333333, 2.02, 2.51, 2.88, 3.0133336, 3.13, 3.8, 3.9166667, 4.04, 4.1566668),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("7_wd2i7"), ExtResource("6_tqm8l"), ExtResource("7_wd2i7"), ExtResource("6_tqm8l"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l")]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ClickSFX")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.14, 0.27, 0.4, 0.51, 0.64, 0.75, 2.89, 3.02, 3.16, 3.82, 3.92, 4.04, 4.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_sxktq"]
@@ -219,6 +149,88 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_tyhxi"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.25, 0.39, 0.50666666, 0.63, 0.74666667, 1.2333333, 1.5333333, 2.02, 2.51, 2.88, 3.0133336, 3.13, 3.8, 3.9166667, 4.04, 4.1566668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("7_wd2i7"), ExtResource("6_tqm8l"), ExtResource("7_wd2i7"), ExtResource("6_tqm8l"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClickSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.27, 0.4, 0.51, 0.64, 0.75, 2.89, 3.02, 3.16, 3.82, 3.92, 4.04, 4.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gelatina:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_nh3m1"]
 resource_name = "talking_angry"
 length = 0.4
@@ -234,6 +246,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("8_8umeu"), ExtResource("9_f45qn"), ExtResource("8_8umeu"), ExtResource("9_f45qn")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_hxvql"]
@@ -251,6 +275,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("10_n38ie"), ExtResource("11_mo1be"), ExtResource("10_n38ie"), ExtResource("11_mo1be")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3kusf"]
@@ -315,6 +351,11 @@ position = Vector2(-1135, 378)
 [node name="Comilona" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("23_2lywo"),"comilona_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
+&"": SubResource("AnimationLibrary_3kusf")
+},"autoplay":"idle","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+,"comilona_entity":Resource("res://entities/comilona.tres"),"gelatina_item":Resource("res://items/gelatina.tres"),"carimbo_inventario":Resource("res://items/carimbo_inventario.tres"),"animation_state":0,"interact_verb":"interagir","interactable":true)
+
 
 [node name="Comilona" type="Sprite2D" parent="Comilona"]
 position = Vector2(1226, 229)
@@ -344,6 +385,7 @@ stream = ExtResource("20_stbkt")
 bus = &"SFX"
 
 [node name="Gelatina" type="Sprite2D" parent="Comilona/Comilona"]
+visible = false
 position = Vector2(-28.75, -48.75)
 scale = Vector2(0.29614875, 0.29614875)
 texture = ExtResource("13_yar3p")

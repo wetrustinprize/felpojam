@@ -50,7 +50,10 @@ func interact(_who: Interactor) -> void:
 		await Dialog.show_dialog(comilona_entity, "eu MATARIA por um doce agora")
 		await Dialog.show_dialog(comilona_entity, "olha, pequenino, ja q tu ta aqui fazendo nada")
 		await Dialog.show_dialog(comilona_entity, "eu DUVIDO vc achar um doce pra eu comer, DUVIDO.")
-	elif Inventory.has_item(gelatina_item):
+
+		if Inventory.has_item(gelatina_item):
+			await Dialog.show_dialog(comilona_entity, "o que? você já tem um doce ai??")
+	if Inventory.has_item(gelatina_item):
 		animation_state = STATE.ALEGRE
 		await Dialog.show_dialog(comilona_entity, "NEM FUDENDO!!!")
 
@@ -69,7 +72,11 @@ func interact(_who: Interactor) -> void:
 		await Dialog.show_dialog(comilona_entity, "n vai contar pra ele em! vai saber o que ele é capaz de fazer")
 
 	elif Inventory.had_item(gelatina_item):
-		pass
+		animation_state = STATE.ALEGRE
+		await Dialog.show_dialog(comilona_entity, "valeu maninho! vc n sabe como deixou meu dia melhor")
+
+		animation_state = STATE.IRRITADA
+		await Dialog.show_dialog(comilona_entity, "agora me deixa em paz pelo amor de deus eu tenho que entrega isso antes das 23:99")
 	else:
 		await Dialog.show_dialog(comilona_entity, "cade meu doce cara? to cagada de fome")
 
