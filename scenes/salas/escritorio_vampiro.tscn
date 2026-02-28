@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bvivivvd5h6bf"]
+
+[ext_resource type="Texture2D" uid="uid://cd1xme6dys5l8" path="res://sprites/lugares/escritorio vampiro/vampiro pronto.png" id="1_i2fvn"]
+[ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_f3mrf"]
+[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="3_xg454"]
+[ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="4_teqnh"]
+[ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="5_teqnh"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xg454"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nrbsg"]
+size = Vector2(1910, 1070)
+
+[node name="Escritório do Vampiro" type="Node2D"]
+
+[node name="Escritório" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_i2fvn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(958, 534, 911, 484, 712, 492, 656, 381, 654, 315, 48, 308, -42, 374, -85, 324, -634, 326, -639, 409, -705, 319, -962, 555, -1039, -504, -726, -701, 886, -667, 1212, -567, 1045, 444)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_xg454")
+
+[node name="Player" parent="." instance=ExtResource("2_f3mrf")]
+position = Vector2(392, 268)
+
+[node name="CorredorSpawnpoint" type="Marker2D" parent="."]
+
+[node name="Porta pro Corredor" type="StaticBody2D" parent="."]
+position = Vector2(-1, 20)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_xg454"),"room_scene":"corredor","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"VamperoSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("4_teqnh"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"packed_scene":null,"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorInteractable" type="Node" parent="Porta pro Corredor" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("3_xg454")
+room_scene = "corredor"
+current_scene = NodePath("")
+spawnpoint_name = "VamperoSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta pro Corredor"]
+stream = ExtResource("4_teqnh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta pro Corredor"]
+polygon = PackedVector2Array(229, 292, 236, -297, 547, -296, 551, 293)
+
+[node name="LevelInfo" type="Node2D" parent="."]
+script = ExtResource("5_teqnh")
+camera_shape = SubResource("RectangleShape2D_nrbsg")
+metadata/_custom_type_script = "uid://1pbq2mr642g4"

@@ -13,6 +13,9 @@ var pointin: bool = false
 func _ready() -> void:
 	super._ready()
 
+	if Engine.is_editor_hint():
+		return
+
 	interact_verb = "conversar"
 
 	lobisome_entity.started_talking.connect(func():

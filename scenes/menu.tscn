@@ -129,7 +129,7 @@ advance_mode = 2
 advance_expression = "!showing_menu"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_4gi8u"]
-states/Start/position = Vector2(201, 100)
+states/Start/position = Vector2(262, 171)
 states/hide/node = SubResource("AnimationNodeAnimation_13sgg")
 states/hide/position = Vector2(458, 151)
 states/show/node = SubResource("AnimationNodeAnimation_i6lef")
@@ -167,7 +167,7 @@ anchor_bottom = 0.5
 offset_left = -223.0
 offset_top = -309.0
 offset_right = 232.0
-offset_bottom = 345.00256
+offset_bottom = 345.00244
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_v86rl")
@@ -250,12 +250,36 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("7_6cdou")
 
+[node name="Configurações do" type="Label" parent="Prancheta"]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 87.244125
+offset_right = 309.0
+offset_bottom = 120.244125
+rotation = -0.055716284
+theme = ExtResource("8_13sgg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Configurações do"
+
+[node name="Volume" type="Label" parent="Prancheta"]
+layout_mode = 0
+offset_left = 264.0
+offset_top = 104.244125
+offset_right = 357.0
+offset_bottom = 148.24413
+rotation = 0.11710594
+theme = ExtResource("8_13sgg")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Volume"
+
 [node name="SFX" type="Label" parent="Prancheta"]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 110.0
-offset_right = 356.0
-offset_bottom = 143.0
+offset_left = 313.00003
+offset_top = 179.0
+offset_right = 353.00003
+offset_bottom = 212.0
 rotation = -0.055716284
 theme = ExtResource("8_13sgg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -264,10 +288,10 @@ text = "SFX"
 
 [node name="SFX Percentage" type="Label" parent="Prancheta"]
 layout_mode = 0
-offset_left = 355.0
-offset_top = 111.0
-offset_right = 414.98682
-offset_bottom = 155.0
+offset_left = 352.00003
+offset_top = 180.0
+offset_right = 411.98685
+offset_bottom = 224.0
 rotation = 0.09068439
 theme = ExtResource("8_13sgg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -278,19 +302,19 @@ vertical_alignment = 1
 
 [node name="SFX Slider" type="HSlider" parent="Prancheta"]
 layout_mode = 0
-offset_left = 100.0
-offset_top = 80.0
-offset_right = 412.0
-offset_bottom = 110.0
+offset_left = 97.00003
+offset_top = 149.0
+offset_right = 409.00003
+offset_bottom = 179.0
 rotation = 0.04687381
 theme = ExtResource("8_13sgg")
 
 [node name="Music" type="Label" parent="Prancheta"]
 layout_mode = 0
-offset_left = 274.0
-offset_top = 187.00003
-offset_right = 339.0
-offset_bottom = 220.00003
+offset_left = 271.0
+offset_top = 272.2149
+offset_right = 336.0
+offset_bottom = 305.2149
 rotation = -0.11289424
 theme = ExtResource("8_13sgg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -299,10 +323,10 @@ text = "Música"
 
 [node name="Music Percentage" type="Label" parent="Prancheta"]
 layout_mode = 0
-offset_left = 347.00006
-offset_top = 181.0
-offset_right = 406.98688
-offset_bottom = 225.0
+offset_left = 344.00006
+offset_top = 266.21487
+offset_right = 403.98688
+offset_bottom = 310.21487
 rotation = 0.03350644
 theme = ExtResource("8_13sgg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -313,19 +337,19 @@ vertical_alignment = 1
 
 [node name="Music Slider" type="HSlider" parent="Prancheta"]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 164.99997
-offset_right = 409.0
-offset_bottom = 194.99997
+offset_left = 94.0
+offset_top = 250.21484
+offset_right = 406.0
+offset_bottom = 280.21484
 rotation = -0.010304138
 theme = ExtResource("8_13sgg")
 
 [node name="Master" type="Label" parent="Prancheta"]
 layout_mode = 0
-offset_left = 312.99997
-offset_top = 290.99997
-offset_right = 366.99997
-offset_bottom = 323.99997
+offset_left = 303.99997
+offset_top = 398.99997
+offset_right = 357.99997
+offset_bottom = 431.99997
 rotation = -0.035346724
 theme = ExtResource("8_13sgg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -334,10 +358,10 @@ text = "Geral"
 
 [node name="Master Percentage" type="Label" parent="Prancheta"]
 layout_mode = 0
-offset_left = 342.00003
-offset_top = 262.0
-offset_right = 401.98685
-offset_bottom = 306.0
+offset_left = 333.00003
+offset_top = 370.0
+offset_right = 392.98685
+offset_bottom = 414.0
 rotation = 0.11105396
 theme = ExtResource("8_13sgg")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -348,12 +372,22 @@ vertical_alignment = 1
 
 [node name="Master Slider" type="HSlider" parent="Prancheta"]
 layout_mode = 0
-offset_left = 95.01578
-offset_top = 231.0
-offset_right = 407.01578
-offset_bottom = 261.0
+offset_left = 86.01578
+offset_top = 339.0
+offset_right = 398.01578
+offset_bottom = 369.0
 rotation = 0.067243375
 theme = ExtResource("8_13sgg")
+
+[node name="Quit" type="Button" parent="Prancheta"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 521.0
+offset_right = 311.0
+offset_bottom = 566.0
+rotation = 0.013280835
+theme = ExtResource("8_13sgg")
+text = "sair do jogo!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -364,3 +398,5 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_4gi8u")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[connection signal="pressed" from="Prancheta/Quit" to="." method="_on_quit_pressed"]

@@ -9,12 +9,14 @@ class_name DoorInteractable
 @export var spawnpoint_name: String
 @export var audio: AudioStreamPlayer = null
 
-@onready var packed_scene: PackedScene = ResourceLoader.load("res://scenes/salas/" + room_scene + ".tscn", "PackedScene", ResourceLoader.CACHE_MODE_IGNORE)
+var packed_scene: PackedScene
 
 func _ready() -> void:
 	super._ready()
 
-	interact_verb = "entrar"
+	if !Engine.is_editor_hint():
+		packed_scene = ResourceLoader.load("res://scenes/salas/" + room_scene + ".tscn", "PackedScene", ResourceLoader.CACHE_MODE_IGNORE)
+		interact_verb = "entrar"
 
 func interact(who: Interactor) -> void:
 	if audio != null:

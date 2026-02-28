@@ -13,6 +13,9 @@ config_version=5
 config/name="Felpojam"
 run/main_scene="uid://d184pyvr6ajuj"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0.06666667, 0.06666667, 0.105882354, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://dh3utxygm24rf"
 config/icon="uid://ckpyf6fq12b6l"
 
 [audio]

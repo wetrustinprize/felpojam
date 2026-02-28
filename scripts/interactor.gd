@@ -25,7 +25,12 @@ func _entered(body: Node2D) -> void:
 	if body.has_meta("interaction") and not body.is_queued_for_deletion():
 		print("%s has a interaction module!" % body.name)
 
-		current_selected = body.get_meta("interaction")
+		var interactor: Interactable = body.get_meta("interaction")
+
+		if not interactor.interactable:
+			return
+
+		current_selected = interactor
 		can_interact_with.emit(current_selected)
 
 func _exited(body: Node2D) -> void:

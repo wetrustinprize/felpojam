@@ -8,6 +8,9 @@ extends Interactable
 func _ready() -> void:
 	super._ready()
 
+	if Engine.is_editor_hint():
+		return
+
 	interact_verb = "conversar"
 
 func interact(_who: Interactor) -> void:
