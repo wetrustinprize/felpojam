@@ -1,15 +1,98 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvivivvd5h6bf"]
+[gd_scene load_steps=16 format=3 uid="uid://bvivivvd5h6bf"]
 
 [ext_resource type="Texture2D" uid="uid://cd1xme6dys5l8" path="res://sprites/lugares/escritorio vampiro/vampiro pronto.png" id="1_i2fvn"]
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_f3mrf"]
 [ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="3_xg454"]
 [ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="4_teqnh"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="5_teqnh"]
+[ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="6_18pdy"]
+[ext_resource type="Texture2D" uid="uid://de83i0okdb3gu" path="res://sprites/entities/vampero/vampero0001.png" id="7_es8sh"]
+[ext_resource type="Texture2D" uid="uid://bwatvrygpxb3d" path="res://sprites/entities/vampero/vampero0002.png" id="8_ug4xb"]
+[ext_resource type="Script" uid="uid://t81clkkwuf8g" path="res://scripts/behaviours/vampero_escritorio.gd" id="9_18pdy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xg454"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrbsg"]
 size = Vector2(1910, 1070)
+
+[sub_resource type="Animation" id="Animation_q11eu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_18pdy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_w8lht"]
+resource_name = "talking"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.25, 0.37, 0.48666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_18pdy"), ExtResource("7_es8sh"), ExtResource("6_18pdy"), ExtResource("7_es8sh"), ExtResource("6_18pdy")]
+}
+
+[sub_resource type="Animation" id="Animation_i0oml"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_ug4xb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0oml"]
+_data = {
+&"RESET": SubResource("Animation_q11eu"),
+&"talking": SubResource("Animation_w8lht"),
+&"walking": SubResource("Animation_i0oml")
+}
 
 [node name="Escritório do Vampiro" type="Node2D"]
 
@@ -30,6 +113,7 @@ shape = SubResource("WorldBoundaryShape2D_xg454")
 position = Vector2(392, 268)
 
 [node name="CorredorSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(391, 274)
 
 [node name="Porta pro Corredor" type="StaticBody2D" parent="."]
 position = Vector2(-1, 20)
@@ -43,7 +127,7 @@ metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_o
 [node name="DoorInteractable" type="Node" parent="Porta pro Corredor" node_paths=PackedStringArray("current_scene", "audio")]
 script = ExtResource("3_xg454")
 room_scene = "corredor"
-current_scene = NodePath("")
+current_scene = NodePath("../..")
 spawnpoint_name = "VamperoSpawnpoint"
 audio = NodePath("../DoorSFX")
 metadata/_custom_type_script = "uid://cekyvphlwl7ci"
@@ -58,3 +142,29 @@ polygon = PackedVector2Array(229, 292, 236, -297, 547, -296, 551, 293)
 script = ExtResource("5_teqnh")
 camera_shape = SubResource("RectangleShape2D_nrbsg")
 metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="Vampero" type="StaticBody2D" parent="."]
+position = Vector2(100, 128)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("9_18pdy"),"vampero_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
+&"": SubResource("AnimationLibrary_i0oml")
+},"autoplay":"","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+,"vampire_entity":null,"papelada_item":null,"interact_verb":"interagir","interactable":true)
+
+
+[node name="Vampero" type="Sprite2D" parent="Vampero"]
+scale = Vector2(-0.4, 0.4)
+texture = ExtResource("6_18pdy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Vampero/Vampero"]
+libraries = {
+&"": SubResource("AnimationLibrary_i0oml")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vampero"]
+polygon = PackedVector2Array(-78, 258, 86, 258, 93, -149, 8, -253, -88, -147)
+
+[node name="Behaviour" type="Node" parent="Vampero" node_paths=PackedStringArray("vampero_animation")]
+script = ExtResource("9_18pdy")
+vampero_animation = NodePath("../Vampero/AnimationPlayer")

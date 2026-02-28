@@ -44,6 +44,7 @@ shader_parameter/progress = 1.5
 shader_parameter/progress_bias = Vector2(0, 0)
 
 [node name="Transition" type="CanvasLayer"]
+layer = 8
 script = ExtResource("1_f0i4t")
 shader_material = SubResource("ShaderMaterial_f0i4t")
 

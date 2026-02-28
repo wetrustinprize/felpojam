@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxkhf1i8yqoc8"]
+[gd_scene load_steps=32 format=3 uid="uid://bxkhf1i8yqoc8"]
 
 [ext_resource type="Texture2D" uid="uid://b55lqbb1k2pal" path="res://sprites/lugares/copa/COPA_2X.png" id="1_yivnc"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="2_5lln6"]
@@ -8,10 +8,63 @@
 [ext_resource type="Texture2D" uid="uid://6ki00xqd4k23" path="res://sprites/entities/matunina/matutina0002.png" id="6_f2edd"]
 [ext_resource type="Texture2D" uid="uid://k5urnsou81cq" path="res://sprites/entities/matunina/matutina0001.png" id="6_tqm8l"]
 [ext_resource type="Texture2D" uid="uid://ccfgrb8ocvxrc" path="res://sprites/entities/matunina/matutina0003.png" id="7_wd2i7"]
+[ext_resource type="Texture2D" uid="uid://l85vawxk8ee" path="res://sprites/entities/matunina/matutina0005.png" id="8_8umeu"]
+[ext_resource type="Texture2D" uid="uid://cjxbesp7nb7om" path="res://sprites/entities/matunina/matutina0008.png" id="8_n38ie"]
 [ext_resource type="AudioStream" uid="uid://b7v3pcos2gp27" path="res://sounds/764661__getwecked__mechanical-keyboard-click.mp3" id="8_wd2i7"]
+[ext_resource type="Texture2D" uid="uid://dth368jwi1qyb" path="res://sprites/entities/matunina/matutina0006.png" id="9_f45qn"]
+[ext_resource type="Texture2D" uid="uid://hjl1ijcfbsv2" path="res://sprites/entities/matunina/matutina0009.png" id="9_mo1be"]
+[ext_resource type="Texture2D" uid="uid://bapqj6ytkvgw8" path="res://sprites/entities/matunina/matutina0011.png" id="10_j5xvn"]
+[ext_resource type="Texture2D" uid="uid://c2cct8sialnlf" path="res://sprites/entities/matunina/matutina0016.png" id="10_n38ie"]
+[ext_resource type="Texture2D" uid="uid://dsjh8gqqmvahl" path="res://sprites/entities/matunina/matutina0017.png" id="11_mo1be"]
+[ext_resource type="Texture2D" uid="uid://ts8yaajn4e4h" path="res://sprites/entities/matunina/matutina0012.png" id="11_ufdy7"]
+[ext_resource type="Texture2D" uid="uid://i78ritjqyc5h" path="res://sprites/entities/matunina/matutina0013.png" id="12_2lywo"]
+[ext_resource type="Texture2D" uid="uid://c18gcp0ildftd" path="res://sprites/entities/matunina/matutina0014.png" id="13_ufdy7"]
+[ext_resource type="Texture2D" uid="uid://cb4kyjv0q8rqr" path="res://sprites/items/gelatina.png" id="13_yar3p"]
+[ext_resource type="AudioStream" uid="uid://cuimpe2flm536" path="res://sounds/down.wav" id="15_mo1be"]
+[ext_resource type="AudioStream" uid="uid://dqg8mr1h8h5t6" path="res://sounds/up.wav" id="15_yar3p"]
+[ext_resource type="AudioStream" uid="uid://c4f7wacjmsoer" path="res://sounds/608638__theplax__crunch-1.wav" id="20_stbkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gt32m"]
 size = Vector2(3150, 1048.445)
+
+[sub_resource type="Animation" id="Animation_g6jgo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_tqm8l")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gelatina:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-28.75, -48.75)]
+}
 
 [sub_resource type="Animation" id="Animation_tyhxi"]
 resource_name = "idle"
@@ -83,8 +136,9 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_g6jgo"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_sxktq"]
+resource_name = "eat"
+length = 3.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -92,16 +146,119 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.33333334, 2.0333333, 2.1, 2.1666667, 2.3, 2.4351678, 2.568501, 2.6870818, 2.820415, 2.9436607, 3.076994),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ExtResource("6_tqm8l")]
+"values": [ExtResource("8_n38ie"), ExtResource("9_mo1be"), ExtResource("10_j5xvn"), ExtResource("11_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.0933332),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gelatina:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334, 0.8, 1.3666667, 2.0966668),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-28.75, -48.75), Vector2(-28.75, -1041.25), Vector2(96.25, -1041.2501), Vector2(96.25, -103.75)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UpSFX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DownSFX")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.3666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CrunchSFX")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.1666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_nh3m1"]
+resource_name = "talking_angry"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19, 0.29),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_8umeu"), ExtResource("9_f45qn"), ExtResource("8_8umeu"), ExtResource("9_f45qn")]
+}
+
+[sub_resource type="Animation" id="Animation_hxvql"]
+resource_name = "talking_happy"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.19, 0.29),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_n38ie"), ExtResource("11_mo1be"), ExtResource("10_n38ie"), ExtResource("11_mo1be")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3kusf"]
 _data = {
 &"RESET": SubResource("Animation_g6jgo"),
-&"idle": SubResource("Animation_tyhxi")
+&"eat": SubResource("Animation_sxktq"),
+&"idle": SubResource("Animation_tyhxi"),
+&"talking_angry": SubResource("Animation_nh3m1"),
+&"talking_happy": SubResource("Animation_hxvql")
 }
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tyhxi"]
@@ -134,7 +291,7 @@ collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_gt32m"),"room_scene":"corredor","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
 ,"spawnpoint_name":"CopaSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("4_mktwm"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
-,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+,"packed_scene":null,"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
 
 
 [node name="DoorInteractable" type="Node" parent="Porta pro Corredor" node_paths=PackedStringArray("current_scene", "audio")]
@@ -172,6 +329,23 @@ autoplay = "idle"
 [node name="ClickSFX" type="AudioStreamPlayer" parent="Comilona/Comilona"]
 stream = SubResource("AudioStreamRandomizer_tyhxi")
 bus = &"SFX"
+
+[node name="UpSFX" type="AudioStreamPlayer" parent="Comilona/Comilona"]
+stream = ExtResource("15_yar3p")
+bus = &"SFX"
+
+[node name="DownSFX" type="AudioStreamPlayer" parent="Comilona/Comilona"]
+stream = ExtResource("15_mo1be")
+bus = &"SFX"
+
+[node name="CrunchSFX" type="AudioStreamPlayer" parent="Comilona/Comilona"]
+stream = ExtResource("20_stbkt")
+bus = &"SFX"
+
+[node name="Gelatina" type="Sprite2D" parent="Comilona/Comilona"]
+position = Vector2(-28.75, -48.75)
+scale = Vector2(0.29614875, 0.29614875)
+texture = ExtResource("13_yar3p")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Comilona"]
 polygon = PackedVector2Array(1025, 363, 1131, 431, 1316, 402, 1420, 224, 1428, 28, 1284, 5, 1134, 104, 1049, 290)

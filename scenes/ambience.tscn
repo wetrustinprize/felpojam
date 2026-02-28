@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cduk4ysjju6qs"]
+
+[ext_resource type="AudioStream" uid="uid://bxlt03spk8oiv" path="res://sounds/541117__chelly01__office-ambience.wav" id="1_hu8jf"]
+
+[node name="Ambience" type="Node"]
+
+[node name="Office" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hu8jf")
+autoplay = true

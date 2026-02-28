@@ -6,6 +6,10 @@ var initial_cutscene: bool = false ## The cutscene at the start of the game
 var first_lobisomen_talk: bool = false ## Has the player talked once with the lobi?
 var lobisome_asleep: bool = false ## Has the Veterinario made lobisome sleep?
 
+# Comilona
+var first_comilona_talk: bool = false ## Has the player talked once with Comilona?
+var comilona_ate_gelatina: bool = false ## Has the player gave Colimona the Gelatina?
+
 # Chefe
 var first_chefe_talk: bool = false ## Has the player talked once with the Chefe?
 
