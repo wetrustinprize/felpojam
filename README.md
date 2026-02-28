@@ -45,6 +45,9 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Arrow_woosh\_\_twang_01.wav by strangely_gnarled](https://freesound.org/s/72208/) - License: Attribution 4.0
 - [Toilet Flush, European, Distant, Lid Up.wav by InspectorJ](https://freesound.org/s/404329/) - License: Attribution 4.0
 - [Short Elevator Music Loop by BlondPanda](https://freesound.org/s/659889/) - License: Creative Commons 0
+- [00883 bank stamp 2.wav by Robinhood76](https://freesound.org/s/66715/) - License: Attribution NonCommercial 4.0
+- [Beeping Robot or Machine by Jofae](https://freesound.org/s/363251/) - License: Creative Commons 0
+- [pencil sketch 2 by youandbiscuitme](https://freesound.org/s/258240/) - License: Attribution 3.0
 
 ---
 

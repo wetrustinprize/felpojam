@@ -1,8 +1,12 @@
 extends CanvasLayer
 
 var showing_menu: bool = false
+@export var quit_button: Button
 
 @onready var open_sfx: AudioStreamPlayer = $OpenSFX
+
+func _ready() -> void:
+	quit_button.visible = not OS.get_name() == "Web"
 
 func _input(event: InputEvent) -> void:
 	if Game.on_cutscene or Game.on_main_menu:

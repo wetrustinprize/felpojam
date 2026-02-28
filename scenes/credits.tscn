@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://c45h1vbet6li0"]
+
+[ext_resource type="FontFile" uid="uid://dmfe4iwu5kaid" path="res://fonts/Schoolbell-Regular.ttf" id="1_0bpdh"]
+[ext_resource type="Texture2D" uid="uid://c2mogvfdfeplc" path="res://sprites/credits/tile.png" id="1_0ctdu"]
+[ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="3_2fbfq"]
+[ext_resource type="Theme" uid="uid://chwa54d0foxpq" path="res://menu.tres" id="4_2fbfq"]
+[ext_resource type="Texture2D" uid="uid://bhr08ojnisqaw" path="res://sprites/final_cutscene/bap.png" id="4_8gwij"]
+
+[sub_resource type="Animation" id="Animation_mah5v"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8gwij"]
+resource_name = "dance"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 0.12566371, 0.0, 0.12566371]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mah5v"]
+_data = {
+&"RESET": SubResource("Animation_mah5v"),
+&"dance": SubResource("Animation_8gwij")
+}
+
+[sub_resource type="Animation" id="Animation_kyhnv"]
+resource_name = "dance"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(779.00006, 471.00003), Vector2(779.00006, 396.00003), Vector2(779.00006, 471.00003), Vector2(779.00006, 396.00003), Vector2(779.00006, 471.00003)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.43333334, 0.56666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.21057416, 0.21057416), Vector2(-0.211, 0.211)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8gwij"]
+_data = {
+&"RESET": SubResource("Animation_mah5v"),
+&"dance": SubResource("Animation_kyhnv")
+}
+
+[sub_resource type="GDScript" id="GDScript_8gwij"]
+resource_name = "QuitButton"
+script/source = "extends Button
+
+
+func _ready() -> void:
+	visible = not OS.get_name() == \"Web\"
+
+
+func _on_pressed() -> void:
+	get_tree().quit()
+"
+
+[node name="Credits" type="CanvasLayer"]
+layer = 999
+
+[node name="Black" type="TextureRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("1_0ctdu")
+stretch_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 62.0
+offset_top = -305.0
+offset_right = 584.0
+offset_bottom = 305.0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_0bpdh")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[center][wave][font_size=32]Obrigado por jogar![/font_size][/wave][/center]
+
+Esse jogo foi feito para a [img=120]res://felpojam_light.png[/img] pelos seguintes membros:
+- [wave]Prize[/wave]: desenvolvedor, sketches, ui/ux;
+- [wave]Vrituu[/wave]: desenvolvedor, sketches, lineart, coloring;
+- [wave]LagatoJr[/wave]: lineart, coloring;
+
+[font_size=28]Agradecimentos especiais:[/font_size]
+- Gumema
+- Mãe de Vrituu
+
+Créditos mais detalhados com os assets utilizados, programas utilizados e extras de sketches estão no [url=https://github.com/wetrustinprize/felpojam]código fonte[/url] do projeto!"
+
+[node name="Dancing Vampero" type="Sprite2D" parent="."]
+position = Vector2(981, 389)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_2fbfq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dancing Vampero"]
+libraries = {
+&"": SubResource("AnimationLibrary_mah5v")
+}
+autoplay = "dance"
+
+[node name="Dancing Bapo" type="Sprite2D" parent="."]
+position = Vector2(795.00006, 456)
+scale = Vector2(-0.21100001, 0.211)
+texture = ExtResource("4_8gwij")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dancing Bapo"]
+libraries = {
+&"": SubResource("AnimationLibrary_8gwij")
+}
+autoplay = "dance"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 1057.0001
+offset_top = 633.0
+offset_right = 1227.0001
+offset_bottom = 678.0
+rotation = 0.013280835
+mouse_default_cursor_shape = 2
+theme = ExtResource("4_2fbfq")
+text = "sair do jogo!"
+script = SubResource("GDScript_8gwij")
+
+[connection signal="pressed" from="Quit" to="Quit" method="_on_pressed"]

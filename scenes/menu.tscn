@@ -150,9 +150,10 @@ streams_count = 2
 stream_0/stream = ExtResource("11_ufwb2")
 stream_1/stream = ExtResource("11_mj5lg")
 
-[node name="Menu" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("quit_button")]
 layer = 2
 script = ExtResource("1_13sgg")
+quit_button = NodePath("Prancheta/Quit")
 
 [node name="SFX Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage", "bus_test_sfx")]
 script = ExtResource("2_i6lef")
@@ -184,7 +185,7 @@ anchor_bottom = 0.5
 offset_left = -223.0
 offset_top = -309.0
 offset_right = 232.0
-offset_bottom = 345.0022
+offset_bottom = 345.00208
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_v86rl")

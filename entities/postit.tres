@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogEntity" load_steps=5 format=3 uid="uid://b43trmk455j0d"]
+
+[ext_resource type="Texture2D" uid="uid://linl0vup74t4" path="res://sprites/postit_portrait.png" id="1_vekog"]
+[ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="2_fchyn"]
+[ext_resource type="AudioStream" uid="uid://dnnq0atr32d1t" path="res://sounds/258240__youandbiscuitme__pencil-sketch-2.mp3" id="3_vekog"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pqwh0"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_vekog")
+
+[resource]
+script = ExtResource("2_fchyn")
+portrait = ExtResource("1_vekog")
+sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_pqwh0")])
+name = "Postit"
+metadata/_custom_type_script = "uid://bw53n2gpy15rr"

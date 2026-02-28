@@ -45,6 +45,10 @@ func interact(_who: Interactor) -> void:
 
 		if Inventory.has_item(form_item) and Inventory.has_item(stamp_item):
 			await Dialog.show_dialog(stickman_entity, "Perfeito! Me entrega aqui que eu carimbo pra voce!")
+
+			Inventory.remove_item(form_item)
+			Inventory.remove_item(stamp_item)
+
 			await Dialog.show_dialog(stickman_entity, "Um momento, já trago...")
 
 			stickman_animation_player.play("bring_paper")
@@ -53,8 +57,6 @@ func interact(_who: Interactor) -> void:
 
 			await Dialog.show_dialog(stickman_entity, "Aqui está!")
 			Inventory.add_item(tp_item)
-			Inventory.remove_item(form_item)
-			Inventory.remove_item(stamp_item)
 			stickman_animation_player.play("RESET")
 
 	else:
