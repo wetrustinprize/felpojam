@@ -164,7 +164,7 @@ anchor_bottom = 1.0
 offset_left = -342.0
 offset_top = -241.0
 offset_right = 342.0
-offset_bottom = 0.0087890625
+offset_bottom = 0.008850098
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("2_4wims")
@@ -233,13 +233,13 @@ texture = ExtResource("6_ygo2i")
 [node name="Dialogo" type="RichTextLabel" parent="Papel"]
 layout_mode = 0
 offset_left = 93.0
-offset_top = 66.0
+offset_top = 61.0
 offset_right = 504.0
-offset_bottom = 202.0
+offset_bottom = 197.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("1_pkx4w")
 theme_override_font_sizes/normal_font_size = 24
-text = "abababababa"
+bbcode_enabled = true
 script = ExtResource("2_36pgd")
 metadata/_custom_type_script = "uid://dmib23vt665a4"
 

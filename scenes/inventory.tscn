@@ -16,6 +16,7 @@ offset_left = 41.0
 offset_right = -41.0
 offset_bottom = 193.0
 grow_horizontal = 2
+mouse_filter = 2
 alignment = 2
 
 [node name="GetItemSFX" type="AudioStreamPlayer" parent="."]

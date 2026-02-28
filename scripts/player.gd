@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.x != 0 or velocity.y != 0:
 		if animation_player.animation != "walk":
 			animation_player.play("walk")
+		interactor.recheck()
 	else:
 		if animation_player.animation != "idle":
 			animation_player.play("idle")

@@ -3,7 +3,6 @@ extends EditorPlugin
 
 
 func _enter_tree():
-	print("thank you for downloading Dialogue Label!")
 	pass
 
 

@@ -50,8 +50,12 @@ func _remove_item_control(item: Item):
 	var tween: Tween = control.create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_parallel()
+
 	tween.tween_property(control, "custom_minimum_size:x", 0.0, 0.5)
-	tween.tween_callback(control.queue_free)
+	tween.tween_property(control, "modulate", Color.TRANSPARENT, 0.5)
+
+	tween.chain().tween_callback(control.queue_free)
 
 func _add_item_control(item: Item):
 	var control: Control = item_control_scene.instantiate()
@@ -59,10 +63,14 @@ func _add_item_control(item: Item):
 	control.item = item
 	var minSize = control.custom_minimum_size.x
 	control.custom_minimum_size.x = 0
+	control.modulate = Color.TRANSPARENT
 
 	horizontal.add_child(control)
 
 	var tween: Tween = control.create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_parallel()
+
 	tween.tween_property(control, "custom_minimum_size:x", minSize, 0.5)
+	tween.tween_property(control, "modulate", Color.WHITE, 0.5)

@@ -1,7 +1,10 @@
 extends Sprite2D
 
 @onready var layer: CanvasLayer = $CanvasLayer
-@onready var fade: Sprite2D = $CanvasLayer/Fade
+@onready var fade: TextureRect = $CanvasLayer/Fade
+@onready var felpojam: TextureRect = $CanvasLayer/Fade/FelpoJam
+
+var can_skip_menu: bool = false
 
 func _ready() -> void:
 	visible = true
@@ -13,13 +16,25 @@ func _ready() -> void:
 		await get_tree().create_timer(1).timeout
 
 		var tween = get_tree().create_tween()
+		tween.set_parallel()
+		tween.set_ease(Tween.EASE_OUT)
+		tween.set_trans(Tween.TRANS_SINE)
+
 		tween.tween_property(fade, "modulate", Color.TRANSPARENT, 2)
+		tween.tween_property(felpojam, "modulate", Color.TRANSPARENT, 0.5)
+
+		var y_felpojam_position = felpojam.position.y
+		tween.tween_property(felpojam, "position:y", y_felpojam_position + 20, 0.6)
+
+		await tween.finished
+		can_skip_menu = true
+		layer.queue_free()
 	else:
 		Game.on_main_menu = false
 		queue_free()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact") and can_skip_menu:
 		var tween = get_tree().create_tween()
 		tween.tween_property(self, "modulate", Color.TRANSPARENT, 0.5)
 

@@ -5,8 +5,10 @@ extends Interactable
 
 @export var vampero_animation: AnimationPlayer
 @export var vampero_node: Node2D
-@export var vampero_end_position: Node2D
+@export var vampero_to_escritorio: Node2D
+@export var vampero_to_copa: Node2D
 @export var door_sfx: AudioStreamPlayer
+@export var look_at_player: LookAtPlayer
 
 @onready var vampire_entity = preload("res://entities/vampire.tres")
 
@@ -18,7 +20,7 @@ func _ready() -> void:
 
 	interact_verb = "conversar"
 
-	if Missions.vampero_at_escritorio:
+	if Missions.vampero_at_escritorio or (Missions.vampero_at_copa and not Missions.vampero_wants_to_go_escritorio):
 		vampero_node.queue_free()
 		return
 
@@ -30,32 +32,52 @@ func _ready() -> void:
 		vampero_animation.stop()
 	);
 
+func _go_to(location: Node2D, right: bool = false):
+	look_at_player.disabled = true
+
+	var parent: Node2D = get_parent()
+	parent.scale.x = -1 if right else 1
+
+	vampero_animation.play("walking")
+
+	var tween = get_tree().create_tween()
+	tween.tween_property(vampero_node, "global_position", location.global_position, 4.0)
+
+	await tween.finished
+	door_sfx.play()
+	vampero_node.visible = false
+
+	Missions.vampero_at_copa = true
+
+	await door_sfx.finished
+	vampero_node.queue_free()
 
 func interact(_who: Interactor) -> void:
 	Game.on_cutscene = true
 
-	if not Missions.first_vampero_talk:
-		Missions.first_vampero_talk = true
-		await Dialog.show_dialog(vampire_entity, "Heh... olá pequenino...")
-		await Dialog.show_dialog(vampire_entity, "Você poderia ajudar um senhor [i]normal[/i] igual a mim?")
-		await Dialog.show_dialog(vampire_entity, "Eu só preciso que você... me convide para entrar na minha sala...")
+	if not Missions.vampero_wants_to_go_escritorio:
+		if not Missions.first_vampero_talk:
+			Missions.first_vampero_talk = true
+			await Dialog.show_dialog(vampire_entity, "Heh... olá pequenino...")
+			await Dialog.show_dialog(vampire_entity, "Sabe... eu estou com muita... sede... você pode me ajudar?")
+			await Dialog.show_dialog(vampire_entity, "Eu só preciso que você... me convide para entrar na copa...")
+			await Dialog.show_dialog(vampire_entity, "É simples... é que eu não gosto de entrar nos lugares aonde eu... não sou convidado...")
+
+			interact_verb = "convidar"
+		else:
+			await Dialog.show_dialog(vampire_entity, "Heh... obrigado pequenino...")
+			await _go_to(vampero_to_copa, true)
+	elif not Missions.vampero_asks_to_go_escritorio:
+		Missions.vampero_asks_to_go_escritorio = true
+
+		await Dialog.show_dialog(vampire_entity, "Isso é vergonhoso... mas...")
+		await Dialog.show_dialog(vampire_entity, "Você consegue me convidar para entrar no meu próprio escritório?")
 
 		interact_verb = "convidar"
 	else:
-		await Dialog.show_dialog(vampire_entity, "Heh... obrigado pequenino...")
-
-		vampero_animation.play("walking")
-
-		var tween = get_tree().create_tween()
-		tween.tween_property(vampero_node, "global_position", vampero_end_position.global_position, 4.0)
-
-		await tween.finished
-		door_sfx.play()
-		vampero_node.visible = false
-
 		Missions.vampero_at_escritorio = true
 
-		await door_sfx.finished
-		vampero_node.queue_free()
+		await Dialog.show_dialog(vampire_entity, "Obrigado novamente.")
+		await _go_to(vampero_to_escritorio)
 
 	Game.on_cutscene = false

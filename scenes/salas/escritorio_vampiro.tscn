@@ -144,13 +144,13 @@ camera_shape = SubResource("RectangleShape2D_nrbsg")
 metadata/_custom_type_script = "uid://1pbq2mr642g4"
 
 [node name="Vampero" type="StaticBody2D" parent="."]
-position = Vector2(100, 128)
+position = Vector2(20, 180)
 collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("9_18pdy"),"vampero_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
 &"": SubResource("AnimationLibrary_i0oml")
 },"autoplay":"","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
-,"vampire_entity":null,"papelada_item":null,"interact_verb":"interagir","interactable":true)
+,"vampire_entity":Resource("res://entities/vampire.tres"),"papelada_item":Resource("res://items/papel_inventario.tres"),"interact_verb":"interagir","interactable":true)
 
 
 [node name="Vampero" type="Sprite2D" parent="Vampero"]
