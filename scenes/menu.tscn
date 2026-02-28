@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://2enws5wsvbq4"]
+[gd_scene load_steps=25 format=3 uid="uid://2enws5wsvbq4"]
 
 [ext_resource type="Script" uid="uid://cacm13yi8menq" path="res://scripts/menu.gd" id="1_13sgg"]
 [ext_resource type="Texture2D" uid="uid://cs4ejknmdmktk" path="res://sprites/ui/quests/Prancheta.png" id="1_v86rl"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bmghqk6a4a8q1" path="res://sprites/ui/quests/Clip.png" id="6_ufwb2"]
 [ext_resource type="Texture2D" uid="uid://cagm1ufhqmf3b" path="res://sprites/ui/quests/Maos.png" id="7_6cdou"]
 [ext_resource type="Theme" uid="uid://chwa54d0foxpq" path="res://menu.tres" id="8_13sgg"]
+[ext_resource type="AudioStream" uid="uid://dwvad6jeqqqlr" path="res://sounds/497135__cpick__multiple-paper-rustles.mp3" id="10_70i5f"]
+[ext_resource type="AudioStream" uid="uid://y1bdydw3qg07" path="res://sounds/202581__sergeeo__xylophone-for-cartoon-4.wav" id="11_mj5lg"]
+[ext_resource type="AudioStream" uid="uid://ds4j8bvi3x0ff" path="res://sounds/202575__sergeeo__xylophone-for-cartoon-3.wav" id="11_ufwb2"]
 
 [sub_resource type="Animation" id="Animation_e3adq"]
 length = 0.001
@@ -136,27 +139,41 @@ states/show/node = SubResource("AnimationNodeAnimation_i6lef")
 states/show/position = Vector2(458, 48)
 transitions = ["Start", "hide", SubResource("AnimationNodeStateMachineTransition_70i5f"), "hide", "show", SubResource("AnimationNodeStateMachineTransition_mj5lg"), "show", "hide", SubResource("AnimationNodeStateMachineTransition_ufwb2")]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mj5lg"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("10_70i5f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_6cdou"]
+random_pitch = 1.1
+streams_count = 2
+stream_0/stream = ExtResource("11_ufwb2")
+stream_1/stream = ExtResource("11_mj5lg")
+
 [node name="Menu" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_13sgg")
 
-[node name="SFX Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage")]
+[node name="SFX Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage", "bus_test_sfx")]
 script = ExtResource("2_i6lef")
 bus = &"SFX"
 slider = NodePath("../Prancheta/SFX Slider")
 label_percentage = NodePath("../Prancheta/SFX Percentage")
+bus_test_sfx = NodePath("../BusTestSFX")
 
-[node name="Music Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage")]
+[node name="Music Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage", "bus_test_sfx")]
 script = ExtResource("2_i6lef")
 bus = &"Music"
 slider = NodePath("../Prancheta/Music Slider")
 label_percentage = NodePath("../Prancheta/Music Percentage")
+bus_test_sfx = NodePath("../BusTestSFX")
 
-[node name="Master Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage")]
+[node name="Master Bus" type="Node" parent="." node_paths=PackedStringArray("slider", "label_percentage", "bus_test_sfx")]
 script = ExtResource("2_i6lef")
 bus = &"Master"
 slider = NodePath("../Prancheta/Master Slider")
 label_percentage = NodePath("../Prancheta/Master Percentage")
+bus_test_sfx = NodePath("../BusTestSFX")
 
 [node name="Prancheta" type="TextureRect" parent="."]
 anchors_preset = 8
@@ -167,7 +184,7 @@ anchor_bottom = 0.5
 offset_left = -223.0
 offset_top = -309.0
 offset_right = 232.0
-offset_bottom = 345.00244
+offset_bottom = 345.00256
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_v86rl")
@@ -398,5 +415,11 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_4gi8u")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="OpenSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_mj5lg")
+
+[node name="BusTestSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_6cdou")
 
 [connection signal="pressed" from="Prancheta/Quit" to="." method="_on_quit_pressed"]

@@ -13,7 +13,10 @@ func add_item(item: Item):
 	if item in items:
 		printerr("item %s is already in the inventory" % item.name)
 		return
-	get_item_sfx.play()
+
+	if not get_item_sfx.playing:
+		get_item_sfx.play()
+
 	items.append(item)
 	old_items.append(item)
 	_add_item_control(item)

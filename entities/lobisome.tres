@@ -13,4 +13,5 @@ stream_0/stream = ExtResource("3_tk6cm")
 script = ExtResource("1_qovsq")
 portrait = ExtResource("1_llujh")
 sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_ofyrt")])
+name = "Marselo"
 metadata/_custom_type_script = "uid://bw53n2gpy15rr"

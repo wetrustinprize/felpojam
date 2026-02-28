@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://brg4lw08urt4s"]
+[gd_scene load_steps=38 format=3 uid="uid://brg4lw08urt4s"]
 
 [ext_resource type="Texture2D" uid="uid://bfpsskejktius" path="res://sprites/lugares/corredor.png" id="1_x1ug2"]
 [ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="2_0ejk3"]
@@ -17,10 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://4tmfrj2yv83h" path="res://sprites/entities/veterinario/vet0004.png" id="7_wyirk"]
 [ext_resource type="Texture2D" uid="uid://6lcly7wf22hx" path="res://sprites/entities/veterinario/vet0003.png" id="8_x1ug2"]
 [ext_resource type="Script" uid="uid://cy7nc70hessid" path="res://scripts/behaviours/veterinario_corredor.gd" id="9_x1ug2"]
+[ext_resource type="Script" uid="uid://dcat0w3pl3nq2" path="res://scripts/loot_at_player.gd" id="15_5c3vo"]
+[ext_resource type="Script" uid="uid://ccple6qf48rqn" path="res://scripts/sound_trigger.gd" id="16_5jyfl"]
 [ext_resource type="AudioStream" uid="uid://ltxsq4id4p0r" path="res://sounds/502507__rudmer_rotteveel__creaking-wood-4-steps-0.mp3" id="16_boni6"]
 [ext_resource type="AudioStream" uid="uid://dtrjwnreakgj1" path="res://sounds/502507__rudmer_rotteveel__creaking-wood-4-steps-1.mp3" id="17_5jyfl"]
 [ext_resource type="AudioStream" uid="uid://j6t57gvoa58p" path="res://sounds/502507__rudmer_rotteveel__creaking-wood-4-steps-2.mp3" id="18_v75y0"]
 [ext_resource type="AudioStream" uid="uid://dnignihl62r1w" path="res://sounds/502507__rudmer_rotteveel__creaking-wood-4-steps-3.mp3" id="19_5c3vo"]
+[ext_resource type="AudioStream" uid="uid://b3hvjn2n527jb" path="res://sounds/553471__itinerantmonk108__water-dispenser-bubbles.mp3" id="21_v75y0"]
 
 [sub_resource type="Animation" id="Animation_vag0r"]
 length = 0.001
@@ -191,22 +194,6 @@ _data = {
 &"walking": SubResource("Animation_i0oml")
 }
 
-[sub_resource type="GDScript" id="GDScript_x1ug2"]
-resource_name = "WoodCrack"
-script/source = "extends Area2D
-
-@onready var sfx: AudioStreamPlayer = $CrackSFX
-
-func _on_body_entered(body: Node2D) -> void:
-	if not body.is_in_group(\"Player\"):
-		return
-	
-	if sfx.playing:
-		return
-		
-	sfx.play()
-"
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sggy0"]
 random_pitch = 1.05
 streams_count = 4
@@ -214,6 +201,11 @@ stream_0/stream = ExtResource("16_boni6")
 stream_1/stream = ExtResource("17_5jyfl")
 stream_2/stream = ExtResource("18_v75y0")
 stream_3/stream = ExtResource("19_5c3vo")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5c3vo"]
+random_pitch = 1.05
+streams_count = 1
+stream_0/stream = ExtResource("21_v75y0")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2slm"]
 size = Vector2(7000, 1920)
@@ -552,8 +544,11 @@ door_sfx = NodePath("../DoorSFX")
 [node name="DoorSFX" type="AudioStreamPlayer" parent="Veterinario"]
 stream = ExtResource("6_juh7i")
 
+[node name="VamperoEndPosition" type="Marker2D" parent="."]
+position = Vector2(-1419, -227)
+
 [node name="Vampero" type="StaticBody2D" parent="."]
-position = Vector2(-1155.2, -360.39996)
+position = Vector2(-1114, -368)
 collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_n3snw"),"vampero_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
@@ -923,20 +918,20 @@ polygon = PackedVector2Array(-72, 199, 73, 199, 75, -143, -14, -221, -88, -147)
 script = ExtResource("3_n3snw")
 vampero_animation = NodePath("../Vampero/AnimationPlayer")
 vampero_node = NodePath("..")
-vampero_end_position = NodePath("../Marker2D")
+vampero_end_position = NodePath("../../VamperoEndPosition")
 door_sfx = NodePath("../DoorSFX")
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="Vampero"]
 stream = ExtResource("6_juh7i")
 
-[node name="Marker2D" type="Marker2D" parent="Vampero"]
-position = Vector2(-305, 141)
+[node name="LookAtPlayer" type="Node" parent="Vampero"]
+script = ExtResource("15_5c3vo")
 
 [node name="Player" parent="." instance=ExtResource("2_pr3s7")]
-position = Vector2(-2617.2, 311.60004)
+position = Vector2(-378, -113)
 
 [node name="RecepcaoSpawnpoint" type="Marker2D" parent="."]
-position = Vector2(-2616.2, 313.60004)
+position = Vector2(3061, 591)
 
 [node name="LobiSpawnpoint" type="Marker2D" parent="."]
 position = Vector2(-1907.2, 156.60004)
@@ -951,19 +946,34 @@ position = Vector2(527.80005, -147.39996)
 position = Vector2(-697.19995, -257.39996)
 
 [node name="AlmoxarifadoSpawnpoint" type="Marker2D" parent="."]
-position = Vector2(3207, 715)
+position = Vector2(-2616, 310)
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="CrackSoundTrigger" type="Area2D" parent="." node_paths=PackedStringArray("sfx")]
 position = Vector2(-962, -66)
 collision_layer = 7
 collision_mask = 7
-script = SubResource("GDScript_x1ug2")
+script = ExtResource("16_5jyfl")
+sfx = NodePath("CrackSFX")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CrackSoundTrigger"]
 polygon = PackedVector2Array(-108, -40, 17, -63, 118, -36, 103, 60, -4, 87, -86, 72, -121, 3)
 
-[node name="CrackSFX" type="AudioStreamPlayer" parent="Area2D"]
+[node name="CrackSFX" type="AudioStreamPlayer" parent="CrackSoundTrigger"]
 stream = SubResource("AudioStreamRandomizer_sggy0")
+bus = &"SFX"
+
+[node name="BubblesSoundTrigger" type="Area2D" parent="." node_paths=PackedStringArray("sfx")]
+position = Vector2(-384, -236)
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("16_5jyfl")
+sfx = NodePath("BubbleSFX")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BubblesSoundTrigger"]
+polygon = PackedVector2Array(-108, -40, 17, -63, 118, -36, 103, 60, -4, 87, -86, 72, -121, 3)
+
+[node name="BubbleSFX" type="AudioStreamPlayer" parent="BubblesSoundTrigger"]
+stream = SubResource("AudioStreamRandomizer_5c3vo")
 bus = &"SFX"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -976,7 +986,7 @@ polygon = PackedVector2Array(-2920.8, 603.39996, -2607.8, 348.39996, -1953.8, 35
 polygon = PackedVector2Array(-2985.8, 610.39996, -1429.8, 610.39996, -535.80005, 85.39996, 309.19995, 85.39996, 1618.2, 843.39996, 3777.2, 843.39996, 3775.2, 976.39996, -1424.8, 968.39996, -3036.8, 987.39996)
 
 [node name="Porta para Recepção" type="StaticBody2D" parent="."]
-position = Vector2(275, -321)
+position = Vector2(3248, 544)
 collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"recepção","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
@@ -988,7 +998,7 @@ metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_o
 stream = ExtResource("6_juh7i")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Recepção"]
-polygon = PackedVector2Array(-3001, 670, -3003, 227, -2760, 229, -2759, 672)
+polygon = PackedVector2Array(-106, 97, 94, 215, 99, -214, -104, -327)
 
 [node name="DoorInteractable" type="Node" parent="Porta para Recepção" node_paths=PackedStringArray("current_scene", "audio")]
 script = ExtResource("5_hrh1n")
@@ -1067,8 +1077,8 @@ spawnpoint_name = "CorredorSpawnpoint"
 audio = NodePath("../DoorSFX")
 metadata/_custom_type_script = "uid://cekyvphlwl7ci"
 
-[node name="Porta para Banheiro2" type="StaticBody2D" parent="."]
-position = Vector2(3224, 681)
+[node name="Porta para Almoxarifado" type="StaticBody2D" parent="."]
+position = Vector2(-2617, 320)
 collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"almoxarifado","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
@@ -1076,13 +1086,13 @@ metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_o
 ,"packed_scene":null,"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
 
 
-[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Banheiro2"]
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Almoxarifado"]
 stream = ExtResource("6_juh7i")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Banheiro2"]
-polygon = PackedVector2Array(-74, -34, -73, -457, 126, -347, 122, 80)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Almoxarifado"]
+polygon = PackedVector2Array(-115, 23, 134, 23, 134, -410, -117, -418)
 
-[node name="DoorInteractable" type="Node" parent="Porta para Banheiro2" node_paths=PackedStringArray("current_scene", "audio")]
+[node name="DoorInteractable" type="Node" parent="Porta para Almoxarifado" node_paths=PackedStringArray("current_scene", "audio")]
 script = ExtResource("5_hrh1n")
 room_scene = "almoxarifado"
 current_scene = NodePath("../..")
@@ -1118,4 +1128,5 @@ script = ExtResource("3_o111h")
 camera_shape = SubResource("RectangleShape2D_t2slm")
 metadata/_custom_type_script = "uid://1pbq2mr642g4"
 
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="CrackSoundTrigger" to="CrackSoundTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="BubblesSoundTrigger" to="BubblesSoundTrigger" method="_on_body_entered"]

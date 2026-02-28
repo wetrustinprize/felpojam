@@ -31,8 +31,10 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Office ambience.wav by Chelly01](https://freesound.org/s/541117/) - License: Creative Commons 0
 - [crunch 1.wav by theplax](https://freesound.org/s/608638/) - License: Attribution 4.0
 - [Slime attack or movement by wubitog](https://freesound.org/s/188384/) - License: Creative Commons 0
-- [Xylophone for cartoon (3) by sergeeo](https://freesound.org/s/202575/) -- License: Attribution 3.0
-- [Creaking Wood 4 Steps by Rudmer_Rotteveel](https://freesound.org/s/502507/) -- License: Creative Commons 0
+- [Xylophone for cartoon (3) by sergeeo](https://freesound.org/s/202575/) - License: Attribution 3.0
+- [Creaking Wood 4 Steps by Rudmer_Rotteveel](https://freesound.org/s/502507/) - License: Creative Commons 0
+- [Water dispenser bubbles.wav by itinerantmonk108](https://freesound.org/s/553471/) - License: Creative Commons 0
+- [Multiple paper rustles.m4a by cpick](https://freesound.org/s/497135/) - License: Creative Commons 0
 
 ---
 
