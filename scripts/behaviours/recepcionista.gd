@@ -18,6 +18,14 @@ func _ready() -> void:
 
 	interact_verb = "conversar"
 
+	recepcionista_entity.started_talking.connect(func():
+		recepcionista_animation_player.play("talking")
+	)
+
+	recepcionista_entity.stopped_talking.connect(func():
+		recepcionista_animation_player.stop()
+	)
+
 	if Missions.initial_cutscene:
 		recepcionista_animation_player.play("sleep")
 		recepcionista_animation_player.seek(20)

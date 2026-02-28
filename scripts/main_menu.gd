@@ -26,9 +26,12 @@ func _ready() -> void:
 		var y_felpojam_position = felpojam.position.y
 		tween.tween_property(felpojam, "position:y", y_felpojam_position + 20, 0.6)
 
-		await tween.finished
+		tween.finished.connect(func():
+			layer.queue_free()
+		)
+
+		await get_tree().create_timer(0.6).timeout
 		can_skip_menu = true
-		layer.queue_free()
 	else:
 		Game.on_main_menu = false
 		queue_free()
