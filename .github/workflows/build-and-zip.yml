@@ -23,7 +23,7 @@ jobs:
       - name: Prepare export templates
         run: |
           mkdir -p ~/.local/share/godot/templates
-          mv /root/.local/share/godot/templates/4.5.1.stable ~/.local/share/godot/templates/
+          mv /root/.local/share/godot/export_templates/4.5.1.stable ~/.local/share/godot/export_templates/4.5.1.stable
 
       - name: Create directory scaffolding
         run: |
