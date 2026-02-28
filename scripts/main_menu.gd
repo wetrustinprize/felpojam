@@ -4,6 +4,7 @@ extends Sprite2D
 @onready var fade: Sprite2D = $CanvasLayer/Fade
 
 func _ready() -> void:
+	visible = true
 	layer.visible = true
 
 	if not Missions.initial_cutscene:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://ds7y86fo8j8ds"]
+
+[ext_resource type="Script" uid="uid://beqnwjslidij3" path="res://scripts/item.gd" id="1_cj6vw"]
+[ext_resource type="Texture2D" uid="uid://b3ufr38msay78" path="res://sprites/items/seringa.png" id="2_lj8ww"]
+
+[resource]
+script = ExtResource("1_cj6vw")
+texture = ExtResource("2_lj8ww")
+name = "Vacina"
+metadata/_custom_type_script = "uid://beqnwjslidij3"

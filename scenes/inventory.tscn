@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceqfhdxbovwvd"]
+
+[ext_resource type="Script" uid="uid://bl4sfci34imeg" path="res://scripts/inventory.gd" id="1_qw0r6"]
+[ext_resource type="PackedScene" uid="uid://dqkr687y1si64" path="res://scenes/inventory/item_control.tscn" id="2_hj2ta"]
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_qw0r6")
+item_control_scene = ExtResource("2_hj2ta")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 41.0
+offset_right = -41.0
+offset_bottom = 193.0
+grow_horizontal = 2
+alignment = 2

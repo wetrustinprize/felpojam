@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnqvtevch4iv1"]
+[gd_scene load_steps=24 format=3 uid="uid://cnqvtevch4iv1"]
 
 [ext_resource type="Texture2D" uid="uid://5yu366qneo0x" path="res://sprites/lugares/escritorio lobisome/escritorio_lobisomem.png" id="1_qovfr"]
 [ext_resource type="Texture2D" uid="uid://qp00ewne31wy" path="res://sprites/lugares/escritorio lobisome/caminha.png" id="2_ftecc"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://nucxisq217cv" path="res://sprites/entities/lobo/lobo0004.png" id="11_d8xyf"]
 [ext_resource type="Script" uid="uid://b7w7rp58n5quc" path="res://scripts/behaviours/lobisome.gd" id="12_ixsqy"]
 [ext_resource type="Texture2D" uid="uid://cintqlby0sxbf" path="res://sprites/entities/lobo/lobo0005.png" id="12_v886d"]
+[ext_resource type="Texture2D" uid="uid://cb4kyjv0q8rqr" path="res://sprites/items/gelatina.png" id="15_v886d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qovfr"]
 
@@ -223,3 +224,15 @@ polygon = PackedVector2Array(-545, -77, -200, -65, -237, 477, -592, 488)
 
 [node name="Player" parent="." instance=ExtResource("5_3eu6g")]
 position = Vector2(396, 228)
+
+[node name="Gelatina" type="StaticBody2D" parent="."]
+position = Vector2(32, 110)
+
+[node name="Gelatina" type="Sprite2D" parent="Gelatina"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_v886d")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gelatina"]
+polygon = PackedVector2Array(-101, -63, -120, 171, 120, 174, 113, -84)
+
+[node name="Behaviour" type="Node" parent="Gelatina"]

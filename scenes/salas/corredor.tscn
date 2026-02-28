@@ -936,7 +936,7 @@ polygon = PackedVector2Array(-2920.8, 603.39996, -2607.8, 348.39996, -1953.8, 35
 polygon = PackedVector2Array(-2985.8, 610.39996, -1429.8, 610.39996, -535.80005, 85.39996, 309.19995, 85.39996, 1618.2, 843.39996, 3777.2, 843.39996, 3775.2, 976.39996, -1424.8, 968.39996, -3036.8, 987.39996)
 
 [node name="Porta para Recepção" type="StaticBody2D" parent="."]
-position = Vector2(-285.19995, -0.39996338)
+position = Vector2(275, -321)
 collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"recepção","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)

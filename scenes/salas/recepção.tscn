@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d184pyvr6ajuj"]
+[gd_scene load_steps=31 format=3 uid="uid://d184pyvr6ajuj"]
 
 [ext_resource type="Texture2D" uid="uid://dua6lg2qeiufi" path="res://sprites/lugares/recepcao/recepcão.png" id="1_bmsso"]
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_8bxb3"]
@@ -17,6 +17,9 @@
 [ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="15_wb8yb"]
 [ext_resource type="Texture2D" uid="uid://ouges5yugcbv" path="res://sprites/ui/menu.png" id="16_wb8yb"]
 [ext_resource type="Script" uid="uid://dqd85hdfrdgvc" path="res://scripts/main_menu.gd" id="17_jdk5p"]
+[ext_resource type="Texture2D" uid="uid://b3ufr38msay78" path="res://sprites/items/seringa.png" id="18_veoes"]
+[ext_resource type="Script" uid="uid://dccgdsq5lbq35" path="res://scripts/item_interactable.gd" id="19_ke67v"]
+[ext_resource type="Resource" uid="uid://ds7y86fo8j8ds" path="res://items/vacina.tres" id="20_veoes"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nf214"]
 size = Vector2(1920, 1080)
@@ -279,6 +282,7 @@ metadata/_custom_type_script = "uid://cekyvphlwl7ci"
 position = Vector2(716, 349)
 
 [node name="Menu" type="Sprite2D" parent="."]
+visible = false
 z_index = 5
 position = Vector2(-423, 0)
 scale = Vector2(0.74184453, 0.74184453)
@@ -294,3 +298,23 @@ z_index = 999
 position = Vector2(-13.0000305, -6.499969)
 scale = Vector2(23.882813, 3291)
 texture = SubResource("GradientTexture1D_qqm17")
+
+[node name="Vacina" type="StaticBody2D" parent="."]
+position = Vector2(-416, 272)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("19_ke67v"),"item":ExtResource("20_veoes"),"depends_on_mission":"first_veterinario_talk","interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://dccgdsq5lbq35")
+
+
+[node name="Vacina" type="Sprite2D" parent="Vacina"]
+scale = Vector2(0.072695434, 0.072695434)
+texture = ExtResource("18_veoes")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vacina"]
+polygon = PackedVector2Array(-48, -1, -51, 54, 47, 0, 33, -49, -29, -43)
+
+[node name="ItemInteractable" type="Node" parent="Vacina"]
+script = ExtResource("19_ke67v")
+item = ExtResource("20_veoes")
+depends_on_mission = "first_veterinario_talk"
+metadata/_custom_type_script = "uid://dccgdsq5lbq35"
