@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://brg4lw08urt4s"]
+[gd_scene load_steps=42 format=3 uid="uid://brg4lw08urt4s"]
 
 [ext_resource type="Texture2D" uid="uid://bfpsskejktius" path="res://sprites/lugares/corredor.png" id="1_x1ug2"]
 [ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="2_0ejk3"]

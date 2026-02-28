@@ -19,7 +19,7 @@ func interact() -> void:
 	@warning_ignore("redundant_await")
 	await current_selected.interact(self)
 
-	if not current_selected.interactable or current_selected.is_queued_for_deletion():
+	if current_selected == null or not current_selected.interactable or current_selected.is_queued_for_deletion():
 		_reset_current()
 
 func recheck() -> void:
