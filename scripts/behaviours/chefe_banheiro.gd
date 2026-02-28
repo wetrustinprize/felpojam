@@ -34,8 +34,6 @@ func _ready() -> void:
 func interact(_who: Interactor) -> void:
 	Game.on_cutscene = true
 
-	Inventory.add_item(toilet_paper)
-
 	if not Missions.first_chefe_talk:
 		Missions.first_chefe_talk = true
 

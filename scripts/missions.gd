@@ -11,7 +11,7 @@ var first_comilona_talk: bool = false ## Has the player talked once with Comilon
 var comilona_ate_gelatina: bool = false ## Has the player gave Colimona the Gelatina?
 
 # Chefe
-var first_chefe_talk: bool = true ## Has the player talked once with the Chefe?
+var first_chefe_talk: bool = false ## Has the player talked once with the Chefe?
 
 # Vampero
 var first_vampero_talk: bool = false ## Has the player talked once with the Vampero?
