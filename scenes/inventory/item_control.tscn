@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dqkr687y1si64"]
 
 [ext_resource type="Texture2D" uid="uid://cjtctskipit88" path="res://sprites/ui/dialog/Foto.png" id="1_c5qhq"]
-[ext_resource type="Script" uid="uid://d2m3qvglbtu26" path="res://scripts/item_control.gd" id="1_ojjxk"]
+[ext_resource type="Script" path="res://scripts/item_control.gd" id="1_ojjxk"]
 [ext_resource type="Texture2D" uid="uid://b3ufr38msay78" path="res://sprites/items/seringa.png" id="2_tkcns"]
 [ext_resource type="FontFile" uid="uid://cifqf2sdkngnj" path="res://fonts/PermanentMarker-Regular.ttf" id="4_460q0"]
 [ext_resource type="Texture2D" uid="uid://bgqrfjoc2aapf" path="res://sprites/ui/dialog/Clip.png" id="5_460q0"]

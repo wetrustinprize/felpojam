@@ -11,7 +11,7 @@ var first_comilona_talk: bool = false ## Has the player talked once with Comilon
 var comilona_ate_gelatina: bool = false ## Has the player gave Colimona the Gelatina?
 
 # Chefe
-var first_chefe_talk: bool = false ## Has the player talked once with the Chefe?
+var first_chefe_talk: bool = true ## Has the player talked once with the Chefe?
 
 # Vampero
 var first_vampero_talk: bool = false ## Has the player talked once with the Vampero?
@@ -24,7 +24,4 @@ var veterinario_at_escritorio: bool = false ## Is the Veterinario at its escrito
 
 # Stickman Almoxarife
 var first_stickman_talk: bool = false ## Has the player talked once with the Stickman?
-var stickman_has_forms: bool = true ## Player has required forms for toilet paper
-var stickman_has_stamp: bool = true ## Player has required stamp for toilet paper
 var stickman_requested_tp: bool = false ## Player has requested toilet paper
-var stickman_has_tp: bool = false ## Player has requested toilet paper

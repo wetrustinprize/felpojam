@@ -3,6 +3,11 @@
 
 extends Interactable
 
+@onready var form_item = preload("res://items/papel_inventario.tres")
+@onready var stamp_item = preload("res://items/carimbo_inventario.tres")
+@onready var tp_item = preload("res://items/papel_higienico.tres")
+@onready var gelatina_item = preload("res://items/gelatina.tres")
+
 @onready var stickman_entity: DialogEntity = preload("res://entities/stickman.tres")
 
 @export var stickman_animation_player: AnimationPlayer
@@ -21,20 +26,24 @@ func interact(_who: Interactor) -> void:
 		await Dialog.show_dialog(stickman_entity, "Bom dia, em que posso ajudar?")
 		await Dialog.show_dialog(stickman_entity, "Portal? Universo? Ha? Atrás de mim? Não não é só o nosso almoxarifado mesmo.")
 
-	if Missions.first_chefe_talk and not Missions.stickman_has_tp:
+	if Missions.first_chefe_talk and not Inventory.has_item(tp_item):
 		if not Missions.stickman_requested_tp:
 			Missions.stickman_requested_tp = true
 			await Dialog.show_dialog(stickman_entity, "Você precisa de um papel higiênico?")
 			await Dialog.show_dialog(stickman_entity, "Ah claro, aonde está o formulário carimbado solicitando o papel higiênico?")
 
-		if not Missions.stickman_has_forms:
+		if not Inventory.has_item(form_item):
 			await Dialog.show_dialog(stickman_entity, "... Você ta sem o formulário?")
 			await Dialog.show_dialog(stickman_entity, "Sem problemas, você consegue pegar no segundo escritório com o Valdo.")
-		if not Missions.stickman_has_stamp:
-			await Dialog.show_dialog(stickman_entity, "... Você não tem o carimbo ainda?")
-			await Dialog.show_dialog(stickman_entity, "Sem problemas, você consegue pegar no primeiro escritório com o Marselo.")
+		if not Inventory.has_item(stamp_item):
+			if Inventory.has_item(gelatina_item):
+				await Dialog.show_dialog(stickman_entity, "[spd 0.05] [spd 1]... [spd 0.05] [spd 1]... [spd 0.05] [spd 1]...")
+				await Dialog.show_dialog(stickman_entity, "O que é suposto eu fazer com isso?")
+			else:
+				await Dialog.show_dialog(stickman_entity, "... Você não tem o carimbo ainda?")
+				await Dialog.show_dialog(stickman_entity, "Sem problemas, você consegue pegar no primeiro escritório com o Marselo.")
 
-		if Missions.stickman_has_forms and Missions.stickman_has_stamp:
+		if Inventory.has_item(form_item) and Inventory.has_item(stamp_item):
 			await Dialog.show_dialog(stickman_entity, "Perfeito! Me entrega aqui que eu carimbo pra voce!")
 			await Dialog.show_dialog(stickman_entity, "Um momento, já trago...")
 
@@ -43,8 +52,11 @@ func interact(_who: Interactor) -> void:
 			await get_tree().create_timer(2).timeout
 
 			await Dialog.show_dialog(stickman_entity, "Aqui está!")
+			Inventory.add_item(tp_item)
+			Inventory.remove_item(form_item)
+			Inventory.remove_item(stamp_item)
 			stickman_animation_player.play("RESET")
-			Missions.stickman_has_tp = true
+
 	else:
 		await Dialog.show_dialog(stickman_entity, "Se precisar de alguma coisa só falar que eu consigo te ajudar!")
 

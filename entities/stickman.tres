@@ -13,4 +13,5 @@ stream_0/stream = ExtResource("3_h6yi3")
 script = ExtResource("1_putrn")
 portrait = ExtResource("1_r0otc")
 sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_e72v8")])
+name = "Bob Palito"
 metadata/_custom_type_script = "uid://bw53n2gpy15rr"

@@ -1,7 +1,7 @@
 Esse jogo foi feito para a Felpojam pelos seguintes membros:
 
 - **Prize**, desenvolvedor
-- **Vrituu**, artista
+- **Vrituu**, desenvolvedor, artista
 - **LagatoJr**, artista
 
 ---
@@ -15,6 +15,10 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Input Prompts](https://kenney.nl/assets/input-prompts) - CC0 Kenney
 - [plenticons](https://foxssake.github.io/plenticons/) - CC0 foxssake
 - [Shaker](github.com/Eneskp3441/Shaker) - MIT Eneskp3441
+
+### Assets de Imagens
+
+- [Galáxia](https://stocksnap.io/photo/night-stars-C8HRBRHO9W) - License: Creative Commons 0
 
 ### Sons
 
