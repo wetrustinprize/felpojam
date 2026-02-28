@@ -1,3 +1,17 @@
+# Só falta o Carimbo!
+
+Só falta um Carimbo! é um jogo feito para a Felpojam 2026!
+
+Seu objetivo aqui é ajudar o Bapo a assinar sua papelada! Mas como toda empresa no mundo... esse cartório é um caos!
+
+O jogo pode ser jogado tanto na web quanto baixado para jogar em uma máquina rodando Linux ou Windows!
+
+Somente há suporte para teclado!
+
+- Aperte `E` para interagir;
+- Use `wasd` para andar;
+- `esc` para abrir o menu de configurações;
+
 Esse jogo foi feito para a Felpojam pelos seguintes membros:
 
 - **Prize**: desenvolvedor, sketches, ui/ux;
