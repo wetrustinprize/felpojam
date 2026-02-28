@@ -1,8 +1,8 @@
 Esse jogo foi feito para a Felpojam pelos seguintes membros:
 
-- **Prize**, desenvolvedor
-- **Vrituu**, desenvolvedor, artista
-- **LagatoJr**, artista
+- **Prize**: desenvolvedor, sketches, ui/ux;
+- **Vrituu**: desenvolvedor, sketches, lineart, coloring;
+- **LagatoJr**: lineart, coloring;
 
 ---
 

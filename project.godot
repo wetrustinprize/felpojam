@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Felpojam"
+config/name="Só falta o Carimbo!"
 run/main_scene="uid://d184pyvr6ajuj"
 config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.06666667, 0.06666667, 0.105882354, 1)

@@ -1,0 +1,55 @@
+name: Dispatch Build & Zip
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Linux
+        uses: manleydev/build-godot-action@v1.5.0
+        id: build_linux
+        with:
+          name: Só falta o Carimbo!
+          preset: Linux
+
+      - name: Build Windows
+        uses: manleydev/build-godot-action@v1.5.0
+        id: build_windows
+        with:
+          name: Só falta o Carimbo!
+          preset: Windows
+
+      - name: Prepare structure
+        run: |
+          mkdir -p dist/source
+          mkdir -p dist/compiled/linux
+          mkdir -p dist/compiled/windows
+          mkdir -p dist/disclaimer
+
+          # source code
+          rsync -av --exclude=dist --exclude=.git ./ dist/source/
+
+          # built outputs
+          mv ${{ steps.build_linux.outputs.build }} dist/compiled/linux/
+          mv ${{ steps.build_windows.outputs.build }} dist/compiled/windows/
+
+          # licenses + readme
+          cp -r licenses/* dist/disclaimer/
+          cp README.md dist/disclaimer/README.md
+          cp README.md dist/README.md
+
+      - name: Create zip
+        run: |
+          cd dist
+          zip -r ../so_falta_o_carimbo.zip .
+
+      - name: Upload build
+        uses: actions/upload-artifact@v4
+        with:
+          name: Só falta o Carimbo!
+          path: so_falta_o_carimbo.zip
