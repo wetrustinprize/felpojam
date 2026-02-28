@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cnqvtevch4iv1"]
+[gd_scene load_steps=43 format=3 uid="uid://cnqvtevch4iv1"]
 
 [ext_resource type="Texture2D" uid="uid://5yu366qneo0x" path="res://sprites/lugares/escritorio lobisome/escritorio_lobisomem.png" id="1_qovfr"]
 [ext_resource type="Texture2D" uid="uid://qp00ewne31wy" path="res://sprites/lugares/escritorio lobisome/caminha.png" id="2_ftecc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://b7w7rp58n5quc" path="res://scripts/behaviours/lobisome.gd" id="12_ixsqy"]
 [ext_resource type="Texture2D" uid="uid://qnou61juyxel" path="res://sprites/entities/lobo/lobo0006.png" id="12_n4c76"]
 [ext_resource type="Texture2D" uid="uid://cintqlby0sxbf" path="res://sprites/entities/lobo/lobo0005.png" id="12_v886d"]
+[ext_resource type="AudioStream" uid="uid://gxei14ldwaqc" path="res://sounds/188384__wubitog__slime-attack-or-movement.mp3" id="14_mjmyt"]
 [ext_resource type="Texture2D" uid="uid://cb4kyjv0q8rqr" path="res://sprites/items/gelatina.png" id="15_v886d"]
 [ext_resource type="Texture2D" uid="uid://byeu056g44o22" path="res://sprites/entities/veterinario/vet0000.png" id="17_ktyuh"]
 [ext_resource type="Script" uid="uid://dccgdsq5lbq35" path="res://scripts/item_interactable.gd" id="17_o2abk"]
@@ -45,6 +46,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("7_0uofx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_yafpy"]
@@ -98,6 +111,45 @@ tracks/1/keys = {
 "method": &"play"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gelatina:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_vwx4u"]
+resource_name = "sleep"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_n4c76")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_wh4na"]
 resource_name = "talking"
@@ -114,6 +166,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("9_lbuwy"), ExtResource("10_ixsqy"), ExtResource("9_lbuwy"), ExtResource("10_ixsqy")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_n4c76"]
@@ -132,20 +196,17 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("11_d8xyf"), ExtResource("12_v886d"), ExtResource("11_d8xyf"), ExtResource("12_v886d")]
 }
-
-[sub_resource type="Animation" id="Animation_vwx4u"]
-resource_name = "sleep"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gelatina:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("12_n4c76")]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lbuwy"]
@@ -273,9 +334,6 @@ position = Vector2(394, 316)
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(564, 287, 679, 285, 918, 427, 195, 476, 238, 568, 1060, 561, 1069, -567, 650, -622, -641, -629, -994, -601, -986, 569, -369, 544, -247, 418, -247, 289, -83, 287, -78, 357, -35, 359, 78, 359, 114, 360, 156, 289)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-108, 510, -78, 455, -5, 440, 59, 457, 77, 511, 24, 521, -49, 521)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 540)
 shape = SubResource("WorldBoundaryShape2D_qovfr")
@@ -315,7 +373,8 @@ collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("12_ixsqy"),"lobisome_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
 &"": SubResource("AnimationLibrary_lbuwy")
 },"autoplay":"idle","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
-,"lobisome_entity":Resource("res://entities/lobisome.tres"),"bapo_entity":Resource("res://entities/bapo.tres"),"pointin":false,"interact_verb":"interagir","interactable":true)
+,"slime_sfx":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("14_mjmyt"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"SFX","playback_type":0,"script":null)
+,"lobisome_entity":Resource("res://entities/lobisome.tres"),"pointin":false,"interact_verb":"interagir","interactable":true)
 
 
 [node name="Lobisome" type="Sprite2D" parent="Lobisome"]
@@ -333,9 +392,20 @@ autoplay = "idle"
 stream = SubResource("AudioStreamRandomizer_c40eh")
 bus = &"SFX"
 
-[node name="Lobisome Behaviour" type="Node" parent="Lobisome" node_paths=PackedStringArray("lobisome_animation")]
+[node name="SlimeSFX" type="AudioStreamPlayer" parent="Lobisome/Lobisome"]
+stream = ExtResource("14_mjmyt")
+bus = &"SFX"
+
+[node name="Gelatina" type="Sprite2D" parent="Lobisome/Lobisome"]
+visible = false
+position = Vector2(642, -316)
+scale = Vector2(0.90331745, 0.90331745)
+texture = ExtResource("15_v886d")
+
+[node name="Lobisome Behaviour" type="Node" parent="Lobisome" node_paths=PackedStringArray("lobisome_animation", "slime_sfx")]
 script = ExtResource("12_ixsqy")
 lobisome_animation = NodePath("../Lobisome/AnimationPlayer")
+slime_sfx = NodePath("../Lobisome/SlimeSFX")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Lobisome"]
 polygon = PackedVector2Array(-545, -77, -200, -65, -237, 477, -592, 488)
@@ -344,10 +414,10 @@ polygon = PackedVector2Array(-545, -77, -200, -65, -237, 477, -592, 488)
 position = Vector2(396, 228)
 
 [node name="Gelatina" type="StaticBody2D" parent="."]
-position = Vector2(32, 110)
+position = Vector2(-9, 476)
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("17_o2abk"),"item":ExtResource("18_t046c"),"depends_on_mission":"veterinario_at_escritorio","interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://dccgdsq5lbq35")
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("17_o2abk"),"item":ExtResource("18_t046c"),"depends_on_mission":Array[String](["stickman_requested_tp"]),"depends_on_mission_to_show":Array[String](["veterinario_at_escritorio"]),"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://dccgdsq5lbq35")
 
 
 [node name="Gelatina" type="Sprite2D" parent="Gelatina"]
@@ -355,17 +425,23 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_v886d")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gelatina"]
-polygon = PackedVector2Array(-101, -63, -120, 171, 120, 174, 113, -84)
+polygon = PackedVector2Array(-101, -63, -113, 52, 118, 56, 113, -84)
 
 [node name="ItemInteractable" type="Node" parent="Gelatina"]
 script = ExtResource("17_o2abk")
 item = ExtResource("18_t046c")
-depends_on_mission = "veterinario_at_escritorio"
+depends_on_mission = Array[String](["stickman_requested_tp"])
+depends_on_mission_to_show = Array[String](["veterinario_at_escritorio"])
 metadata/_custom_type_script = "uid://dccgdsq5lbq35"
 
 [node name="Veterinario" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("26_wykry"),"veterinario_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
+&"": SubResource("AnimationLibrary_x1ug2")
+},"autoplay":"","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+,"veterinario_entity":Resource("res://entities/veterinario.tres"),"anim_state":0,"interact_verb":"interagir","interactable":true)
+
 
 [node name="Veterinario" type="Sprite2D" parent="Veterinario"]
 z_index = -1

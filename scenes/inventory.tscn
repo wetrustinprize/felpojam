@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceqfhdxbovwvd"]
+[gd_scene load_steps=5 format=3 uid="uid://ceqfhdxbovwvd"]
 
 [ext_resource type="Script" uid="uid://bl4sfci34imeg" path="res://scripts/inventory.gd" id="1_qw0r6"]
 [ext_resource type="PackedScene" uid="uid://dqkr687y1si64" path="res://scenes/inventory/item_control.tscn" id="2_hj2ta"]
+[ext_resource type="AudioStream" uid="uid://ds4j8bvi3x0ff" path="res://sounds/202575__sergeeo__xylophone-for-cartoon-3.wav" id="3_53g1v"]
 [ext_resource type="AudioStream" uid="uid://y1bdydw3qg07" path="res://sounds/202581__sergeeo__xylophone-for-cartoon-4.wav" id="3_ty45s"]
 
 [node name="Inventory" type="CanvasLayer"]
@@ -17,6 +18,10 @@ offset_bottom = 193.0
 grow_horizontal = 2
 alignment = 2
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GetItemSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_53g1v")
+bus = &"SFX"
+
+[node name="UseItemSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ty45s")
 bus = &"SFX"

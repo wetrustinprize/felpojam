@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxkhf1i8yqoc8"]
+[gd_scene load_steps=33 format=3 uid="uid://bxkhf1i8yqoc8"]
 
 [ext_resource type="Texture2D" uid="uid://b55lqbb1k2pal" path="res://sprites/lugares/copa/COPA_2X.png" id="1_yivnc"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="2_5lln6"]
@@ -23,6 +23,7 @@
 [ext_resource type="AudioStream" uid="uid://cuimpe2flm536" path="res://sounds/down.wav" id="15_mo1be"]
 [ext_resource type="AudioStream" uid="uid://dqg8mr1h8h5t6" path="res://sounds/up.wav" id="15_yar3p"]
 [ext_resource type="AudioStream" uid="uid://c4f7wacjmsoer" path="res://sounds/608638__theplax__crunch-1.wav" id="20_stbkt"]
+[ext_resource type="Script" uid="uid://bmcn873d8cf2x" path="res://scripts/behaviours/comilona.gd" id="23_2lywo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gt32m"]
 size = Vector2(3150, 1048.445)
@@ -138,7 +139,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_sxktq"]
 resource_name = "eat"
-length = 3.2
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -146,7 +147,7 @@ tracks/0/path = NodePath(".:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 2.0333333, 2.1, 2.1666667, 2.3, 2.4351678, 2.568501, 2.6870818, 2.820415, 2.9436607, 3.076994),
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 2.7366664, 2.8033333, 2.9366665, 3.0718343, 3.2051675, 3.3237484, 3.4570816, 3.5803273, 3.7136605),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("8_n38ie"), ExtResource("9_mo1be"), ExtResource("10_j5xvn"), ExtResource("11_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7"), ExtResource("12_2lywo"), ExtResource("13_ufdy7")]
@@ -158,7 +159,7 @@ tracks/1/path = NodePath("Gelatina:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.0933332),
+"times": PackedFloat32Array(0, 2.7299998),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -170,7 +171,7 @@ tracks/2/path = NodePath("Gelatina:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.33333334, 0.8, 1.3666667, 2.0966668),
+"times": PackedFloat32Array(0.33333334, 0.8, 2.003333, 2.7333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-28.75, -48.75), Vector2(-28.75, -1041.25), Vector2(96.25, -1041.2501), Vector2(96.25, -103.75)]
@@ -196,7 +197,7 @@ tracks/4/path = NodePath("DownSFX")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.3666667),
+"times": PackedFloat32Array(2.003333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
@@ -210,7 +211,7 @@ tracks/5/path = NodePath("CrunchSFX")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.1666667),
+"times": PackedFloat32Array(2.8033333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
@@ -350,7 +351,9 @@ texture = ExtResource("13_yar3p")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Comilona"]
 polygon = PackedVector2Array(1025, 363, 1131, 431, 1316, 402, 1420, 224, 1428, 28, 1284, 5, 1134, 104, 1049, 290)
 
-[node name="Behaviour" type="Node" parent="Comilona"]
+[node name="Behaviour" type="Node" parent="Comilona" node_paths=PackedStringArray("comilona_animation")]
+script = ExtResource("23_2lywo")
+comilona_animation = NodePath("../Comilona/AnimationPlayer")
 
 [node name="Player" parent="." instance=ExtResource("5_mktwm")]
 position = Vector2(-1136, 360)

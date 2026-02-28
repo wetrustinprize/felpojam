@@ -4,9 +4,9 @@
 extends Interactable
 
 @export var lobisome_animation: AnimationPlayer
+@export var slime_sfx: AudioStreamPlayer
 
 @onready var lobisome_entity: DialogEntity = preload("res://entities/lobisome.tres")
-@onready var bapo_entity: DialogEntity = preload("res://entities/bapo.tres")
 
 var pointin: bool = false
 
@@ -36,20 +36,25 @@ func interact(_who: Interactor) -> void:
 	if Missions.lobisome_asleep:
 		pass
 	elif Missions.first_lobisomen_talk:
-		await Dialog.show_dialog(lobisome_entity, "Vá Embora Pequenino. Você Nem Deveria Estar Aqui.")
+		await Dialog.show_dialog(lobisome_entity, "Vá Embora Pequenino, Me Deixe Em Paz.")
 	else:
-		Missions.first_lobisomen_talk = true
-		await Dialog.show_dialog(lobisome_entity, "O Que Você Quer?")
-		await Dialog.show_dialog(bapo_entity, "Oi! Aquele carimbo ali na sua mesa, eu posso usa-lo?")
+		await Dialog.show_dialog(lobisome_entity, "O Que Você Quer? Não Está Vendo Que Eu Estou Ocupado?")
 
-		pointin = true
-		await Dialog.show_dialog(lobisome_entity, "Não. Como Você Pode Ver Ela Está Em Volta De Uma Gelatina.")
-		pointin = false
+		if Missions.stickman_requested_tp:
+			Missions.first_lobisomen_talk = true
 
-		await Dialog.show_dialog(bapo_entity, "Ah, mas isso não é um problema, eu posso tirar a gelatina em volta dela!")
-		await Dialog.show_dialog(lobisome_entity, "Não. Você Vai Sujar Nosso Escritório. Aliás Quem É Você?")
-		await Dialog.show_dialog(bapo_entity, "Eu vim aqui oficializar um documento, mas a recepcionista não tinha o carimbo, então eu vi maqui pegar...")
-		await Dialog.show_dialog(lobisome_entity, "Então Você Nem Deveria Estar Aqui. Vá Embora.")
+			await Dialog.show_dialog(lobisome_entity, "Oi? Precisa Do Meu Carimbo? Bom Eu Adoraria Te Emprestar Ele Mas...")
+			pointin = true
+
+			slime_sfx.play()
+			await Dialog.show_dialog(lobisome_entity, "Algum Engraçadinho Achou Que Seria Legal Botar Ele Dentro De Uma Gelatina.")
+			await Dialog.show_dialog(lobisome_entity, "Agora Ele Ta Meio Que Inutilizável.")
+
+			pointin = false
+			await Dialog.show_dialog(lobisome_entity, "O Quê? Não, Você Não Pode Pegar Ele, Vai Fazer Uma Bagunça No Escritório.")
+			await Dialog.show_dialog(lobisome_entity, "E Também, Isso Seria Desperdício De Comida... Eu Vou Levar A Gelatina Para Meu Filho Comer.")
+			await Dialog.show_dialog(lobisome_entity, "Então, Amanhã de Manhã Cedo Passe Aqui Novamente Que Eu Te Empresto O Carimbo.")
+			await Dialog.show_dialog(lobisome_entity, "Agora Me Deixa Em Paz.")
 
 	Game.on_cutscene = false
 

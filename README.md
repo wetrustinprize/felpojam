@@ -30,6 +30,8 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Xylophone for cartoon (4) by sergeeo](https://freesound.org/s/202581/) - License: Attribution 3.0
 - [Office ambience.wav by Chelly01](https://freesound.org/s/541117/) - License: Creative Commons 0
 - [crunch 1.wav by theplax](https://freesound.org/s/608638/) - License: Attribution 4.0
+- [Slime attack or movement by wubitog](https://freesound.org/s/188384/) - License: Creative Commons 0
+- [Xylophone for cartoon (3) by sergeeo](https://freesound.org/s/202575/) -- License: Attribution 3.0
 
 ---
 

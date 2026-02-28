@@ -5,21 +5,44 @@ extends Interactable
 class_name ItemInteractable
 
 @export var item: Item
-@export var depends_on_mission: String
+@export var depends_on_mission: Array[String]
+@export var depends_on_mission_to_show: Array[String]
 
 func _ready() -> void:
 	super._ready()
 
-	if Inventory.has_item(item) or Inventory.had_item(item):
-		queue_free()
-		return
-
-	if not depends_on_mission.is_empty():
-		var depends = Missions.get(depends_on_mission)
-		interactable = depends
-
 	if Engine.is_editor_hint():
 		return
+
+	if Inventory.has_item(item) or Inventory.had_item(item):
+		get_parent().queue_free()
+		return
+
+	if not depends_on_mission_to_show.is_empty():
+		var depends = true
+
+		for depend in depends_on_mission_to_show:
+			var ok = Missions.get(depend)
+
+			if not ok:
+				depends = false
+				break
+
+		if not depends:
+			get_parent().queue_free()
+			return
+
+	if not depends_on_mission.is_empty():
+		var depends = true
+
+		for depend in depends_on_mission:
+			var ok = Missions.get(depend)
+
+			if not ok:
+				depends = false
+				break
+
+		interactable = depends
 
 	interact_verb = "pegar"
 

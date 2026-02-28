@@ -6,14 +6,14 @@ var items: Array[Item] = []
 var old_items: Array[Item] = []
 
 @onready var horizontal: HBoxContainer = $HBoxContainer
-@onready var sfx: AudioStreamPlayer = $AudioStreamPlayer
+@onready var get_item_sfx: AudioStreamPlayer = $GetItemSFX
+@onready var use_item_sfx: AudioStreamPlayer = $UseItemSFX
 
 func add_item(item: Item):
 	if item in items:
 		printerr("item %s is already in the inventory" % item.name)
 		return
-
-	sfx.play()
+	get_item_sfx.play()
 	items.append(item)
 	old_items.append(item)
 	_add_item_control(item)
@@ -28,6 +28,7 @@ func remove_item(item: Item):
 	if not item in items:
 		printerr("item %s is not in the inventory" % item.name)
 
+	use_item_sfx.play()
 	items.erase(item)
 	_remove_item_control(item)
 

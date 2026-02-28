@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="DialogEntity" load_steps=5 format=3 uid="uid://dd58y7m2pd8v2"]
+
+[ext_resource type="Texture2D" uid="uid://c48wmnmuai06d" path="res://sprites/entities/matunina/tina_portrait.png" id="1_x2usv"]
+[ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="2_haigk"]
+[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_cn0uw"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlmk7"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_cn0uw")
+
+[resource]
+script = ExtResource("2_haigk")
+portrait = ExtResource("1_x2usv")
+sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_nlmk7")])
+name = "Tina"
+metadata/_custom_type_script = "uid://bw53n2gpy15rr"
