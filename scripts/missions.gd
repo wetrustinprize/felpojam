@@ -19,7 +19,9 @@ var vampero_at_escritorio: bool = false ## Is the Vampero at its escritorio?
 
 # Veterinario
 var first_veterinario_talk: bool = false ## Has the player talked once with the Veterinario?
+var veterinario_at_corredor: bool = false ## Is the Veterinario at its corridor?
 var veterinario_at_escritorio: bool = false ## Is the Veterinario at its escritorio?
+var veterinario_lost_injection: bool = false ## Vetrinario said he lost the injection
 
 
 # Stickman Almoxarife

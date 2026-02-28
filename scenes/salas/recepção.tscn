@@ -185,7 +185,7 @@ metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_o
 )
 ,"spawnpoint_name":"RecepcaoSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("15_oa44q"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
 ,"packed_scene":null,"interact_verb":"interagir","interactable":false,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
-,"recepcionista_entity":Resource("res://entities/recepcionista.tres"),"bapo_entity":Resource("res://entities/bapo.tres"),"shake_preset":Resource("res://shakes/sleep_slam_shake.tres"),"interact_verb":"interagir","interactable":true)
+,"recepcionista_entity":Resource("res://entities/recepcionista.tres"),"shake_preset":Resource("res://shakes/sleep_slam_shake.tres"),"interact_verb":"interagir","interactable":true)
 
 
 [node name="Recepcionista" type="Sprite2D" parent="Recepcionista"]
@@ -303,7 +303,7 @@ texture = SubResource("GradientTexture1D_qqm17")
 position = Vector2(-416, 272)
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("19_ke67v"),"item":ExtResource("20_veoes"),"depends_on_mission":Array[String](["first_veterinario_talk"]),"depends_on_mission_to_show":Array[String]([]),"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://dccgdsq5lbq35")
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("19_ke67v"),"item":ExtResource("20_veoes"),"depends_on_mission":Array[String]([]),"depends_on_mission_to_show":Array[String](["veterinario_lost_injection"]),"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://dccgdsq5lbq35")
 
 
 [node name="Vacina" type="Sprite2D" parent="Vacina"]
@@ -316,5 +316,5 @@ polygon = PackedVector2Array(-48, -1, -51, 54, 47, 0, 33, -49, -29, -43)
 [node name="ItemInteractable" type="Node" parent="Vacina"]
 script = ExtResource("19_ke67v")
 item = ExtResource("20_veoes")
-depends_on_mission = Array[String](["first_veterinario_talk"])
+depends_on_mission_to_show = Array[String](["veterinario_lost_injection"])
 metadata/_custom_type_script = "uid://dccgdsq5lbq35"
