@@ -34,6 +34,14 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Xylophone for cartoon (3) by sergeeo](https://freesound.org/s/202575/) -- License: Attribution 3.0
 - [Creaking Wood 4 Steps by Rudmer_Rotteveel](https://freesound.org/s/502507/) -- License: Creative Commons 0
 
+- [Woosh Fleuret Escrime B.WAV by toyoto](https://freesound.org/s/533516/) - License: Attribution 4.0
+- [Woosh_1 by gulfstreamav](https://freesound.org/s/842510/) - License: Creative Commons 0
+- [Cyber Punch 02 by JohnLoser](https://freesound.org/s/573377/) - License: Attribution 4.0
+- [Custom_punch_05_2022.mp3 by Artninja]( https://freesound.org/s/700205/) - License: Attribution 4.0
+- [Woosh_1 by gulfstreamav](https://freesound.org/s/842510/) - License: Creative Commons 0
+- [Howl_Echo.wav by taure](https://freesound.org/s/380156/) - License: Creative Commons 0
+- [Longbow Release 2.wav by saturdaysoundguy](https://freesound.org/s/394179/) - License: Creative Commons 0
+- [Arrow_woosh__twang_01.wav by strangely_gnarled](https://freesound.org/s/72208/)-- License: Attribution 4.0
 ---
 
 Agradecimentos especiais:
