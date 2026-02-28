@@ -1,10 +1,93 @@
-[gd_scene load_steps=7 format=3 uid="uid://brg4lw08urt4s"]
+[gd_scene load_steps=15 format=3 uid="uid://brg4lw08urt4s"]
 
 [ext_resource type="Texture2D" uid="uid://b5ghkbyrbsset" path="res://sprites/placeholders/mapa_placeholder.png" id="1_ow41y"]
+[ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="2_0ejk3"]
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_pr3s7"]
+[ext_resource type="Texture2D" uid="uid://de83i0okdb3gu" path="res://sprites/entities/vampero/vampero0001.png" id="3_juh7i"]
+[ext_resource type="Script" uid="uid://cq080sokltcjp" path="res://scripts/behaviours/vampero_corredor.gd" id="3_n3snw"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="3_o111h"]
+[ext_resource type="Texture2D" uid="uid://bwatvrygpxb3d" path="res://sprites/entities/vampero/vampero0002.png" id="4_w8lht"]
 [ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="5_hrh1n"]
 [ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="6_juh7i"]
+
+[sub_resource type="Animation" id="Animation_w8lht"]
+resource_name = "talking"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333333, 0.25, 0.37, 0.48666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_0ejk3"), ExtResource("3_juh7i"), ExtResource("2_0ejk3"), ExtResource("3_juh7i"), ExtResource("2_0ejk3")]
+}
+
+[sub_resource type="Animation" id="Animation_q11eu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_0ejk3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i0oml"]
+resource_name = "walking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_w8lht")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.46666667, 1),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0oml"]
+_data = {
+&"RESET": SubResource("Animation_q11eu"),
+&"talking": SubResource("Animation_w8lht"),
+&"walking": SubResource("Animation_i0oml")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2slm"]
 size = Vector2(7560, 1920)
@@ -14,6 +97,36 @@ size = Vector2(7560, 1920)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_ow41y")
+
+[node name="Vampero" type="StaticBody2D" parent="."]
+position = Vector2(-892, -344)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Vampero" type="Sprite2D" parent="Vampero"]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_0ejk3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Vampero/Vampero"]
+libraries = {
+&"": SubResource("AnimationLibrary_i0oml")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vampero"]
+polygon = PackedVector2Array(-72, 199, 73, 199, 75, -143, -14, -221, -88, -147)
+
+[node name="Behaviour" type="Node" parent="Vampero" node_paths=PackedStringArray("vampero_animation", "vampero_node", "vampero_end_position", "door_sfx")]
+script = ExtResource("3_n3snw")
+vampero_animation = NodePath("../Vampero/AnimationPlayer")
+vampero_node = NodePath("..")
+vampero_end_position = NodePath("../Marker2D")
+door_sfx = NodePath("../DoorSFX")
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Vampero"]
+stream = ExtResource("6_juh7i")
+
+[node name="Marker2D" type="Marker2D" parent="Vampero"]
+position = Vector2(-305, 141)
 
 [node name="Player" parent="." instance=ExtResource("2_pr3s7")]
 position = Vector2(-2909, 692)
@@ -25,6 +138,15 @@ metadata/_custom_type_script = "uid://1pbq2mr642g4"
 
 [node name="RecepcaoSpawnpoint" type="Marker2D" parent="."]
 position = Vector2(-2914, 739)
+
+[node name="LobiSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(-1606, 214)
+
+[node name="BanheiroSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(735, -75)
+
+[node name="CopaSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(-418, -210)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -39,7 +161,7 @@ collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"recepção","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
 ,"spawnpoint_name":"CorredorSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
-,"packed_scene":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+,"packed_scene":Resource("res://scenes/salas/recepção.tscn"),"interact_verb":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
 
 
 [node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Recepção"]
@@ -51,6 +173,75 @@ polygon = PackedVector2Array(-3001, 670, -3003, 227, -2760, 229, -2759, 672)
 [node name="DoorInteractable" type="Node" parent="Porta para Recepção" node_paths=PackedStringArray("current_scene", "audio")]
 script = ExtResource("5_hrh1n")
 room_scene = "recepção"
+current_scene = NodePath("../..")
+spawnpoint_name = "CorredorSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="Porta para Lobisomen" type="StaticBody2D" parent="."]
+position = Vector2(1183, -527)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"escritorio_lobi","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"CorredorSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"packed_scene":Resource("res://scenes/salas/escritorio_lobi.tscn"),"interact_verb":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Lobisomen"]
+stream = ExtResource("6_juh7i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Lobisomen"]
+polygon = PackedVector2Array(-2950, 303, -2759, 181, -2763, 667, -2926, 759)
+
+[node name="DoorInteractable" type="Node" parent="Porta para Lobisomen" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("5_hrh1n")
+room_scene = "escritorio_lobi"
+current_scene = NodePath("../..")
+spawnpoint_name = "CorredorSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="Porta para Banheiro" type="StaticBody2D" parent="."]
+position = Vector2(810, -153)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"banheiro","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"CorredorSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"packed_scene":Resource("res://scenes/salas/banheiro.tscn"),"interact_verb":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Banheiro"]
+stream = ExtResource("6_juh7i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Banheiro"]
+polygon = PackedVector2Array(-69, -28, -65, -504, 111, -387, 92, 70)
+
+[node name="DoorInteractable" type="Node" parent="Porta para Banheiro" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("5_hrh1n")
+room_scene = "banheiro"
+current_scene = NodePath("../..")
+spawnpoint_name = "CorredorSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="Porta para Copa" type="StaticBody2D" parent="."]
+position = Vector2(-413, -259)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"copa","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"CorredorSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"packed_scene":Resource("res://scenes/salas/copa.tscn"),"interact_verb":null,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Copa"]
+stream = ExtResource("6_juh7i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Copa"]
+polygon = PackedVector2Array(-157, -4, 146, -4, 140, -463, -148, -462)
+
+[node name="DoorInteractable" type="Node" parent="Porta para Copa" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("5_hrh1n")
+room_scene = "copa"
 current_scene = NodePath("../..")
 spawnpoint_name = "CorredorSpawnpoint"
 audio = NodePath("../DoorSFX")

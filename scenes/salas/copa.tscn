@@ -1,0 +1,182 @@
+[gd_scene load_steps=15 format=3 uid="uid://bxkhf1i8yqoc8"]
+
+[ext_resource type="Texture2D" uid="uid://b55lqbb1k2pal" path="res://sprites/lugares/copa/COPA_2X.png" id="1_yivnc"]
+[ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="2_5lln6"]
+[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="3_gt32m"]
+[ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="4_mktwm"]
+[ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="5_mktwm"]
+[ext_resource type="Texture2D" uid="uid://6ki00xqd4k23" path="res://sprites/entities/matunina/matutina0002.png" id="6_f2edd"]
+[ext_resource type="Texture2D" uid="uid://k5urnsou81cq" path="res://sprites/entities/matunina/matutina0001.png" id="6_tqm8l"]
+[ext_resource type="Texture2D" uid="uid://ccfgrb8ocvxrc" path="res://sprites/entities/matunina/matutina0003.png" id="7_wd2i7"]
+[ext_resource type="AudioStream" uid="uid://b7v3pcos2gp27" path="res://sounds/764661__getwecked__mechanical-keyboard-click.mp3" id="8_wd2i7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gt32m"]
+size = Vector2(3150, 1048.445)
+
+[sub_resource type="Animation" id="Animation_tyhxi"]
+resource_name = "idle"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.25, 0.39, 0.50666666, 0.63, 0.74666667, 1.2333333, 1.5333333, 2.02, 2.51, 2.88, 3.0133336, 3.13, 3.8, 3.9166667, 4.04, 4.1566668),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("7_wd2i7"), ExtResource("6_tqm8l"), ExtResource("7_wd2i7"), ExtResource("6_tqm8l"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l"), ExtResource("6_f2edd"), ExtResource("6_tqm8l")]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ClickSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.14, 0.27, 0.4, 0.51, 0.64, 0.75, 2.89, 3.02, 3.16, 3.82, 3.92, 4.04, 4.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g6jgo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_tqm8l")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3kusf"]
+_data = {
+&"RESET": SubResource("Animation_g6jgo"),
+&"idle": SubResource("Animation_tyhxi")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tyhxi"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_wd2i7")
+
+[node name="Copa" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yivnc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-1378, 538, -1062, 319, -1059, 345, -578, 338, -562, 329, -300, 333, 181, 336, 237, 286, 272, 287, 273, 331, 385, 338, 420, 352, 474, 357, 533, 351, 561, 336, 635, 339, 709, 331, 708, 288, 738, 287, 768, 336, 864, 339, 867, 286, 894, 287, 925, 330, 1305, 328, 1610, 519, 1599, -575, -1604, -549, -1606, 548, -1420, 563)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1124, 427, 1094, 413, 1096, 389, 1070, 380, 1055, 360, 1044, 320, 1135, 148, 1366, 30, 1475, 153, 1427, 323, 1389, 380, 1323, 411, 1205, 421)
+
+[node name="LevelInfo" type="Node2D" parent="."]
+script = ExtResource("2_5lln6")
+camera_shape = SubResource("RectangleShape2D_gt32m")
+metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="Porta pro Corredor" type="StaticBody2D" parent="."]
+position = Vector2(-397, 0)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_gt32m"),"room_scene":"corredor","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"CopaSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("4_mktwm"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorInteractable" type="Node" parent="Porta pro Corredor" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("3_gt32m")
+room_scene = "corredor"
+current_scene = NodePath("../..")
+spawnpoint_name = "CopaSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta pro Corredor"]
+stream = ExtResource("4_mktwm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta pro Corredor"]
+polygon = PackedVector2Array(-889, 481, -736, 377, -735, -184, -905, -209)
+
+[node name="CorredorSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(-1135, 378)
+
+[node name="Comilona" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Comilona" type="Sprite2D" parent="Comilona"]
+position = Vector2(1226, 229)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("6_tqm8l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Comilona/Comilona"]
+libraries = {
+&"": SubResource("AnimationLibrary_3kusf")
+}
+autoplay = "idle"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="Comilona/Comilona"]
+stream = SubResource("AudioStreamRandomizer_tyhxi")
+bus = &"SFX"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Comilona"]
+polygon = PackedVector2Array(1025, 363, 1131, 431, 1316, 402, 1420, 224, 1428, 28, 1284, 5, 1134, 104, 1049, 290)
+
+[node name="Behaviour" type="Node" parent="Comilona"]
+
+[node name="Player" parent="." instance=ExtResource("5_mktwm")]
+position = Vector2(-1136, 360)

@@ -6,6 +6,7 @@ extends Node
 class_name Interactable
 
 @abstract func interact(who: Interactor) -> void
+var interact_verb: String = "interagir"
 
 func _ready() -> void:
 	var parent = get_parent()

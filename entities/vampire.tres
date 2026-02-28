@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="DialogEntity" load_steps=5 format=3 uid="uid://drgd17ut4wowh"]
 
-[ext_resource type="Texture2D" uid="uid://cgyyfoes6gi8t" path="res://sprites/placeholders/vampero_close.png" id="1_4ukw2"]
+[ext_resource type="Texture2D" uid="uid://betsu58g3aj1y" path="res://sprites/entities/vampero/vampero_portrait.png" id="1_4ukw2"]
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_v7jrp"]
 [ext_resource type="AudioStream" uid="uid://ba2pm7chrknlf" path="res://sounds/voices/vampero/vampero_voice1.wav" id="3_4ukw2"]
 

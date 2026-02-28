@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="DialogEntity" load_steps=5 format=3 uid="uid://dvtbnn24e4gsu"]
+
+[ext_resource type="Texture2D" uid="uid://3l7egawopkwc" path="res://sprites/entities/lobo/lobo_portrait.png" id="1_llujh"]
+[ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_qovsq"]
+[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_tk6cm"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ofyrt"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("3_tk6cm")
+
+[resource]
+script = ExtResource("1_qovsq")
+portrait = ExtResource("1_llujh")
+sounds = Array[AudioStream]([SubResource("AudioStreamRandomizer_ofyrt")])
+metadata/_custom_type_script = "uid://bw53n2gpy15rr"

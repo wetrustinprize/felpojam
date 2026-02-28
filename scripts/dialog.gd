@@ -18,7 +18,7 @@ func _ready() -> void:
 	)
 
 func _input(event: InputEvent) -> void:
-	if not visible:
+	if not visible or not showing_dialog:
 		return
 
 	if event.is_action_pressed("interact"):
@@ -35,7 +35,7 @@ func show_dialog(who: DialogEntity, text: String) -> void:
 	portrait.texture = who.portrait
 	entity_name.text = who.name
 	dialogue.sound_files = who.sounds
-	dialogue.messages = [text]
+	dialogue.messages = ["[spd 1.0]" + text]
 	showing_dialog = true
 	dialogue.start_dialogue()
 	who.started_talking.emit()

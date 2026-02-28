@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://dc6riu1q8v6a8"]
+
+[ext_resource type="Texture2D" uid="uid://4vxljirk7y6d" path="res://sprites/lugares/banheiro/banheiro.png" id="1_5lccf"]
+[ext_resource type="Texture2D" uid="uid://b1k2ecewqum6e" path="res://sprites/lugares/banheiro/overlay_ocupado.png" id="2_t7dle"]
+[ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="3_4qx35"]
+[ext_resource type="AudioStream" uid="uid://cfmubb8ppnog5" path="res://sounds/57167__juskiddink__collywobbles.wav" id="3_o7qdy"]
+[ext_resource type="Script" uid="uid://bc34jv1eeg3r6" path="res://scripts/behaviours/chefe_banheiro.gd" id="4_s7g6y"]
+[ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="4_t7dle"]
+[ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="5_o7qdy"]
+[ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="6_t7dle"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5lccf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7qdy"]
+size = Vector2(1910, 1070)
+
+[node name="Banheiro" type="Node2D"]
+
+[node name="Banheiro" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_5lccf")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="Chefe no Banheiro" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-628, 74)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_t7dle")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody2D2/Chefe no Banheiro"]
+stream = ExtResource("3_o7qdy")
+autoplay = true
+bus = &"SFX"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(-487, 519, -356, 352, -377, -197, -577, -182)
+
+[node name="Behaviour" type="Node" parent="StaticBody2D2"]
+script = ExtResource("4_s7g6y")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-505, 537, -308, 298, 236, 298, 255, 312, 354, 312, 360, 298, 652, 300, 902, 543, 990, 539, 1013, -407, 980, -620, -759, -626, -1066, -588, -1339, 179, -1139, 583, -890, 617, -669, 624)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 540)
+shape = SubResource("WorldBoundaryShape2D_5lccf")
+
+[node name="Porta pro Corredor" type="StaticBody2D" parent="."]
+position = Vector2(-397, 0)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("3_4qx35"),"room_scene":"corredor","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"BanheiroSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("4_t7dle"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorInteractable" type="Node" parent="Porta pro Corredor" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("3_4qx35")
+room_scene = "corredor"
+current_scene = NodePath("../..")
+spawnpoint_name = "BanheiroSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta pro Corredor"]
+stream = ExtResource("4_t7dle")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta pro Corredor"]
+polygon = PackedVector2Array(229, 292, 236, -297, 547, -296, 551, 293)
+
+[node name="Player" parent="." instance=ExtResource("5_o7qdy")]
+position = Vector2(-1, 254)
+
+[node name="LevelInfo" type="Node2D" parent="."]
+script = ExtResource("6_t7dle")
+camera_shape = SubResource("RectangleShape2D_o7qdy")
+metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="CorredorSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(-3, 347)

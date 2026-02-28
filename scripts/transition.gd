@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var shader_material: ShaderMaterial
 
-const MAX_TRANSITION: float = 4.0
+const MAX_TRANSITION: float = 5.0
 
 func transition_in(center_at: Node2D):
 	set_center(center_at)

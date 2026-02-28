@@ -22,7 +22,7 @@ func _ready() -> void:
 	self.body_exited.connect(_exited)
 
 func _entered(body: Node2D) -> void:
-	if body.has_meta("interaction"):
+	if body.has_meta("interaction") and not body.is_queued_for_deletion():
 		print("%s has a interaction module!" % body.name)
 
 		current_selected = body.get_meta("interaction")
