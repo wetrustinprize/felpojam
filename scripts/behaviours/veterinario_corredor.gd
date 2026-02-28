@@ -11,6 +11,8 @@ extends Interactable
 @onready var veterinario_entity = preload("res://entities/veterinario.tres")
 @onready var seringa_item = preload("res://items/vacina.tres")
 
+@onready var shake_preset: ShakerPreset2D = preload("res://shakes/sleep_slam_shake.tres")
+
 var anim_state: STATE = STATE.NORMAL
 
 enum STATE {
@@ -78,6 +80,22 @@ func interact(_who: Interactor) -> void:
 			get_parent().visible = false
 			await door_sfx.finished
 			fight_sfx.play()
+
+			var camera = get_viewport().get_camera_2d()
+			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
+			await get_tree().create_timer(0.5).timeout
+			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
+			await get_tree().create_timer(0.5).timeout
+			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
+			await get_tree().create_timer(0.5).timeout
+			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
+
+			await get_tree().create_timer(0.7).timeout
+			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
+
+			await get_tree().create_timer(5).timeout
+			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
+
 			await fight_sfx.finished
 			get_parent().queue_free()
 
