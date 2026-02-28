@@ -20,11 +20,12 @@ func _ready() -> void:
 	packed_scene = ResourceLoader.load("res://scenes/salas/" + room_scene + ".tscn", "PackedScene")
 	interact_verb = "entrar"
 
-func interact(who: Interactor) -> void:
+func interact(_who: Interactor) -> void:
 	if audio != null:
 		audio.play()
-	await Transition.transition_out(who.get_parent())
+	await Transition.transition_out()
 
+	current_scene.visible = false
 	var player = get_tree().get_nodes_in_group("Player")[0]
 
 	var created_scene = packed_scene.instantiate()
@@ -50,7 +51,7 @@ func interact(who: Interactor) -> void:
 
 	current_scene.queue_free()
 
-	await Transition.transition_in(player)
+	await Transition.transition_in()
 
 func _get_configuration_warnings() -> PackedStringArray:
 	var warnings: PackedStringArray = super._get_configuration_warnings()
