@@ -13,6 +13,8 @@ extends Interactable
 func _ready() -> void:
 	super._ready()
 
+	interact_verb = "conversar"
+
 	if Missions.vampero_at_escritorio:
 		vampero_node.queue_free()
 		return
@@ -31,13 +33,13 @@ func interact(_who: Interactor) -> void:
 
 	if not Missions.first_vampero_talk:
 		Missions.first_vampero_talk = true
-		await Dialog.show_dialog(vampire_entity, "[snd 0]Heh... olá pequenino...")
-		await Dialog.show_dialog(vampire_entity, "[snd 0]Você poderia ajudar um senhor [i]normal[/i] igual a mim?")
-		await Dialog.show_dialog(vampire_entity, "[snd 0]Eu só preciso que você... me convide para entrar na minha sala...")
+		await Dialog.show_dialog(vampire_entity, "Heh... olá pequenino...")
+		await Dialog.show_dialog(vampire_entity, "Você poderia ajudar um senhor [i]normal[/i] igual a mim?")
+		await Dialog.show_dialog(vampire_entity, "Eu só preciso que você... me convide para entrar na minha sala...")
 
 		interact_verb = "convidar"
 	else:
-		await Dialog.show_dialog(vampire_entity, "[snd 0]Heh... obrigado pequenino...")
+		await Dialog.show_dialog(vampire_entity, "Heh... obrigado pequenino...")
 
 		vampero_animation.play("walking")
 

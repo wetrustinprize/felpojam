@@ -26,12 +26,12 @@ func _ready() -> void:
 func cutscene() -> void:
 	Game.on_cutscene = true
 
-	await Dialog.show_dialog(bapo_entity, "[snd 0]Olá! Gostaria de ofializar um documento, me recomendaram esse cartório, qual é o processo?")
-	await Dialog.show_dialog(recepcionista_entity, "[snd 0]ah! nossa, eu nem te vi ai embaixo... bom, o processo é bem simples, só precisamos carimbar seu documento...")
-	await Dialog.show_dialog(bapo_entity, "[snd 0]Ótimo! Aqui está o documento!")
-	await Dialog.show_dialog(recepcionista_entity, "[snd 0]uhm... só tem um problema... o carimbo não está comigo... está com o chefe e ele não me devolveu até agora...")
-	await Dialog.show_dialog(bapo_entity, "[snd 0]Eita, você acha que ele vai demorar pra devolver?")
-	await Dialog.show_dialog(recepcionista_entity, "[snd 0]ah, não se preocupe, eu posso ir lá pegar para você, eu só preciso de alguns minutinhos...")
+	await Dialog.show_dialog(bapo_entity, "Olá! Gostaria de ofializar um documento, me recomendaram esse cartório, qual é o processo?")
+	await Dialog.show_dialog(recepcionista_entity, "ah! nossa, eu nem te vi ai embaixo... bom, o processo é bem simples, só precisamos carimbar seu documento...")
+	await Dialog.show_dialog(bapo_entity, "Ótimo! Aqui está o documento!")
+	await Dialog.show_dialog(recepcionista_entity, "uhm... só tem um problema... o carimbo não está comigo... está com o chefe e ele não me devolveu até agora...")
+	await Dialog.show_dialog(bapo_entity, "Eita, você acha que ele vai demorar pra devolver?")
+	await Dialog.show_dialog(recepcionista_entity, "ah, não se preocupe, eu posso ir lá pegar para você, eu só preciso de alguns minutinhos...")
 
 	var camera = get_viewport().get_camera_2d()
 	Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
@@ -40,6 +40,6 @@ func cutscene() -> void:
 
 	await get_tree().create_timer(2).timeout
 
-	await Dialog.show_dialog(bapo_entity, "[snd -1].[spd 0.01]...[snd 0][spd 1] Eu acho melhor eu ir atrás do carimbo...")
+	await Dialog.show_dialog(bapo_entity, "[snd -1].[spd 0.01]...[spd 1] Eu acho melhor eu ir atrás do carimbo...")
 
 	Game.on_cutscene = false

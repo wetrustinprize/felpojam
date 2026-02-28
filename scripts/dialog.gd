@@ -35,7 +35,7 @@ func show_dialog(who: DialogEntity, text: String) -> void:
 	portrait.texture = who.portrait
 	entity_name.text = who.name
 	dialogue.sound_files = who.sounds
-	dialogue.messages = ["[spd 1.0]" + text]
+	dialogue.messages = ["[spd 1.0][snd 0]" + text]
 	showing_dialog = true
 	dialogue.start_dialogue()
 	who.started_talking.emit()
