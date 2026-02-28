@@ -184,7 +184,7 @@ anchor_bottom = 0.5
 offset_left = -223.0
 offset_top = -309.0
 offset_right = 232.0
-offset_bottom = 345.00256
+offset_bottom = 345.0022
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_v86rl")
@@ -324,6 +324,7 @@ offset_top = 149.0
 offset_right = 409.00003
 offset_bottom = 179.0
 rotation = 0.04687381
+mouse_default_cursor_shape = 2
 theme = ExtResource("8_13sgg")
 
 [node name="Music" type="Label" parent="Prancheta"]
@@ -359,6 +360,7 @@ offset_top = 250.21484
 offset_right = 406.0
 offset_bottom = 280.21484
 rotation = -0.010304138
+mouse_default_cursor_shape = 2
 theme = ExtResource("8_13sgg")
 
 [node name="Master" type="Label" parent="Prancheta"]
@@ -394,6 +396,7 @@ offset_top = 339.0
 offset_right = 398.01578
 offset_bottom = 369.0
 rotation = 0.067243375
+mouse_default_cursor_shape = 2
 theme = ExtResource("8_13sgg")
 
 [node name="Quit" type="Button" parent="Prancheta"]
@@ -403,6 +406,7 @@ offset_top = 521.0
 offset_right = 311.0
 offset_bottom = 566.0
 rotation = 0.013280835
+mouse_default_cursor_shape = 2
 theme = ExtResource("8_13sgg")
 text = "sair do jogo!"
 

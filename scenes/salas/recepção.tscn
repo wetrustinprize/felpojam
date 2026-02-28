@@ -299,6 +299,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_in2ce")
 
 [node name="FelpoJam" type="TextureRect" parent="Menu/CanvasLayer/Fade"]
@@ -314,6 +315,7 @@ offset_right = 270.0
 offset_bottom = 45.359985
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("18_j81af")
 
 [node name="Vacina" type="StaticBody2D" parent="."]

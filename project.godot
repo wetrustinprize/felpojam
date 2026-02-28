@@ -29,8 +29,8 @@ Transition="*res://scenes/transition.tscn"
 Missions="*res://scenes/missions.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 Game="*res://scenes/game.tscn"
-Menu="*res://scenes/menu.tscn"
 Inventory="*res://scenes/inventory.tscn"
+Menu="*res://scenes/menu.tscn"
 Ambience="*res://scenes/ambience.tscn"
 
 [display]

@@ -28,6 +28,7 @@ func _ready() -> void:
 
 		await tween.finished
 		can_skip_menu = true
+		layer.queue_free()
 	else:
 		Game.on_main_menu = false
 		queue_free()

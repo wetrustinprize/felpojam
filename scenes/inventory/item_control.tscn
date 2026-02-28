@@ -52,6 +52,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ojjxk")
 item_texture = NodePath("Item Icon")
 item_label = NodePath("Item Name")
@@ -60,6 +61,7 @@ item_label = NodePath("Item Name")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 texture = ExtResource("1_c5qhq")
 
 [node name="Item Icon" type="TextureRect" parent="."]
@@ -69,6 +71,7 @@ offset_top = 32.0
 offset_right = 122.43329
 offset_bottom = 132.6296
 rotation = -0.14823017
+mouse_filter = 2
 texture = ExtResource("2_tkcns")
 expand_mode = 1
 stretch_mode = 5
@@ -94,6 +97,7 @@ offset_left = 103.0
 offset_top = -9.0
 offset_right = 125.0
 offset_bottom = 38.0
+mouse_filter = 2
 texture = ExtResource("5_460q0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
