@@ -425,7 +425,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("15_v886d")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Gelatina"]
-polygon = PackedVector2Array(-101, -63, -113, 52, 118, 56, 113, -84)
+polygon = PackedVector2Array(-76, -49, -85, 52, 77, 52, 72, -50)
 
 [node name="ItemInteractable" type="Node" parent="Gelatina"]
 script = ExtResource("17_o2abk")

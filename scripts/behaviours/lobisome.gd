@@ -41,7 +41,6 @@ func interact(_who: Interactor) -> void:
 		await Dialog.show_dialog(lobisome_entity, "O Que Você Quer? Não Está Vendo Que Eu Estou Ocupado?")
 
 		if Missions.stickman_requested_tp:
-			Missions.first_lobisomen_talk = true
 
 			await Dialog.show_dialog(lobisome_entity, "Oi? Precisa Do Meu Carimbo? Bom Eu Adoraria Te Emprestar Ele Mas...")
 			pointin = true
@@ -55,6 +54,8 @@ func interact(_who: Interactor) -> void:
 			await Dialog.show_dialog(lobisome_entity, "E Também, Isso Seria Desperdício De Comida... Eu Vou Levar A Gelatina Para Meu Filho Comer.")
 			await Dialog.show_dialog(lobisome_entity, "Então, Amanhã de Manhã Cedo Passe Aqui Novamente Que Eu Te Empresto O Carimbo.")
 			await Dialog.show_dialog(lobisome_entity, "Agora Me Deixa Em Paz.")
+
+			Missions.veterinario_at_corredor = true
 
 	Game.on_cutscene = false
 
