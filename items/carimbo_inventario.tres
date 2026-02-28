@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cglvgq52ifw1"]
+
+[ext_resource type="Script" uid="uid://beqnwjslidij3" path="res://scripts/item.gd" id="1_oq4ru"]
+[ext_resource type="Texture2D" uid="uid://rn7minlch86y" path="res://sprites/items/inventario.png" id="2_6hu37"]
+
+[resource]
+script = ExtResource("1_oq4ru")
+texture = ExtResource("2_6hu37")
+name = "Carimbo de Inventário"
+metadata/_custom_type_script = "uid://beqnwjslidij3"

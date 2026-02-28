@@ -8,6 +8,7 @@ extends Interactable
 @export var door_sfx: AudioStreamPlayer
 
 @onready var veterinario_entity = preload("res://entities/veterinario.tres")
+@onready var seringa_item = preload("res://items/vacina.tres")
 
 var anim_state: STATE = STATE.NORMAL
 
@@ -65,7 +66,23 @@ func interact(_who: Interactor) -> void:
 
 		pass
 	else:
-		anim_state = STATE.NORMAL
-		await Dialog.show_dialog(veterinario_entity, "Consegiu procurar na recepção a injeção? Eu não posso sair daqui senão se ele me ver ele vai fugir!")
+		if Inventory.has_item(seringa_item):
+			anim_state = STATE.NORMAL
+			await Dialog.show_dialog(veterinario_entity, "Aha! Perfeito!")
+
+			Inventory.remove_item(seringa_item)
+
+			anim_state = STATE.INJECAO
+			await Dialog.show_dialog(veterinario_entity, "Agora sim posso terminar meu trabalho aqui!")
+
+			door_sfx.play()
+			get_parent().visible = false
+			await door_sfx.finished
+			get_parent().queue_free()
+
+			Missions.veterinario_at_escritorio = true
+		else:
+			anim_state = STATE.NORMAL
+			await Dialog.show_dialog(veterinario_entity, "Consegiu procurar na recepção a injeção? Eu não posso sair daqui senão se ele me ver ele vai fugir!")
 
 	Game.on_cutscene = false

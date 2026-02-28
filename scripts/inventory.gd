@@ -3,6 +3,7 @@ extends CanvasLayer
 @export var item_control_scene: PackedScene
 
 var items: Array[Item] = []
+var old_items: Array[Item] = []
 
 @onready var horizontal: HBoxContainer = $HBoxContainer
 
@@ -12,7 +13,11 @@ func add_item(item: Item):
 		return
 
 	items.append(item)
+	old_items.append(item)
 	_add_item_control(item)
+
+func had_item(item: Item) -> bool:
+	return old_items.has(item)
 
 func has_item(item: Item) -> bool:
 	return items.has(item)
@@ -55,4 +60,3 @@ func _add_item_control(item: Item):
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_SINE)
 	tween.tween_property(control, "custom_minimum_size:x", minSize, 0.5)
-	tween.tween_callback(control.queue_free)
