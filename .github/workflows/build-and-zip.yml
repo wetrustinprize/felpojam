@@ -6,56 +6,56 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: chickensoft-games/setup-godot@v2
-        with:
-          version: 4.5.1
-          include-templates: true
 
-      - uses: actions/checkout@v4
+    container:
+      image: barichello/godot-ci:4.5.1-stable
+
+    env:
+      GAME_NAME: "So falta o Carimbo"
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
         with:
           lfs: true
 
-      - name: Build Linux
-        uses: manleydev/build-godot-action@v1.5.0
-        id: build_linux
-        with:
-          name: Só falta o Carimbo!
-          preset: Linux
+      - name: Prepare export templates
+        run: |
+          mkdir -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/4.5.1.stable ~/.local/share/godot/templates/
 
-      - name: Build Windows
-        uses: manleydev/build-godot-action@v1.5.0
-        id: build_windows
-        with:
-          name: Só falta o Carimbo!
-          preset: Windows
-
-      - name: Prepare structure
+      - name: Create directory scaffolding
         run: |
           mkdir -p dist/source
           mkdir -p dist/compiled/linux
           mkdir -p dist/compiled/windows
           mkdir -p dist/disclaimer
 
-          # source code
+      - name: Copy source
+        run: |
           rsync -av --exclude=dist --exclude=.git ./ dist/source/
 
-          # built outputs
-          mv ${{ steps.build_linux.outputs.build }} dist/compiled/linux/
-          mv ${{ steps.build_windows.outputs.build }} dist/compiled/windows/
+      - name: Build Linux export
+        run: |
+          godot -v --export "Linux" dist/compiled/linux/${GAME_NAME}.x86_64
 
-          # licenses + readme
+      - name: Build Windows export
+        run: |
+          godot -v --export "Windows" dist/compiled/windows/${GAME_NAME}.exe
+
+      - name: Copy licenses and README
+        run: |
           cp -r licenses/* dist/disclaimer/
           cp README.md dist/disclaimer/README.md
           cp README.md dist/README.md
 
-      - name: Create zip
+      - name: Create ZIP archive
         run: |
           cd dist
           zip -r ../so_falta_o_carimbo.zip .
 
-      - name: Upload build
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Só falta o Carimbo!
+          name: So falta o Carimbo
           path: so_falta_o_carimbo.zip
