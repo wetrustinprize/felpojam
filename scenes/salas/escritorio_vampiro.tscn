@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvivivvd5h6bf"]
+[gd_scene load_steps=17 format=3 uid="uid://bvivivvd5h6bf"]
 
 [ext_resource type="Texture2D" uid="uid://cd1xme6dys5l8" path="res://sprites/lugares/escritorio vampiro/vampiro pronto.png" id="1_i2fvn"]
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="2_f3mrf"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://de83i0okdb3gu" path="res://sprites/entities/vampero/vampero0001.png" id="7_es8sh"]
 [ext_resource type="Texture2D" uid="uid://bwatvrygpxb3d" path="res://sprites/entities/vampero/vampero0002.png" id="8_ug4xb"]
 [ext_resource type="Script" uid="uid://t81clkkwuf8g" path="res://scripts/behaviours/vampero_escritorio.gd" id="9_18pdy"]
+[ext_resource type="Script" uid="uid://b1yrjwwtl5jwx" path="res://scripts/behaviours/compuiter.gd" id="10_es8sh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xg454"]
 
@@ -168,3 +169,16 @@ polygon = PackedVector2Array(-78, 258, 86, 258, 93, -149, 8, -253, -88, -147)
 [node name="Behaviour" type="Node" parent="Vampero" node_paths=PackedStringArray("vampero_animation")]
 script = ExtResource("9_18pdy")
 vampero_animation = NodePath("../Vampero/AnimationPlayer")
+
+[node name="Compuiter" type="StaticBody2D" parent="."]
+position = Vector2(-577, 199)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("10_es8sh"),"interact_verb":"interagir","interactable":true)
+
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Compuiter"]
+polygon = PackedVector2Array(-65, 216, 107, 199, 102, -145, 8, -253, -130, -125)
+
+[node name="Behaviour" type="Node" parent="Compuiter"]
+script = ExtResource("10_es8sh")

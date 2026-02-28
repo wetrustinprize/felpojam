@@ -9,6 +9,8 @@ extends Interactable
 @export var belly_sfx: AudioStreamPlayer
 @export var chefe_animation_player: AnimationPlayer
 @export var chefe_no_banheiro: Node2D
+@export var final_cutscene: PackedScene
+@export var credits_cutscene: PackedScene
 
 @onready var chefe_entity: DialogEntity = preload("res://entities/chefe.tres")
 @onready var toilet_paper: Item = preload("res://items/papel_higienico.tres")
@@ -57,6 +59,29 @@ func interact(_who: Interactor) -> void:
 		chefe_de_pe.visible = true
 
 		await Dialog.show_dialog(chefe_entity, "bom, aonde estavamos?")
+		await Transition.transition_out()
+
+		var cutscene = final_cutscene.instantiate()
+		get_tree().root.add_child(cutscene)
+
+		await Transition.transition_in()
+		cutscene.get_node("AnimationPlayer").play("show")
+
+		await get_tree().create_timer(0.6).timeout
+		await Dialog.show_dialog(chefe_entity, "ah sim! claro.")
+		await Dialog.show_dialog(chefe_entity, "bom, vamos lá oficializar seu documento então!")
+
+		cutscene.get_node("AnimationPlayer").play("show_paper")
+		await get_tree().create_timer(2.2).timeout
+
+		await Dialog.show_dialog(chefe_entity, "cá está! oficializado!")
+		await Transition.transition_out(3)
+
+		await get_tree().create_timer(1).timeout
+
+		var credits = credits_cutscene.instantiate()
+		get_tree().root.add_child(credits)
+		return
 	else:
 		await Dialog.show_dialog(chefe_entity, "oh.... traga-me papel higienico e eu consigo te ajudar....")
 		await Dialog.show_dialog(chefe_entity, "é provavel que tenha no almoxarifado.....")

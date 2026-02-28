@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://brg4lw08urt4s"]
+[gd_scene load_steps=47 format=3 uid="uid://brg4lw08urt4s"]
 
 [ext_resource type="Texture2D" uid="uid://bfpsskejktius" path="res://sprites/lugares/corredor.png" id="1_x1ug2"]
 [ext_resource type="Texture2D" uid="uid://den3k8ylgx81y" path="res://sprites/entities/vampero/vampero0000.png" id="2_0ejk3"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://dccgdsq5lbq35" path="res://scripts/item_interactable.gd" id="25_fckh0"]
 [ext_resource type="Texture2D" uid="uid://2rc31ahlbtkc" path="res://sprites/items/chave.png" id="26_bpvbk"]
 [ext_resource type="Resource" uid="uid://d0l4labqtgm8j" path="res://items/chave_do_vampiro.tres" id="26_fckh0"]
+[ext_resource type="Script" uid="uid://b2j6bw1s1b3ly" path="res://scripts/behaviours/postit.gd" id="30_e85hu"]
 
 [sub_resource type="Animation" id="Animation_vag0r"]
 length = 0.001
@@ -215,6 +216,9 @@ stream_0/stream = ExtResource("21_v75y0")
 [sub_resource type="Gradient" id="Gradient_bpvbk"]
 offsets = PackedFloat32Array(0, 0.14383562, 0.69863015, 1)
 colors = PackedColorArray(0.99215686, 0.99215686, 0.99215686, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_e85hu"]
+colors = PackedColorArray(1, 1, 1, 0.24705882, 1, 1, 1, 1)
 
 [sub_resource type="GDScript" id="GDScript_g23kx"]
 resource_name = "BubblesParticles"
@@ -1174,9 +1178,11 @@ angular_velocity_max = 100.0
 scale_amount_min = 0.25
 scale_amount_max = 0.4
 color_ramp = SubResource("Gradient_bpvbk")
+color_initial_ramp = SubResource("Gradient_e85hu")
 script = SubResource("GDScript_g23kx")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(-285.19995, -0.39996338)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
@@ -1348,6 +1354,20 @@ metadata/_custom_type_script = "uid://dccgdsq5lbq35"
 script = ExtResource("3_o111h")
 camera_shape = SubResource("RectangleShape2D_t2slm")
 metadata/_custom_type_script = "uid://1pbq2mr642g4"
+
+[node name="Postit" type="StaticBody2D" parent="."]
+position = Vector2(2470, 279)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("30_e85hu"),"postit_entity":Resource("res://entities/postit.tres"),"interact_verb":"ler","interactable":true)
+
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Postit"]
+polygon = PackedVector2Array(-135, -112, -137, 310, 113, 309, 113, -118)
+
+[node name="Behaviour" type="Node" parent="Postit"]
+script = ExtResource("30_e85hu")
+interact_verb = "ler"
 
 [connection signal="body_entered" from="CrackSoundTrigger" to="CrackSoundTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="BubblesSoundTrigger" to="BubblesSoundTrigger" method="_on_body_entered"]
