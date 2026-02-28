@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bxkhf1i8yqoc8"]
+[gd_scene load_steps=46 format=3 uid="uid://bxkhf1i8yqoc8"]
 
 [ext_resource type="Texture2D" uid="uid://b55lqbb1k2pal" path="res://sprites/lugares/copa/COPA_2X.png" id="1_yivnc"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="2_5lln6"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://bwatvrygpxb3d" path="res://sprites/entities/vampero/vampero0002.png" id="27_5kh47"]
 [ext_resource type="Script" uid="uid://b8j5ierfttukc" path="res://scripts/behaviours/vampero_copa.gd" id="28_mokgk"]
 [ext_resource type="Script" uid="uid://dcat0w3pl3nq2" path="res://scripts/loot_at_player.gd" id="29_j1w7f"]
+[ext_resource type="Texture2D" uid="uid://bmpn31mowbwa4" path="res://sprites/peixe.png" id="30_2jfnm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gt32m"]
 size = Vector2(3150, 1048.445)
@@ -385,6 +386,68 @@ _data = {
 &"RESET": SubResource("Animation_q11eu"),
 &"talking": SubResource("Animation_w8lht"),
 &"walking": SubResource("Animation_i0oml")
+}
+
+[sub_resource type="Animation" id="Animation_2jfnm"]
+resource_name = "idle"
+length = 2.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1072, -248), Vector2(1206, -247.99998), Vector2(1072, -248)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.25, 1.95, 2.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.027313523, 0.027313523), Vector2(0.027313523, 0.027313523), Vector2(-0.027, 0.027), Vector2(-0.027, 0.027), Vector2(0.027313523, 0.027313523)]
+}
+
+[sub_resource type="Animation" id="Animation_5kh47"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1072, -248)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.027313523, 0.027313523)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wcsco"]
+_data = {
+&"RESET": SubResource("Animation_5kh47"),
+&"idle": SubResource("Animation_2jfnm")
 }
 
 [node name="Copa" type="Node2D"]
@@ -919,3 +982,15 @@ script = ExtResource("29_j1w7f")
 
 [node name="VamperoLeft" type="Marker2D" parent="."]
 position = Vector2(-838, 128)
+
+[node name="Peixe" type="Sprite2D" parent="."]
+position = Vector2(1072, -248)
+scale = Vector2(0.027313523, 0.027313523)
+texture = ExtResource("30_2jfnm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Peixe"]
+libraries = {
+&"": SubResource("AnimationLibrary_wcsco")
+}
+autoplay = "idle"
+speed_scale = 0.5
