@@ -15,7 +15,18 @@ func interact() -> void:
 		return
 
 	print("interacting with %s" % current_selected.name)
+
+	@warning_ignore("redundant_await")
 	await current_selected.interact(self)
+
+	if not current_selected.interactable or current_selected.is_queued_for_deletion():
+		_reset_current()
+
+func recheck() -> void:
+	var overlaping = get_overlapping_bodies()
+
+	for overlap in overlaping:
+		_entered(overlap)
 
 func _ready() -> void:
 	self.body_entered.connect(_entered)
@@ -38,8 +49,11 @@ func _exited(body: Node2D) -> void:
 		var interaction = body.get_meta("interaction")
 
 		if interaction == current_selected:
-			current_selected = null
-			cannot_interact_anymore.emit()
+			_reset_current()
 			print("%s has left the area, and is the select one! resetting..." % body.name)
 		else:
 			print("%s has left the area, but its not the current selected! so ignoring" % body.name)
+
+func _reset_current():
+	current_selected = null
+	cannot_interact_anymore.emit()
