@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc6riu1q8v6a8"]
+[gd_scene load_steps=17 format=3 uid="uid://dc6riu1q8v6a8"]
 
 [ext_resource type="Texture2D" uid="uid://4vxljirk7y6d" path="res://sprites/lugares/banheiro/banheiro.png" id="1_5lccf"]
 [ext_resource type="Texture2D" uid="uid://b1k2ecewqum6e" path="res://sprites/lugares/banheiro/overlay_ocupado.png" id="2_t7dle"]
@@ -6,8 +6,49 @@
 [ext_resource type="AudioStream" uid="uid://cfmubb8ppnog5" path="res://sounds/57167__juskiddink__collywobbles.wav" id="3_o7qdy"]
 [ext_resource type="Script" uid="uid://bc34jv1eeg3r6" path="res://scripts/behaviours/chefe_banheiro.gd" id="4_s7g6y"]
 [ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="4_t7dle"]
+[ext_resource type="Texture2D" uid="uid://dni2i3j4i671t" path="res://sprites/entities/boss/boss0000.png" id="5_b4n2k"]
 [ext_resource type="PackedScene" uid="uid://och1pbu6jcyo" path="res://scenes/player.tscn" id="5_o7qdy"]
+[ext_resource type="Texture2D" uid="uid://c77kmnql5nvh1" path="res://sprites/entities/boss/boss0001.png" id="6_k8t3f"]
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="6_t7dle"]
+[ext_resource type="AudioStream" uid="uid://bvpc04xkdampq" path="res://sounds/404329__inspectorj__toilet-flush-european-distant-lid-up.wav" id="8_k8t3f"]
+
+[sub_resource type="Animation" id="Animation_12go1"]
+resource_name = "talking"
+length = 0.45
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_b4n2k"), ExtResource("6_k8t3f"), ExtResource("5_b4n2k"), ExtResource("6_k8t3f")]
+}
+
+[sub_resource type="Animation" id="Animation_iua3e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_b4n2k")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e67dg"]
+_data = {
+&"RESET": SubResource("Animation_iua3e"),
+&"talking": SubResource("Animation_12go1")
+}
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5lccf"]
 
@@ -23,7 +64,15 @@ texture = ExtResource("1_5lccf")
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("4_s7g6y"),"chefe_entity":Resource("res://entities/chefe.tres"),"interact_verb":"interagir","interactable":true)
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("4_s7g6y"),"chefe_de_pe":Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-348, 219),"rotation":0.0,"scale":Vector2(-1, 1),"skew":0.0,"texture":ExtResource("5_b4n2k"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+,"door_sfx":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("4_t7dle"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"flush_sfx":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("8_k8t3f"),"volume_db":-3.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"belly_sfx":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("3_o7qdy"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":true,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"SFX","playback_type":0,"script":null)
+,"chefe_animation_player":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
+&"": SubResource("AnimationLibrary_e67dg")
+},"autoplay":"","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+,"chefe_no_banheiro":Object(Sprite2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(-628, 74),"rotation":0.0,"scale":Vector2(0.5, 0.5),"skew":0.0,"texture":ExtResource("2_t7dle"),"centered":true,"offset":Vector2(0, 0),"flip_h":false,"flip_v":false,"hframes":1,"vframes":1,"frame":0,"region_enabled":false,"region_rect":Rect2(0, 0, 0, 0),"region_filter_clip_enabled":false,"script":null)
+,"chefe_entity":Resource("res://entities/chefe.tres"),"toilet_paper":Resource("res://items/papel_higienico.tres"),"interact_verb":"interagir","interactable":true)
 
 
 [node name="Chefe no Banheiro" type="Sprite2D" parent="StaticBody2D2"]
@@ -31,16 +80,39 @@ position = Vector2(-628, 74)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t7dle")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="StaticBody2D2/Chefe no Banheiro"]
-stream = ExtResource("3_o7qdy")
-autoplay = true
-bus = &"SFX"
-
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
 polygon = PackedVector2Array(-487, 519, -482, 478, -375, 479, -311, 437, -312, 401, -371, 392, -377, -197, -577, -182)
 
-[node name="Behaviour" type="Node" parent="StaticBody2D2"]
+[node name="Behaviour" type="Node" parent="StaticBody2D2" node_paths=PackedStringArray("chefe_de_pe", "door_sfx", "flush_sfx", "belly_sfx", "chefe_animation_player", "chefe_no_banheiro")]
 script = ExtResource("4_s7g6y")
+chefe_de_pe = NodePath("../Boss de Pé")
+door_sfx = NodePath("../DoorSFX")
+flush_sfx = NodePath("../FlushSFX")
+belly_sfx = NodePath("../BellySFX")
+chefe_animation_player = NodePath("../Boss de Pé/AnimationPlayer")
+chefe_no_banheiro = NodePath("../Chefe no Banheiro")
+
+[node name="Boss de Pé" type="Sprite2D" parent="StaticBody2D2"]
+position = Vector2(-348, 219)
+scale = Vector2(-1, 1)
+texture = ExtResource("5_b4n2k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StaticBody2D2/Boss de Pé"]
+libraries = {
+&"": SubResource("AnimationLibrary_e67dg")
+}
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="StaticBody2D2"]
+stream = ExtResource("4_t7dle")
+
+[node name="FlushSFX" type="AudioStreamPlayer" parent="StaticBody2D2"]
+stream = ExtResource("8_k8t3f")
+volume_db = -3.0
+
+[node name="BellySFX" type="AudioStreamPlayer" parent="StaticBody2D2"]
+stream = ExtResource("3_o7qdy")
+autoplay = true
+bus = &"SFX"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 visible = false

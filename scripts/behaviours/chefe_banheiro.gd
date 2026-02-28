@@ -3,18 +3,38 @@
 
 extends Interactable
 
+@export var chefe_de_pe: Node2D
+@export var door_sfx: AudioStreamPlayer
+@export var flush_sfx: AudioStreamPlayer
+@export var belly_sfx: AudioStreamPlayer
+@export var chefe_animation_player: AnimationPlayer
+@export var chefe_no_banheiro: Node2D
+
 @onready var chefe_entity: DialogEntity = preload("res://entities/chefe.tres")
+@onready var toilet_paper: Item = preload("res://items/papel_higienico.tres")
 
 func _ready() -> void:
 	super._ready()
 
+	chefe_de_pe.visible = false
+
 	if Engine.is_editor_hint():
 		return
+
+	chefe_entity.started_talking.connect(func():
+		chefe_animation_player.play("talking")
+	);
+
+	chefe_entity.stopped_talking.connect(func():
+		chefe_animation_player.stop()
+	);
 
 	interact_verb = "conversar"
 
 func interact(_who: Interactor) -> void:
 	Game.on_cutscene = true
+
+	Inventory.add_item(toilet_paper)
 
 	if not Missions.first_chefe_talk:
 		Missions.first_chefe_talk = true
@@ -24,6 +44,21 @@ func interact(_who: Interactor) -> void:
 		await Dialog.show_dialog(chefe_entity, "você precisa carimbar uma papelada? ah eu posso ajudar com isso, mas oh.....")
 		await Dialog.show_dialog(chefe_entity, "acabou o papel higienico, e eu preciso ao menos me limpar pra ir ai te ajudar....")
 		await Dialog.show_dialog(chefe_entity, "é pra ter no final do corredor, dentro do almoxarifado, peça pro moço do almoxarifado")
+	elif Inventory.has_item(toilet_paper):
+		await Dialog.show_dialog(chefe_entity, "perfeito! perfeito! passa por aqui debaixo")
+
+		Inventory.remove_item(toilet_paper)
+
+		flush_sfx.play()
+		belly_sfx.stop()
+
+		await get_tree().create_timer(6.5).timeout
+
+		door_sfx.play()
+		chefe_no_banheiro.visible = false
+		chefe_de_pe.visible = true
+
+		await Dialog.show_dialog(chefe_entity, "bom, aonde estavamos?")
 	else:
 		await Dialog.show_dialog(chefe_entity, "oh.... traga-me papel higienico e eu consigo te ajudar....")
 		await Dialog.show_dialog(chefe_entity, "é provavel que tenha no almoxarifado.....")
