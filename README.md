@@ -35,7 +35,6 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Creaking Wood 4 Steps by Rudmer_Rotteveel](https://freesound.org/s/502507/) - License: Creative Commons 0
 - [Water dispenser bubbles.wav by itinerantmonk108](https://freesound.org/s/553471/) - License: Creative Commons 0
 - [Multiple paper rustles.m4a by cpick](https://freesound.org/s/497135/) - License: Creative Commons 0
-
 - [Woosh Fleuret Escrime B.WAV by toyoto](https://freesound.org/s/533516/) - License: Attribution 4.0
 - [Woosh_1 by gulfstreamav](https://freesound.org/s/842510/) - License: Creative Commons 0
 - [Cyber Punch 02 by JohnLoser](https://freesound.org/s/573377/) - License: Attribution 4.0
@@ -43,7 +42,8 @@ Esse jogo foi feito para a Felpojam pelos seguintes membros:
 - [Woosh_1 by gulfstreamav](https://freesound.org/s/842510/) - License: Creative Commons 0
 - [Howl_Echo.wav by taure](https://freesound.org/s/380156/) - License: Creative Commons 0
 - [Longbow Release 2.wav by saturdaysoundguy](https://freesound.org/s/394179/) - License: Creative Commons 0
-- [Arrow_woosh__twang_01.wav by strangely_gnarled](https://freesound.org/s/72208/)-- License: Attribution 4.0
+- [Arrow_woosh__twang_01.wav by strangely_gnarled](https://freesound.org/s/72208/) - License: Attribution 4.0
+
 ---
 
 Agradecimentos especiais:
