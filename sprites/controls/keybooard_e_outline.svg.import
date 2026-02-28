@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfkiulg8vlaaf"
-path="res://.godot/imported/keyboard_e.svg-25c945ae234db67414d63ed957d7f22a.ctex"
+uid="uid://dbxbg41gxj702"
+path="res://.godot/imported/keybooard_e_outline.svg-4063ac468782a8122212dbad7611c986.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/controls/keyboard_e.svg"
-dest_files=["res://.godot/imported/keyboard_e.svg-25c945ae234db67414d63ed957d7f22a.ctex"]
+source_file="res://sprites/controls/keybooard_e_outline.svg"
+dest_files=["res://.godot/imported/keybooard_e_outline.svg-4063ac468782a8122212dbad7611c986.ctex"]
 
 [params]
 

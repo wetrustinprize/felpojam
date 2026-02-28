@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfkiulg8vlaaf"
-path="res://.godot/imported/keyboard_e.svg-25c945ae234db67414d63ed957d7f22a.ctex"
+uid="uid://cxf80dnpklvmx"
+path="res://.godot/imported/stickman0005.png-8e59de203269e2a9e8e1198d81728249.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/controls/keyboard_e.svg"
-dest_files=["res://.godot/imported/keyboard_e.svg-25c945ae234db67414d63ed957d7f22a.ctex"]
+source_file="res://sprites/entities/stickman/stickman0005.png"
+dest_files=["res://.godot/imported/stickman0005.png-8e59de203269e2a9e8e1198d81728249.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

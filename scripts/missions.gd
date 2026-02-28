@@ -16,3 +16,11 @@ var vampero_at_escritorio: bool = false ## Is the Vampero at its escritorio?
 # Veterinario
 var first_veterinario_talk: bool = false ## Has the player talked once with the Veterinario?
 var veterinario_at_escritorio: bool = false ## Is the Veterinario at its escritorio?
+
+
+# Stickman Almoxarife
+var first_stickman_talk: bool = false ## Has the player talked once with the Stickman?
+var stickman_has_forms: bool = true ## Player has required forms for toilet paper
+var stickman_has_stamp: bool = true ## Player has required stamp for toilet paper
+var stickman_requested_tp: bool = false ## Player has requested toilet paper
+var stickman_has_tp: bool = false ## Player has requested toilet paper

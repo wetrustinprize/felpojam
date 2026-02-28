@@ -926,6 +926,9 @@ position = Vector2(527.80005, -147.39996)
 [node name="CopaSpawnpoint" type="Marker2D" parent="."]
 position = Vector2(-697.19995, -257.39996)
 
+[node name="AlmoxarifadoSpawnpoint" type="Marker2D" parent="."]
+position = Vector2(3207, 715)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-285.19995, -0.39996338)
 
@@ -1022,6 +1025,29 @@ polygon = PackedVector2Array(-69, -28, -65, -504, 111, -387, 92, 70)
 [node name="DoorInteractable" type="Node" parent="Porta para Banheiro" node_paths=PackedStringArray("current_scene", "audio")]
 script = ExtResource("5_hrh1n")
 room_scene = "banheiro"
+current_scene = NodePath("../..")
+spawnpoint_name = "CorredorSpawnpoint"
+audio = NodePath("../DoorSFX")
+metadata/_custom_type_script = "uid://cekyvphlwl7ci"
+
+[node name="Porta para Banheiro2" type="StaticBody2D" parent="."]
+position = Vector2(3224, 681)
+collision_layer = 4
+collision_mask = 0
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("5_hrh1n"),"room_scene":"almoxarifado","current_scene":Object(Node2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"clip_children":0,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"script":null)
+,"spawnpoint_name":"CorredorSpawnpoint","audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("6_juh7i"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
+,"packed_scene":null,"interact_verb":"interagir","interactable":true,"metadata/_custom_type_script":"uid://cekyvphlwl7ci")
+
+
+[node name="DoorSFX" type="AudioStreamPlayer" parent="Porta para Banheiro2"]
+stream = ExtResource("6_juh7i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Porta para Banheiro2"]
+polygon = PackedVector2Array(-74, -34, -73, -457, 126, -347, 122, 80)
+
+[node name="DoorInteractable" type="Node" parent="Porta para Banheiro2" node_paths=PackedStringArray("current_scene", "audio")]
+script = ExtResource("5_hrh1n")
+room_scene = "almoxarifado"
 current_scene = NodePath("../..")
 spawnpoint_name = "CorredorSpawnpoint"
 audio = NodePath("../DoorSFX")
