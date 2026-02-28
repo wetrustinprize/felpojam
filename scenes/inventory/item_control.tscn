@@ -1,10 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqkr687y1si64"]
+[gd_scene load_steps=9 format=3 uid="uid://dqkr687y1si64"]
 
 [ext_resource type="Texture2D" uid="uid://cjtctskipit88" path="res://sprites/ui/dialog/Foto.png" id="1_c5qhq"]
-[ext_resource type="Script" path="res://scripts/item_control.gd" id="1_ojjxk"]
+[ext_resource type="Script" uid="uid://d2m3qvglbtu26" path="res://scripts/item_control.gd" id="1_ojjxk"]
 [ext_resource type="Texture2D" uid="uid://b3ufr38msay78" path="res://sprites/items/seringa.png" id="2_tkcns"]
 [ext_resource type="FontFile" uid="uid://cifqf2sdkngnj" path="res://fonts/PermanentMarker-Regular.ttf" id="4_460q0"]
 [ext_resource type="Texture2D" uid="uid://bgqrfjoc2aapf" path="res://sprites/ui/dialog/Clip.png" id="5_460q0"]
+
+[sub_resource type="Animation" id="Animation_460q0"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.034906585, 0.0, 0.03490658503988659]
+}
+
+[sub_resource type="Animation" id="Animation_olqcu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t8mr7"]
+_data = {
+&"Idle": SubResource("Animation_460q0"),
+&"RESET": SubResource("Animation_olqcu")
+}
 
 [node name="ItemControl" type="Control" node_paths=PackedStringArray("item_texture", "item_label")]
 custom_minimum_size = Vector2(162, 193)
@@ -57,3 +95,9 @@ offset_top = -9.0
 offset_right = 125.0
 offset_bottom = 38.0
 texture = ExtResource("5_460q0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_t8mr7")
+}
+autoplay = "Idle"
