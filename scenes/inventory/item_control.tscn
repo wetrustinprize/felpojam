@@ -37,17 +37,18 @@ stretch_mode = 5
 
 [node name="Item Name" type="Label" parent="."]
 layout_mode = 0
-offset_left = 32.593224
-offset_top = 147.36966
-offset_right = 143.27292
-offset_bottom = 176.69287
+offset_left = 33.0
+offset_top = 144.0
+offset_right = 143.6797
+offset_bottom = 180.58516
 rotation = -0.15343378
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_460q0")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 12
 text = "seringa"
 horizontal_alignment = 1
 vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="Clip" type="TextureRect" parent="."]
 layout_mode = 0
