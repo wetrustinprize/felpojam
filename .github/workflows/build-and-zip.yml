@@ -3,15 +3,16 @@ name: Dispatch Build & Zip
 on:
   workflow_dispatch:
 
+env:
+  GODOT_VERSION: 4.5.1
+  GAME_NAME: "So falta o Carimbo"
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     container:
-      image: barichello/godot-ci:latest
-
-    env:
-      GAME_NAME: "So falta o Carimbo"
+      image: barichello/godot-ci:4.5.1
 
     steps:
       - name: Checkout source
