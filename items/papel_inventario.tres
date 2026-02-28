@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://btbaud52j58r3"]
+
+[ext_resource type="Script" uid="uid://beqnwjslidij3" path="res://scripts/item.gd" id="1_ucxge"]
+[ext_resource type="Texture2D" uid="uid://d1302pgvhkjun" path="res://sprites/items/docuemnto.png" id="2_a8rpr"]
+
+[resource]
+script = ExtResource("1_ucxge")
+texture = ExtResource("2_a8rpr")
+name = "Controle de Inventário"
+metadata/_custom_type_script = "uid://beqnwjslidij3"

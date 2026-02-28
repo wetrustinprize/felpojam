@@ -10,7 +10,7 @@ class_name ItemInteractable
 func _ready() -> void:
 	super._ready()
 
-	if Inventory.has_item(item):
+	if Inventory.has_item(item) or Inventory.had_item(item):
 		queue_free()
 		return
 

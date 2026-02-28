@@ -18,6 +18,10 @@ func _ready() -> void:
 
 	interact_verb = "conversar"
 
+	if Missions.veterinario_at_escritorio:
+		interactable = false
+		lobisome_animation.play("sleep")
+
 	lobisome_entity.started_talking.connect(func():
 		lobisome_animation.play("talking" if not pointin else "talking_pointing")
 	);
