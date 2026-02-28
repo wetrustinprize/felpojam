@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://c48wmnmuai06d" path="res://sprites/entities/matunina/tina_portrait.png" id="1_x2usv"]
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="2_haigk"]
-[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_cn0uw"]
+[ext_resource type="AudioStream" uid="uid://bq8rvwp8matub" path="res://sounds/voices/tina/tina_vfx1.wav" id="3_x2usv"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlmk7"]
 random_pitch = 1.1
 streams_count = 1
-stream_0/stream = ExtResource("3_cn0uw")
+stream_0/stream = ExtResource("3_x2usv")
 
 [resource]
 script = ExtResource("2_haigk")

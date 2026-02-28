@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_putrn"]
 [ext_resource type="Texture2D" uid="uid://drnj3bl3kbm4f" path="res://sprites/entities/stickman/stickman_portrait.png" id="1_r0otc"]
-[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_h6yi3"]
+[ext_resource type="AudioStream" uid="uid://dbc0nikorhr30" path="res://sounds/voices/palito/palito_vfx1.wav" id="3_h6yi3"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_e72v8"]
 random_pitch = 1.1

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_buco6"]
 [ext_resource type="Texture2D" uid="uid://b5w8h1jvctsce" path="res://sprites/entities/boss/chefe_portrait.png" id="1_j1ttt"]
-[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_li5by"]
+[ext_resource type="AudioStream" uid="uid://dmronjw8cxpjs" path="res://sounds/voices/chefe/chefe_vfx1.wav" id="3_li5by"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlmk7"]
 random_pitch = 1.1

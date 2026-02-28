@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkj7v0ljrhoeb"]
+[gd_scene load_steps=23 format=3 uid="uid://dhm52ia5khrvk"]
 
 [ext_resource type="Texture2D" uid="uid://cdeawtf7sgiio" path="res://sprites/lugares/almoxarifado/almoxarifado.png" id="1_5wcni"]
 [ext_resource type="Texture2D" uid="uid://caf6xvbwblejb" path="res://sprites/lugares/almoxarifado/galaxy.png" id="1_jstuw"]
@@ -15,6 +15,21 @@
 [ext_resource type="Texture2D" uid="uid://cxf80dnpklvmx" path="res://sprites/entities/stickman/stickman0005.png" id="8_ddv6a"]
 [ext_resource type="Texture2D" uid="uid://cea5dtmc2ynx0" path="res://sprites/entities/stickman/stickman0006.png" id="9_88r8t"]
 
+[sub_resource type="Animation" id="Animation_d5quh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_0ae38"]
 resource_name = "rotate"
 length = 10.0
@@ -30,21 +45,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.2831855]
-}
-
-[sub_resource type="Animation" id="Animation_d5quh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gvquu"]
@@ -117,7 +117,7 @@ texture = ExtResource("1_5wcni")
 position = Vector2(289, 424)
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("2_5wcni"),"form_item":Resource("res://items/papel_inventario.tres"),"stamp_item":Resource("res://items/carimbo_inventario.tres"),"tp_item":Resource("res://items/papel_higienico.tres"),"gelatina_item":null,"stickman_entity":Resource("res://entities/stickman.tres"),"stickman_animation_player":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("2_5wcni"),"form_item":Resource("res://items/papel_inventario.tres"),"stamp_item":Resource("res://items/carimbo_inventario.tres"),"tp_item":Resource("res://items/papel_higienico.tres"),"gelatina_item":Resource("res://items/gelatina.tres"),"stickman_entity":Resource("res://entities/stickman.tres"),"stickman_animation_player":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
 &"": SubResource("AnimationLibrary_lqqak")
 },"autoplay":"","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
 ,"interact_verb":"conversar","interactable":true)
