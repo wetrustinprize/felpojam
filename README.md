@@ -1,6 +1,6 @@
 # Só falta o Carimbo!
 
-Só falta um Carimbo! é um jogo feito para a Felpojam 2026!
+"Só falta um Carimbo" é um jogo feito para a Felpojam 2026, _classificação indicativa para 16 anos_!
 
 Seu objetivo aqui é ajudar o Bapo a assinar sua papelada! Mas como toda empresa no mundo... esse cartório é um caos!
 
