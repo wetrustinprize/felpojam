@@ -152,7 +152,7 @@ stream = ExtResource("4_t7dle")
 polygon = PackedVector2Array(229, 292, 236, -297, 547, -296, 551, 293)
 
 [node name="Player" parent="." instance=ExtResource("5_o7qdy")]
-position = Vector2(-1, 254)
+position = Vector2(-4, 352)
 
 [node name="LevelInfo" type="Node2D" parent="."]
 script = ExtResource("6_t7dle")

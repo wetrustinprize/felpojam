@@ -411,7 +411,7 @@ slime_sfx = NodePath("../Lobisome/SlimeSFX")
 polygon = PackedVector2Array(-545, -77, -200, -65, -237, 477, -592, 488)
 
 [node name="Player" parent="." instance=ExtResource("5_3eu6g")]
-position = Vector2(396, 228)
+position = Vector2(399, 322)
 
 [node name="Gelatina" type="StaticBody2D" parent="."]
 position = Vector2(-9, 476)

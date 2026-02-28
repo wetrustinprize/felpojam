@@ -169,7 +169,7 @@ texture = ExtResource("1_bmsso")
 
 [node name="Player" parent="." instance=ExtResource("2_8bxb3")]
 z_index = 1
-position = Vector2(-743, 232)
+position = Vector2(-721, 392)
 
 [node name="LevelInfo" type="Node2D" parent="."]
 script = ExtResource("3_8bxb3")

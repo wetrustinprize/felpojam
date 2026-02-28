@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://3l7egawopkwc" path="res://sprites/entities/lobo/lobo_portrait.png" id="1_llujh"]
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="1_qovsq"]
-[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_tk6cm"]
+[ext_resource type="AudioStream" uid="uid://dbicdbcn64g2i" path="res://sounds/voices/lobisome/lobisome_vfx1.wav" id="3_tk6cm"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ofyrt"]
 random_pitch = 1.1

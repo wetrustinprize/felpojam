@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://bgf7d3mehdrdr" path="res://sprites/entities/veterinario/veterinario_portrait.png" id="1_5xcdl"]
 [ext_resource type="Script" uid="uid://bw53n2gpy15rr" path="res://scripts/dialog_entity.gd" id="2_kmjpv"]
-[ext_resource type="AudioStream" uid="uid://cg05l7ggu23x6" path="res://sounds/blip.wav" id="3_lqdma"]
+[ext_resource type="AudioStream" uid="uid://bj457ni5krwx2" path="res://sounds/voices/veterinario/vet_vfx1.wav" id="3_5xcdl"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlmk7"]
 random_pitch = 1.1
 streams_count = 1
-stream_0/stream = ExtResource("3_lqdma")
+stream_0/stream = ExtResource("3_5xcdl")
 
 [resource]
 script = ExtResource("2_kmjpv")

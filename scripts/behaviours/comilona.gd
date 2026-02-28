@@ -53,7 +53,7 @@ func interact(_who: Interactor) -> void:
 
 		if Inventory.has_item(gelatina_item):
 			await Dialog.show_dialog(comilona_entity, "o que? você já tem um doce ai??")
-	if Inventory.has_item(gelatina_item):
+	elif Inventory.has_item(gelatina_item):
 		animation_state = STATE.ALEGRE
 		await Dialog.show_dialog(comilona_entity, "NEM FUDENDO!!!")
 
@@ -63,10 +63,10 @@ func interact(_who: Interactor) -> void:
 		await comilona_animation.animation_finished
 
 		await Dialog.show_dialog(comilona_entity, "vc fez meu dia, na moral")
-		await Dialog.show_dialog(comilona_entity, "o que? você precisava daquele carimbo?")
-		await Dialog.show_dialog(comilona_entity, "pfft, aquele lá era inutil mesmo")
+		await Dialog.show_dialog(comilona_entity, "o q? q carimbo? eu nem vi!!")
+		await Dialog.show_dialog(comilona_entity, "pfft, aquele lá era inútil mesmo")
 
-		await Dialog.show_dialog(comilona_entity, "mas pega esse aqui q eu peguei \"emprestado\" por um tempo do almoxarifado")
+		await Dialog.show_dialog(comilona_entity, "mas aqui ó, pega esse aqui q eu peguei \"emprestado\" por um tempo do almoxarifado")
 		Inventory.add_item(carimbo_inventario)
 
 		await Dialog.show_dialog(comilona_entity, "n vai contar pra ele em! vai saber o que ele é capaz de fazer")

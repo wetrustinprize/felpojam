@@ -182,7 +182,7 @@ position = Vector2(-320, 2)
 polygon = PackedVector2Array(229, 292, 236, -297, 547, -296, 551, 293)
 
 [node name="Player" parent="." instance=ExtResource("7_jstuw")]
-position = Vector2(-339, 254)
+position = Vector2(-339, 348)
 
 [node name="LevelInfo" type="Node2D" parent="."]
 script = ExtResource("8_0ae38")

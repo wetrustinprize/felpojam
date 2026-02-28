@@ -111,7 +111,7 @@ position = Vector2(0, 540)
 shape = SubResource("WorldBoundaryShape2D_xg454")
 
 [node name="Player" parent="." instance=ExtResource("2_f3mrf")]
-position = Vector2(392, 268)
+position = Vector2(392, 359)
 
 [node name="CorredorSpawnpoint" type="Marker2D" parent="."]
 position = Vector2(391, 274)

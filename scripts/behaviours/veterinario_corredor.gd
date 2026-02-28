@@ -79,6 +79,9 @@ func interact(_who: Interactor) -> void:
 			door_sfx.play()
 			get_parent().visible = false
 			await door_sfx.finished
+
+			Ambience.get_node("Music").stop()
+
 			fight_sfx.play()
 
 			var camera = get_viewport().get_camera_2d()
@@ -97,6 +100,7 @@ func interact(_who: Interactor) -> void:
 			Shaker.shake_by_preset(shake_preset, camera, 0.5, 2)
 
 			await fight_sfx.finished
+			Ambience.get_node("Music").play()
 			get_parent().queue_free()
 
 			Missions.veterinario_at_escritorio = true
