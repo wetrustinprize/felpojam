@@ -104,7 +104,7 @@ texture = ExtResource("1_i2fvn")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(958, 534, 911, 484, 712, 492, 656, 381, 654, 315, 48, 308, -42, 374, -85, 324, -634, 326, -639, 409, -705, 319, -962, 555, -1039, -504, -726, -701, 886, -667, 1212, -567, 1045, 444)
+polygon = PackedVector2Array(962, 539, 728, 540, 645, 408, 646, 324, 47, 325, -35, 384, -639, 409, -705, 319, -959, 553, -1039, -504, -726, -701, 886, -667, 1212, -567, 1045, 444)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 540)
@@ -145,7 +145,7 @@ camera_shape = SubResource("RectangleShape2D_nrbsg")
 metadata/_custom_type_script = "uid://1pbq2mr642g4"
 
 [node name="Vampero" type="StaticBody2D" parent="."]
-position = Vector2(20, 180)
+position = Vector2(-67, 416)
 collision_layer = 4
 collision_mask = 0
 metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("9_18pdy"),"vampero_animation":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
@@ -155,6 +155,7 @@ metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_o
 
 
 [node name="Vampero" type="Sprite2D" parent="Vampero"]
+position = Vector2(0, -239.7)
 scale = Vector2(-0.4, 0.4)
 texture = ExtResource("6_18pdy")
 
@@ -164,6 +165,7 @@ libraries = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Vampero"]
+position = Vector2(0, -239.70001)
 polygon = PackedVector2Array(-78, 258, 86, 258, 93, -149, 8, -253, -88, -147)
 
 [node name="Behaviour" type="Node" parent="Vampero" node_paths=PackedStringArray("vampero_animation")]
@@ -174,7 +176,7 @@ vampero_animation = NodePath("../Vampero/AnimationPlayer")
 position = Vector2(-577, 199)
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("10_es8sh"),"interact_verb":"interagir","interactable":true)
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("10_es8sh"),"compuiter_entity":Resource("res://entities/compuiter.tres"),"interact_verb":"fuçar","interactable":true)
 
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Compuiter"]
@@ -182,3 +184,4 @@ polygon = PackedVector2Array(-65, 216, 107, 199, 102, -145, 8, -253, -130, -125)
 
 [node name="Behaviour" type="Node" parent="Compuiter"]
 script = ExtResource("10_es8sh")
+interact_verb = "fuçar"

@@ -189,13 +189,13 @@ animation_player = NodePath("AnimatedSprite2D")
 walk_sfx = NodePath("AudioStreamPlayer")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-6, 90)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_tuyoq")
 
 [node name="InteractInfo" type="Node2D" parent="." node_paths=PackedStringArray("label")]
 z_index = 50
 z_as_relative = false
+position = Vector2(6, -90)
 script = ExtResource("3_tuyoq")
 label = NodePath("Label")
 
@@ -214,9 +214,10 @@ text = "Para interagir!"
 label_settings = SubResource("LabelSettings_smehm")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Interactor" type="Area2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(7, -90)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("4_dqkch")
@@ -227,10 +228,12 @@ position = Vector2(66, 0)
 shape = SubResource("RectangleShape2D_qhqgy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(6, -90)
 zoom = Vector2(0.7, 0.7)
 process_callback = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -90)
 sprite_frames = SubResource("SpriteFrames_60mlk")
 animation = &"idle"
 autoplay = "idle"

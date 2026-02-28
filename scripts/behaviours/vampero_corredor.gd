@@ -43,7 +43,10 @@ func _go_to(location: Node2D, right: bool = false):
 	var tween = get_tree().create_tween()
 	tween.tween_property(vampero_node, "global_position", location.global_position, 4.0)
 
+	vampero_node.get_node("CollisionPolygon2D").disabled = true;
+
 	await tween.finished
+	vampero_node.get_node("CollisionPolygon2D").disabled = false;
 	door_sfx.play()
 	vampero_node.visible = false
 

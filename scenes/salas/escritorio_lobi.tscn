@@ -332,7 +332,7 @@ position = Vector2(394, 316)
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(564, 287, 679, 285, 918, 427, 195, 476, 238, 568, 1060, 561, 1069, -567, 650, -622, -641, -629, -994, -601, -986, 569, -369, 544, -247, 418, -247, 289, -83, 287, -78, 357, -35, 359, 78, 359, 114, 360, 156, 289)
+polygon = PackedVector2Array(668, 297, 976, 467, 895, 438, 253, 436, 211, 502, 245, 557, 1055, 560, 1069, -567, 650, -622, -641, -629, -994, -601, -986, 569, -396, 540, -247, 418, -247, 296, -88, 295, -81, 362, 117, 362, 165, 296)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 540)

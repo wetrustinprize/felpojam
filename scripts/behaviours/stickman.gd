@@ -11,6 +11,7 @@ extends Interactable
 @onready var stickman_entity: DialogEntity = preload("res://entities/stickman.tres")
 
 @export var stickman_animation_player: AnimationPlayer
+@export var walk_audio: AudioStreamPlayer
 
 func _ready() -> void:
 	super._ready()
@@ -52,9 +53,12 @@ func interact(_who: Interactor) -> void:
 			await Dialog.show_dialog(stickman_entity, "Um momento, já trago...")
 
 			stickman_animation_player.play("bring_paper")
+			walk_audio.play()
 
-			await get_tree().create_timer(2).timeout
+			await get_tree().create_timer(2.5).timeout
 
+			walk_audio.play()
+			await stickman_animation_player.animation_finished
 			await Dialog.show_dialog(stickman_entity, "Aqui está!")
 			Inventory.add_item(tp_item)
 			stickman_animation_player.play("RESET")

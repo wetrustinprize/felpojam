@@ -83,7 +83,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_t7dle")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-polygon = PackedVector2Array(-487, 519, -482, 478, -375, 479, -311, 437, -312, 401, -371, 392, -377, -197, -577, -182)
+polygon = PackedVector2Array(-487, 519, -482, 478, -375, 479, -311, 437, -312, 401, -315, 354, -351, 335, -354.3124, 267.2232, -377, -197, -577, -182)
 
 [node name="Behaviour" type="Node" parent="StaticBody2D2" node_paths=PackedStringArray("chefe_de_pe", "door_sfx", "flush_sfx", "belly_sfx", "chefe_animation_player", "chefe_no_banheiro")]
 script = ExtResource("4_s7g6y")
@@ -120,10 +120,9 @@ autoplay = true
 bus = &"SFX"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-505, 537, -308, 298, 236, 298, 255, 312, 354, 312, 360, 298, 652, 300, 902, 543, 990, 539, 1013, -407, 980, -620, -759, -626, -1066, -588, -1339, 179, -1139, 583, -890, 617, -669, 624)
+polygon = PackedVector2Array(-505, 537, -308, 298, 227, 299, 255, 312, 358, 311, 360, 298, 509, 301, 679, 540, 990, 539, 1013, -407, 980, -620, -759, -626, -1066, -588, -1339, 179, -1139, 583, -890, 617, -669, 624)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 540)

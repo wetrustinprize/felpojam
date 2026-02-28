@@ -235,7 +235,7 @@ color_ramp = SubResource("Gradient_6ht3w")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-966, 359, -723, 253, -664, 248, -628, 284, -505, 290, -464, 253, -372, 255, -343, 302, -301, 248, -247, 248, -215, 294, -119, 292, -91.95532, 224.50192, 14, 242, 59, 318, 181, 358, 540, 352, 537, 250, 652, 249, 959, 398, 1041, -584, -518, -636, -1114, -578, -1073, 181, -1073, 181)
+polygon = PackedVector2Array(-966, 359, -723, 253, -653, 251, -651, 312, -501, 319, -464, 253, -377, 251, -377, 292, -342, 312, -307, 297, -301, 248, -258, 251, -245, 304, -90, 304, -80, 253, 11, 255, 22, 295, 59, 318, 110, 349, 181, 358, 261, 377, 364, 377, 469, 372, 519, 363, 540, 352, 538, 253, 653, 254, 959, 397, 1041, -584, -518, -636, -1114, -578, -1073, 181, -1073, 181)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 539)
@@ -284,6 +284,7 @@ metadata/_custom_type_script = "uid://cekyvphlwl7ci"
 position = Vector2(716, 349)
 
 [node name="Menu" type="Sprite2D" parent="."]
+visible = false
 z_index = 5
 position = Vector2(-423, 0)
 scale = Vector2(0.74184453, 0.74184453)
@@ -294,6 +295,7 @@ script = ExtResource("17_jdk5p")
 layer = 4
 
 [node name="Fade" type="TextureRect" parent="Menu/CanvasLayer"]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

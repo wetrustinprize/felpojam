@@ -43,6 +43,8 @@ func _go_to(location: Node2D, right: bool = false):
 	var tween = get_tree().create_tween()
 	tween.tween_property(vampero_node, "global_position", location.global_position, 4.0)
 
+	vampero_node.get_node("CollisionPolygon2D").disabled = true;
+
 	await tween.finished
 	door_sfx.play()
 	vampero_node.visible = false
@@ -65,7 +67,7 @@ func interact(_who: Interactor) -> void:
 	elif Inventory.has_item(vampire_key):
 		Missions.vampero_wants_to_go_escritorio = true
 
-		await Dialog.show_dialog(vampire_entity, "Uau! você é incrível! já fiqueio com medo de não conseguir terminar as demandas de hoje!")
+		await Dialog.show_dialog(vampire_entity, "Uau! você é incrível! já fiquei com medo de não conseguir terminar as demandas de hoje!")
 		Inventory.remove_item(vampire_key)
 		await Dialog.show_dialog(vampire_entity, "Bom, vou me indo, se quiser falar comigo estarei no meu escritório!")
 		await _go_to(vampero_end_position)

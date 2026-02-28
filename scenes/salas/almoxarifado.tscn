@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dkj7v0ljrhoeb"]
+[gd_scene load_steps=24 format=3 uid="uid://dkj7v0ljrhoeb"]
 
 [ext_resource type="Texture2D" uid="uid://cdeawtf7sgiio" path="res://sprites/lugares/almoxarifado/almoxarifado.png" id="1_5wcni"]
 [ext_resource type="Texture2D" uid="uid://caf6xvbwblejb" path="res://sprites/lugares/almoxarifado/galaxy.png" id="1_jstuw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dixx052e56nh" path="res://scripts/behaviours/stickman.gd" id="2_5wcni"]
 [ext_resource type="Texture2D" uid="uid://p1431k0yq5mc" path="res://sprites/entities/stickman/stickman0001.png" id="4_jstuw"]
 [ext_resource type="Texture2D" uid="uid://c02mnwvefsqav" path="res://sprites/entities/stickman/stickman0002.png" id="5_0ae38"]
+[ext_resource type="AudioStream" uid="uid://0u8mcchof20c" path="res://sounds/stickman_walks_calmly.mp3" id="5_d5quh"]
 [ext_resource type="Script" uid="uid://cekyvphlwl7ci" path="res://scripts/door_interactable.gd" id="5_nag77"]
 [ext_resource type="AudioStream" uid="uid://c7ue00151mypf" path="res://sounds/80928__bennstir__door-slam-1.mp3" id="6_4c54o"]
 [ext_resource type="Texture2D" uid="uid://vx77g40h04u0" path="res://sprites/entities/stickman/stickman0003.png" id="6_d5quh"]
@@ -14,6 +15,21 @@
 [ext_resource type="Script" uid="uid://1pbq2mr642g4" path="res://scripts/levelinfo.gd" id="8_0ae38"]
 [ext_resource type="Texture2D" uid="uid://cxf80dnpklvmx" path="res://sprites/entities/stickman/stickman0005.png" id="8_ddv6a"]
 [ext_resource type="Texture2D" uid="uid://cea5dtmc2ynx0" path="res://sprites/entities/stickman/stickman0006.png" id="9_88r8t"]
+
+[sub_resource type="Animation" id="Animation_d5quh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_0ae38"]
 resource_name = "rotate"
@@ -30,21 +46,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.2831855]
-}
-
-[sub_resource type="Animation" id="Animation_d5quh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gvquu"]
@@ -70,7 +71,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ntsgq"]
 resource_name = "bring_paper"
-length = 1.6666751
+length = 4.0
 step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -79,7 +80,7 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 1.1666666, 1.3333333, 1.5),
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1, 2.5833333, 2.9166667, 3.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [ExtResource("2_4c54o"), ExtResource("4_jstuw"), ExtResource("5_0ae38"), ExtResource("6_d5quh"), ExtResource("7_gvquu"), ExtResource("8_ddv6a"), ExtResource("9_88r8t")]
@@ -117,9 +118,10 @@ texture = ExtResource("1_5wcni")
 position = Vector2(289, 424)
 collision_layer = 4
 collision_mask = 0
-metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("2_5wcni"),"form_item":Resource("res://items/papel_inventario.tres"),"stamp_item":Resource("res://items/carimbo_inventario.tres"),"tp_item":Resource("res://items/papel_higienico.tres"),"gelatina_item":null,"stickman_entity":Resource("res://entities/stickman.tres"),"stickman_animation_player":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
+metadata/interaction = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","script":ExtResource("2_5wcni"),"form_item":Resource("res://items/papel_inventario.tres"),"stamp_item":Resource("res://items/carimbo_inventario.tres"),"tp_item":Resource("res://items/papel_higienico.tres"),"gelatina_item":Resource("res://items/gelatina.tres"),"stickman_entity":Resource("res://entities/stickman.tres"),"stickman_animation_player":Object(AnimationPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","active":true,"deterministic":false,"reset_on_save":true,"root_node":NodePath(".."),"root_motion_track":NodePath(""),"root_motion_local":false,"audio_max_polyphony":32,"callback_mode_process":1,"callback_mode_method":0,"callback_mode_discrete":1,"libraries":{
 &"": SubResource("AnimationLibrary_lqqak")
 },"autoplay":"","playback_auto_capture":true,"playback_auto_capture_duration":-1.0,"playback_auto_capture_transition_type":0,"playback_auto_capture_ease_type":0,"playback_default_blend_time":0.0,"speed_scale":1.0,"movie_quit_on_finish":false,"blend_times":[],"script":null)
+,"walk_audio":Object(AudioStreamPlayer,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","stream":ExtResource("5_d5quh"),"volume_db":0.0,"pitch_scale":1.0,"autoplay":false,"stream_paused":false,"mix_target":0,"max_polyphony":1,"bus":&"Master","playback_type":0,"script":null)
 ,"interact_verb":"conversar","interactable":true)
 
 
@@ -132,10 +134,14 @@ texture = ExtResource("2_4c54o")
 position = Vector2(406, -406)
 polygon = PackedVector2Array(-621, 398, -485, 525, -193, 520, -197, 272, -358, 142, -621, 140)
 
-[node name="Behaviour" type="Node" parent="Stickman" node_paths=PackedStringArray("stickman_animation_player")]
+[node name="Behaviour" type="Node" parent="Stickman" node_paths=PackedStringArray("stickman_animation_player", "walk_audio")]
 script = ExtResource("2_5wcni")
 stickman_animation_player = NodePath("../AnimationPlayer")
+walk_audio = NodePath("../StickmanWalksCalmly")
 interact_verb = "conversar"
+
+[node name="StickmanWalksCalmly" type="AudioStreamPlayer" parent="Stickman"]
+stream = ExtResource("5_d5quh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Stickman"]
 libraries = {
@@ -143,10 +149,9 @@ libraries = {
 }
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-498, 318, -93, 318, -47, 364, 36, 364, 206, 541, 902, 543, 990, 539, 980, -620, -759, -626, -1049, -616, -1009, 541, -806, 547, -808, 481, -721, 481)
+polygon = PackedVector2Array(-498, 318, -93, 318, -52, 360, 10, 360, 206, 541, 902, 543, 990, 539, 980, -620, -759, -626, -1049, -616, -1009, 541, -806, 547, -808, 481, -721, 481)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 540)
